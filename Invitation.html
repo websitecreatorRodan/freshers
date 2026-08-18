@@ -1,0 +1,4516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#030509">
+
+<title>NARAYANA | Freshers' 2026</title>
+
+<style>
+
+/* =========================================================
+   IMPORTS
+========================================================= */
+
+@import url(
+'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap'
+);
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --black: #030509;
+    --black2: #050912;
+
+    --navy: #07101d;
+    --navy2: #0b1727;
+    --navy3: #10243d;
+
+    --gold: #d8b46a;
+    --gold2: #f5d98d;
+    --gold3: #fff0b9;
+
+    --white: #ffffff;
+    --muted: #aab4c2;
+
+    --line: rgba(216,180,106,.28);
+    --line2: rgba(255,255,255,.08);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            #173451 0%,
+            #0b1727 25%,
+            #030509 65%
+        );
+
+    color: var(--white);
+
+    font-family: "Inter", sans-serif;
+
+    overflow-x: hidden;
+
+    cursor: default;
+
+}
+
+
+/* =========================================================
+   GLOBAL GRAIN
+========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    opacity: .045;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+
+    animation:
+        grainMove .2s steps(2) infinite;
+
+}
+
+
+@keyframes grainMove {
+
+    0% {
+        transform: translate(0,0);
+    }
+
+    25% {
+        transform: translate(-2%,2%);
+    }
+
+    50% {
+        transform: translate(2%,-1%);
+    }
+
+    75% {
+        transform: translate(1%,2%);
+    }
+
+    100% {
+        transform: translate(-1%,-2%);
+    }
+
+}
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow {
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(216,180,106,.10),
+            rgba(216,180,106,.035) 30%,
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%,-50%);
+
+    transition:
+        opacity .4s;
+
+    mix-blend-mode:
+        screen;
+
+}
+
+
+/* =========================================================
+   AMBIENT ORBS
+========================================================= */
+
+.ambient {
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(100px);
+
+    z-index: -3;
+
+}
+
+
+.ambient.one {
+
+    width: 650px;
+    height: 650px;
+
+    top: -400px;
+    left: 50%;
+
+    background:
+        rgba(216,180,106,.09);
+
+    animation:
+        ambientOne 10s ease-in-out infinite alternate;
+
+}
+
+
+.ambient.two {
+
+    width: 500px;
+    height: 500px;
+
+    right: -300px;
+    bottom: -250px;
+
+    background:
+        rgba(20,90,150,.10);
+
+    animation:
+        ambientTwo 14s ease-in-out infinite alternate;
+
+}
+
+
+.ambient.three {
+
+    width: 350px;
+    height: 350px;
+
+    left: -200px;
+    top: 45%;
+
+    background:
+        rgba(100,70,20,.07);
+
+    animation:
+        ambientThree 12s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes ambientOne {
+
+    0% {
+
+        transform:
+            translateX(-50%)
+            scale(.75);
+
+        opacity: .4;
+
+    }
+
+    50% {
+
+        transform:
+            translateX(-50%)
+            scale(1.2);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(1.5)
+            translateY(80px);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes ambientTwo {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(.8);
+
+    }
+
+    100% {
+
+        transform:
+            translate(-160px,-120px)
+            scale(1.4);
+
+    }
+
+}
+
+
+@keyframes ambientThree {
+
+    0% {
+
+        transform:
+            translate(0,0);
+
+    }
+
+    50% {
+
+        transform:
+            translate(100px,-100px);
+
+    }
+
+    100% {
+
+        transform:
+            translate(180px,100px)
+            scale(1.3);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+#loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle,
+            #0c1c2e,
+            #020308 70%
+        );
+
+    z-index: 10000;
+
+    animation:
+        loaderExit 1.2s cubic-bezier(.77,0,.18,1) 3.1s forwards;
+
+}
+
+
+.loader-ring {
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(216,180,106,.15);
+
+    animation:
+        loaderRing 8s linear infinite;
+
+}
+
+
+.loader-ring::before,
+.loader-ring::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(216,180,106,.12);
+
+}
+
+
+.loader-ring::after {
+
+    inset: 55px;
+
+    border-style: solid;
+
+    border-color:
+        rgba(216,180,106,.08);
+
+}
+
+
+@keyframes loaderRing {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+.loader-narayana {
+
+    position: relative;
+
+    font-size:
+        clamp(38px,10vw,105px);
+
+    font-weight: 900;
+
+    letter-spacing: 14px;
+
+    color: var(--gold2);
+
+    text-shadow:
+        0 0 15px rgba(216,180,106,.5),
+        0 0 45px rgba(216,180,106,.25);
+
+    animation:
+        loaderLogo 1.8s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+@keyframes loaderLogo {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.4)
+            translateY(40px);
+
+        letter-spacing: 45px;
+
+        filter: blur(18px);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            scale(1)
+            translateY(0);
+
+        letter-spacing: 14px;
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+.loader-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin-top: 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px var(--gold);
+
+    animation:
+        loaderLine 1.6s ease .5s forwards;
+
+}
+
+
+@keyframes loaderLine {
+
+    to {
+        width: min(400px,70vw);
+    }
+
+}
+
+
+.loader-sub {
+
+    margin-top: 20px;
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: #687486;
+
+    text-transform: uppercase;
+
+    animation:
+        loaderSub 1s ease 1s both;
+
+}
+
+
+@keyframes loaderSub {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes loaderExit {
+
+    0% {
+
+        opacity: 1;
+
+        clip-path:
+            inset(0 0 0 0);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        clip-path:
+            inset(0 0 100% 0);
+
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLE FIELD
+========================================================= */
+
+.particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+}
+
+
+.particle {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: var(--gold2);
+
+    box-shadow:
+        0 0 8px var(--gold),
+        0 0 18px rgba(216,180,106,.5);
+
+    animation:
+        particleRise linear infinite;
+
+}
+
+
+.particle:nth-child(1) {
+    left: 4%;
+    animation-duration: 10s;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(2) {
+    left: 9%;
+    animation-duration: 15s;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(3) {
+    left: 16%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(4) {
+    left: 23%;
+    animation-duration: 18s;
+    animation-delay: 7s;
+}
+
+.particle:nth-child(5) {
+    left: 31%;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(6) {
+    left: 39%;
+    animation-duration: 17s;
+    animation-delay: 5s;
+}
+
+.particle:nth-child(7) {
+    left: 47%;
+    animation-duration: 13s;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(8) {
+    left: 55%;
+    animation-duration: 20s;
+    animation-delay: 8s;
+}
+
+.particle:nth-child(9) {
+    left: 63%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(10) {
+    left: 71%;
+    animation-duration: 16s;
+    animation-delay: 6s;
+}
+
+.particle:nth-child(11) {
+    left: 78%;
+    animation-duration: 13s;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(12) {
+    left: 85%;
+    animation-duration: 19s;
+    animation-delay: 5s;
+}
+
+.particle:nth-child(13) {
+    left: 92%;
+    animation-duration: 12s;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(14) {
+    left: 97%;
+    animation-duration: 17s;
+    animation-delay: 7s;
+}
+
+
+@keyframes particleRise {
+
+    0% {
+
+        transform:
+            translate3d(0,0,0)
+            scale(.2);
+
+        opacity: 0;
+
+    }
+
+    10% {
+        opacity: .6;
+    }
+
+    35% {
+
+        transform:
+            translate3d(70px,-30vh,0)
+            scale(1);
+
+    }
+
+    60% {
+
+        transform:
+            translate3d(-50px,-65vh,0)
+            scale(.8);
+
+        opacity: .35;
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(80px,-115vh,0)
+            scale(.1);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   SHOOTING STARS
+========================================================= */
+
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 120px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold2),
+            transparent
+        );
+
+    transform:
+        rotate(-35deg);
+
+    opacity: 0;
+
+    animation:
+        shootingStar 7s linear infinite;
+
+}
+
+
+.star:nth-child(1) {
+
+    top: 18%;
+    left: 15%;
+
+    animation-delay: 2s;
+
+}
+
+
+.star:nth-child(2) {
+
+    top: 35%;
+    left: 70%;
+
+    animation-delay: 5s;
+
+}
+
+
+.star:nth-child(3) {
+
+    top: 10%;
+    left: 80%;
+
+    animation-delay: 8s;
+
+}
+
+
+@keyframes shootingStar {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-200px,-100px)
+            rotate(-35deg);
+
+    }
+
+    10% {
+
+        opacity: .6;
+
+    }
+
+    20% {
+
+        opacity: 0;
+
+        transform:
+            translate(500px,300px)
+            rotate(-35deg);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 22px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    z-index: 100;
+
+    background:
+        rgba(3,5,9,.45);
+
+    backdrop-filter:
+        blur(22px)
+        saturate(150%);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.05);
+
+    animation:
+        navDrop 1.2s cubic-bezier(.16,1,.3,1) 3.3s both;
+
+}
+
+
+nav::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 0;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    animation:
+        navLine 3s ease 4s infinite;
+
+}
+
+
+@keyframes navLine {
+
+    0% {
+        left: 0;
+        width: 0;
+    }
+
+    50% {
+        left: 15%;
+        width: 70%;
+    }
+
+    100% {
+        left: 100%;
+        width: 0;
+    }
+
+}
+
+
+@keyframes navDrop {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-50px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.logo {
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: var(--gold2);
+
+    text-shadow:
+        0 0 20px rgba(216,180,106,.25);
+
+    transition:
+        .5s cubic-bezier(.16,1,.3,1);
+
+}
+
+
+.logo:hover {
+
+    transform:
+        scale(1.08)
+        rotate(-2deg);
+
+    text-shadow:
+        0 0 15px var(--gold),
+        0 0 40px rgba(216,180,106,.5);
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    gap: 35px;
+
+    list-style: none;
+
+}
+
+
+.nav-links a {
+
+    position: relative;
+
+    text-decoration: none;
+
+    color: #dce2e9;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .4s;
+
+}
+
+
+.nav-links a::before {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -10px;
+
+    left: 50%;
+
+    width: 0;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    transform:
+        translateX(-50%);
+
+    transition: .4s;
+
+    box-shadow:
+        0 0 10px var(--gold);
+
+}
+
+
+.nav-links a:hover {
+
+    color: var(--gold2);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.nav-links a:hover::before {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 130px 20px 80px;
+
+    overflow: hidden;
+
+    perspective: 1000px;
+
+}
+
+
+/* Rotating rings */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 720px;
+
+    border:
+        1px solid rgba(216,180,106,.09);
+
+    border-radius: 50%;
+
+    animation:
+        heroRing 25s linear infinite;
+
+}
+
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border:
+        1px solid rgba(216,180,106,.06);
+
+    border-radius: 50%;
+
+    animation:
+        heroRingReverse 18s linear infinite;
+
+}
+
+
+@keyframes heroRing {
+
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+
+}
+
+
+@keyframes heroRingReverse {
+
+    0% {
+        transform: rotate(360deg) scale(.9);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(.9);
+    }
+
+}
+
+
+/* Extra orbit */
+
+.hero-orbit {
+
+    position: absolute;
+
+    width: 850px;
+    height: 280px;
+
+    border:
+        1px solid rgba(216,180,106,.045);
+
+    border-radius: 50%;
+
+    transform:
+        rotateX(65deg)
+        rotateZ(-20deg);
+
+    animation:
+        orbitSpin 20s linear infinite;
+
+}
+
+
+@keyframes orbitSpin {
+
+    to {
+        transform:
+            rotateX(65deg)
+            rotateZ(340deg);
+    }
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    transition:
+        transform .15s ease-out;
+
+}
+
+
+/* =========================================================
+   OFFICIAL BADGE
+========================================================= */
+
+.official {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 21px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 100px;
+
+    color: var(--gold2);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    background:
+        rgba(216,180,106,.025);
+
+    box-shadow:
+        inset 0 0 20px rgba(216,180,106,.02);
+
+    animation:
+        badgeIn 1.2s cubic-bezier(.16,1,.3,1) 3.5s both,
+        badgePulse 3s ease-in-out 5s infinite;
+
+}
+
+
+@keyframes badgeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.4)
+            rotateX(60deg);
+
+        filter: blur(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotateX(0);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+@keyframes badgePulse {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 0 rgba(216,180,106,0),
+            inset 0 0 20px rgba(216,180,106,.02);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 40px rgba(216,180,106,.14),
+            inset 0 0 25px rgba(216,180,106,.05);
+
+    }
+
+}
+
+
+.official::before {
+
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--gold2);
+
+    box-shadow:
+        0 0 10px var(--gold),
+        0 0 20px var(--gold);
+
+    animation:
+        dotPulse 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes dotPulse {
+
+    0%,100% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.7);
+    }
+
+}
+
+
+/* =========================================================
+   COLLEGE NAME
+========================================================= */
+
+.college-name {
+
+    margin-top: 30px;
+
+    color: #cbd4df;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 7px;
+
+    animation:
+        textReveal 1.2s ease 3.8s both;
+
+}
+
+
+@keyframes textReveal {
+
+    from {
+
+        opacity: 0;
+
+        letter-spacing: 25px;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        letter-spacing: 7px;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1 {
+
+    margin-top: 25px;
+
+    font-size:
+        clamp(65px,15vw,190px);
+
+    line-height: .75;
+
+    font-weight: 900;
+
+    letter-spacing: -8px;
+
+    color: #fff;
+
+    position: relative;
+
+    animation:
+        giantReveal 1.8s cubic-bezier(.16,1,.3,1) 4s both;
+
+}
+
+
+.hero h1::before {
+
+    content: "NARAYANA";
+
+    position: absolute;
+
+    inset: 0;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(216,180,106,.13);
+
+    transform:
+        translate(8px,8px);
+
+    z-index: -1;
+
+    animation:
+        ghostFloat 5s ease-in-out infinite;
+
+}
+
+
+@keyframes ghostFloat {
+
+    0%,100% {
+
+        transform:
+            translate(8px,8px);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-4px,-6px);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes giantReveal {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            perspective(800px)
+            rotateX(70deg)
+            translateY(130px)
+            scale(.55);
+
+        filter:
+            blur(20px);
+
+    }
+
+    60% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            perspective(800px)
+            rotateX(0)
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+/* Gold subtitle */
+
+.hero h1 span {
+
+    display: block;
+
+    margin-top: 28px;
+
+    font-size: .38em;
+
+    font-weight: 500;
+
+    letter-spacing: 16px;
+
+    color: var(--gold2);
+
+    text-shadow:
+        0 0 20px rgba(216,180,106,.25),
+        0 0 60px rgba(216,180,106,.15);
+
+    animation:
+        goldReveal 1.5s cubic-bezier(.16,1,.3,1) 4.6s both,
+        goldShimmer 4s ease-in-out 6.5s infinite;
+
+}
+
+
+@keyframes goldReveal {
+
+    from {
+
+        opacity: 0;
+
+        letter-spacing: 45px;
+
+        transform:
+            scaleX(1.5);
+
+        filter: blur(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        letter-spacing: 16px;
+
+        transform:
+            scaleX(1);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+@keyframes goldShimmer {
+
+    0%,100% {
+
+        text-shadow:
+            0 0 20px rgba(216,180,106,.25),
+            0 0 60px rgba(216,180,106,.15);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 30px rgba(216,180,106,.7),
+            0 0 80px rgba(216,180,106,.3);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-description {
+
+    max-width: 650px;
+
+    margin: 45px auto 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 2;
+
+    animation:
+        descriptionReveal 1.3s ease 5s both;
+
+}
+
+
+@keyframes descriptionReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+
+        filter:
+            blur(6px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+.scroll {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #687486;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    animation:
+        scrollMove 2s ease-in-out infinite;
+
+}
+
+
+.scroll::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    left: 50%;
+    top: -15px;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        1px solid rgba(216,180,106,.08);
+
+    border-radius: 50%;
+
+    animation:
+        scrollRing 3s linear infinite;
+
+}
+
+
+@keyframes scrollRing {
+
+    to {
+        transform:
+            translateX(-50%)
+            rotate(360deg);
+    }
+
+}
+
+
+.scroll::after {
+
+    content: "";
+
+    display: block;
+
+    width: 1px;
+
+    height: 38px;
+
+    margin: 10px auto;
+
+    background:
+        linear-gradient(
+            var(--gold),
+            transparent
+        );
+
+    animation:
+        scrollLine 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes scrollLine {
+
+    0% {
+
+        transform:
+            scaleY(.3);
+
+        transform-origin:
+            top;
+
+    }
+
+    50% {
+
+        transform:
+            scaleY(1);
+
+        transform-origin:
+            top;
+
+    }
+
+    100% {
+
+        transform:
+            scaleY(.3);
+
+        transform-origin:
+            bottom;
+
+    }
+
+}
+
+
+@keyframes scrollMove {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,0);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,10px);
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+
+    position: relative;
+
+    z-index: 1;
+
+    padding: 130px 7%;
+
+}
+
+
+.center {
+
+    text-align: center;
+
+}
+
+
+.section-label {
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 18px;
+
+}
+
+
+.section-title {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(44px,7vw,75px);
+
+    font-weight: 700;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   SECTION DECORATION
+========================================================= */
+
+.section-label::before,
+.section-label::after {
+
+    content: "✦";
+
+    display: inline-block;
+
+    color: var(--gold);
+
+    margin: 0 14px;
+
+    animation:
+        sparkle 2s ease-in-out infinite;
+
+}
+
+
+.section-label::after {
+
+    animation-delay: 1s;
+
+}
+
+
+@keyframes sparkle {
+
+    0%,100% {
+
+        opacity: .3;
+
+        transform:
+            scale(.7)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.3)
+            rotate(180deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   INVITATION
+========================================================= */
+
+.invitation {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(216,180,106,.07),
+            transparent 60%
+        );
+
+}
+
+
+.invitation::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+    top: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--line),
+            transparent
+        );
+
+}
+
+
+.invitation-card {
+
+    max-width: 950px;
+
+    margin: 60px auto 0;
+
+    padding:
+        clamp(45px,8vw,90px);
+
+    position: relative;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    border:
+        1px solid var(--line);
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .25s ease-out,
+        box-shadow .7s;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.25);
+
+}
+
+
+.invitation-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 20%,
+            rgba(255,255,255,.13),
+            transparent 40%
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        1.2s;
+
+}
+
+
+.invitation-card:hover::before {
+
+    transform:
+        translateX(120%);
+
+}
+
+
+.invitation-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    right: -180px;
+    bottom: -180px;
+
+    background:
+        rgba(216,180,106,.08);
+
+    filter: blur(60px);
+
+    animation:
+        cardOrb 6s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes cardOrb {
+
+    from {
+        transform: scale(.7);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+
+}
+
+
+.invitation-card:hover {
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,.5),
+        0 0 60px rgba(216,180,106,.05);
+
+}
+
+
+.invitation-card h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(38px,6vw,52px);
+
+    color:
+        var(--gold2);
+
+    margin-bottom:
+        30px;
+
+    position: relative;
+
+    animation:
+        headingFloat 4s ease-in-out infinite;
+
+}
+
+
+@keyframes headingFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+}
+
+
+.invitation-card p {
+
+    color:
+        #ccd4de;
+
+    font-size:
+        15px;
+
+    line-height:
+        2;
+
+}
+
+
+.invitation-card strong {
+
+    color:
+        var(--gold2);
+
+    position: relative;
+
+}
+
+
+.invitation-card strong::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -3px;
+
+    height: 1px;
+
+    background:
+        var(--gold);
+
+    transform:
+        scaleX(0);
+
+    transform-origin:
+        center;
+
+    animation:
+        underlinePulse 3s ease-in-out infinite;
+
+}
+
+
+@keyframes underlinePulse {
+
+    0%,100% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+
+}
+
+
+.signature {
+
+    margin-top: 40px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 27px;
+
+    color: var(--gold2);
+
+    animation:
+        signatureGlow 3s ease-in-out infinite;
+
+}
+
+
+@keyframes signatureGlow {
+
+    0%,100% {
+
+        text-shadow:
+            0 0 0 rgba(216,180,106,0);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 25px rgba(216,180,106,.3);
+
+    }
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details {
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,255,255,.015),
+            transparent
+        );
+
+}
+
+
+.details-grid {
+
+    max-width: 1100px;
+
+    margin: 65px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+
+.detail {
+
+    position: relative;
+
+    padding: 40px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    transition:
+        transform .6s cubic-bezier(.16,1,.3,1),
+        border-color .5s,
+        box-shadow .5s;
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+.detail::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(216,180,106,.06),
+            transparent
+        );
+
+    transform:
+        translateX(-120%);
+
+    transition:
+        1s;
+
+}
+
+
+.detail:hover::before {
+
+    transform:
+        translateX(120%);
+
+}
+
+
+.detail::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(216,180,106,.07);
+
+    filter:
+        blur(50px);
+
+    top: -130px;
+    right: -130px;
+
+    transition: .7s;
+
+}
+
+
+.detail:hover {
+
+    transform:
+        translateY(-15px)
+        scale(1.025);
+
+    border-color:
+        var(--line);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4),
+        0 0 40px rgba(216,180,106,.04);
+
+}
+
+
+.detail:hover::after {
+
+    transform:
+        scale(1.8);
+
+}
+
+
+.detail-icon {
+
+    position: relative;
+
+    font-size: 28px;
+
+    color: var(--gold2);
+
+    margin-bottom: 22px;
+
+    display: inline-block;
+
+    transition: .6s;
+
+}
+
+
+.detail:hover .detail-icon {
+
+    transform:
+        rotateY(180deg)
+        scale(1.25);
+
+    text-shadow:
+        0 0 20px var(--gold);
+
+}
+
+
+.detail h3 {
+
+    color: var(--gold2);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+
+}
+
+
+.detail p {
+
+    color: #dce2e9;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   VENUE MAP BUTTON
+========================================================= */
+
+.venue-map {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 18px;
+
+    padding: 11px 17px;
+
+    border: 1px solid var(--line);
+
+    color: var(--gold2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    overflow: hidden;
+
+    transition: .4s;
+
+}
+
+
+.venue-map::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(216,180,106,.15),
+            transparent
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        buttonShine 3s linear infinite;
+
+}
+
+
+@keyframes buttonShine {
+
+    to {
+        transform:
+            translateX(100%);
+    }
+
+}
+
+
+.venue-map:hover {
+
+    color: var(--gold3);
+
+    border-color:
+        var(--gold2);
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 30px rgba(216,180,106,.15);
+
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown-section {
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #10243d,
+            var(--navy2) 55%,
+            #07101d
+        );
+
+    overflow: hidden;
+
+}
+
+
+.countdown-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 800px;
+    height: 800px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid rgba(216,180,106,.05);
+
+    border-radius: 50%;
+
+    animation:
+        countdownOrbit 30s linear infinite;
+
+}
+
+
+@keyframes countdownOrbit {
+
+    to {
+
+        transform:
+            translate(-50%,-50%)
+            rotate(360deg)
+            scale(1.1);
+
+    }
+
+}
+
+
+.countdown {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.time {
+
+    min-width: 120px;
+
+    padding: 30px 20px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        rgba(0,0,0,.18);
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        .6s cubic-bezier(.16,1,.3,1);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.time::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(216,180,106,.06),
+            transparent 50%
+        );
+
+}
+
+
+.time::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -100%;
+
+    top: 0;
+
+    width: 60%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.06),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    animation:
+        timeSweep 4s ease-in-out infinite;
+
+}
+
+
+@keyframes timeSweep {
+
+    0%,40% {
+
+        left: -100%;
+
+    }
+
+    70%,100% {
+
+        left: 150%;
+
+    }
+
+}
+
+
+.time:hover {
+
+    transform:
+        translateY(-14px)
+        scale(1.06);
+
+    box-shadow:
+        0 25px 70px rgba(216,180,106,.12);
+
+    border-color:
+        rgba(216,180,106,.5);
+
+}
+
+
+.time strong {
+
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 55px;
+
+    color: var(--gold2);
+
+    text-shadow:
+        0 0 25px rgba(216,180,106,.3);
+
+    animation:
+        numberGlow 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes numberGlow {
+
+    0%,100% {
+
+        text-shadow:
+            0 0 20px rgba(216,180,106,.25);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 45px rgba(216,180,106,.75),
+            0 0 80px rgba(216,180,106,.25);
+
+    }
+
+}
+
+
+.time span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    position: relative;
+
+    padding: 65px 7%;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+
+    color: #657182;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    overflow: hidden;
+
+}
+
+
+footer::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: -250px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(216,180,106,.08);
+
+    filter: blur(70px);
+
+    animation:
+        footerGlow 5s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes footerGlow {
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1.5);
+
+    }
+
+}
+
+
+footer strong {
+
+    position: relative;
+
+    color: var(--gold);
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    animation:
+        footerPulse 3s ease-in-out infinite;
+
+}
+
+
+@keyframes footerPulse {
+
+    0%,100% {
+
+        text-shadow:
+            0 0 0 rgba(216,180,106,0);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 25px rgba(216,180,106,.4);
+
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(70px)
+        scale(.92)
+        rotateX(10deg);
+
+    filter:
+        blur(8px);
+
+    transition:
+        opacity 1s ease,
+        transform 1.2s cubic-bezier(.16,1,.3,1),
+        filter 1s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        rotateX(0);
+
+    filter:
+        blur(0);
+
+}
+
+
+/* =========================================================
+   STAGGER
+========================================================= */
+
+.detail:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.detail:nth-child(2) {
+    transition-delay: .15s;
+}
+
+.detail:nth-child(3) {
+    transition-delay: .25s;
+}
+
+.detail:nth-child(4) {
+    transition-delay: .35s;
+}
+
+.time:nth-child(1) {
+    transition-delay: .05s;
+}
+
+.time:nth-child(2) {
+    transition-delay: .15s;
+}
+
+.time:nth-child(3) {
+    transition-delay: .25s;
+}
+
+.time:nth-child(4) {
+    transition-delay: .35s;
+}
+
+
+/* =========================================================
+   FLOATING DECORATIONS
+========================================================= */
+
+.floating-symbol {
+
+    position: absolute;
+
+    color: var(--gold);
+
+    opacity: .18;
+
+    font-size: 25px;
+
+    pointer-events: none;
+
+    animation:
+        floatingSymbol 6s ease-in-out infinite;
+
+}
+
+
+.symbol-one {
+
+    left: 10%;
+    top: 25%;
+
+}
+
+
+.symbol-two {
+
+    right: 10%;
+    top: 40%;
+
+    animation-delay: 2s;
+
+}
+
+
+.symbol-three {
+
+    left: 15%;
+    bottom: 20%;
+
+    animation-delay: 4s;
+
+}
+
+
+@keyframes floatingSymbol {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-30px)
+            rotate(180deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    nav {
+
+        padding:
+            18px 5%;
+
+    }
+
+
+    .nav-links {
+
+        display:
+            none;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .hero {
+
+        min-height:
+            100svh;
+
+        padding:
+            110px 15px 80px;
+
+    }
+
+
+    .hero::before {
+
+        width:
+            450px;
+
+        height:
+            450px;
+
+    }
+
+
+    .hero::after {
+
+        width:
+            320px;
+
+        height:
+            320px;
+
+    }
+
+
+    .hero-orbit {
+
+        width:
+            500px;
+
+        height:
+            180px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(55px,18vw,105px);
+
+        letter-spacing:
+            -5px;
+
+    }
+
+
+    .hero h1 span {
+
+        margin-top:
+            22px;
+
+        letter-spacing:
+            7px;
+
+        font-size:
+            .34em;
+
+    }
+
+
+    .college-name {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            4px;
+
+        margin-top:
+            24px;
+
+    }
+
+
+    .official {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            2px;
+
+        padding:
+            9px 15px;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            12px;
+
+        line-height:
+            1.9;
+
+        margin-top:
+            35px;
+
+        max-width:
+            340px;
+
+    }
+
+
+    section {
+
+        padding:
+            90px 5%;
+
+    }
+
+
+    .section-title {
+
+        font-size:
+            clamp(40px,12vw,60px);
+
+    }
+
+
+    .section-label {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            3px;
+
+    }
+
+
+    .section-label::before,
+    .section-label::after {
+
+        margin:
+            0 7px;
+
+    }
+
+
+    .details-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+
+    }
+
+
+    .detail {
+
+        padding:
+            30px;
+
+    }
+
+
+    .detail p {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .invitation-card {
+
+        padding:
+            45px 25px;
+
+        margin-top:
+            45px;
+
+    }
+
+
+    .invitation-card h2 {
+
+        font-size:
+            38px;
+
+    }
+
+
+    .invitation-card p {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .signature {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .countdown {
+
+        gap:
+            8px;
+
+        margin-top:
+            40px;
+
+    }
+
+
+    .time {
+
+        min-width:
+            calc(50% - 8px);
+
+        padding:
+            20px 8px;
+
+    }
+
+
+    .time strong {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .time span {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            2px;
+
+    }
+
+
+    .venue-map {
+
+        font-size:
+            8px;
+
+        padding:
+            9px 12px;
+
+    }
+
+
+    .floating-symbol {
+
+        display:
+            none;
+
+    }
+
+
+    .cursor-glow {
+
+        display:
+            none;
+
+    }
+
+
+    .ambient {
+
+        filter:
+            blur(80px);
+
+    }
+
+
+    .ambient.one {
+
+        width:
+            400px;
+
+        height:
+            400px;
+
+    }
+
+
+    .ambient.two {
+
+        width:
+            300px;
+
+        height:
+            300px;
+
+    }
+
+
+    .loader-ring {
+
+        width:
+            260px;
+
+        height:
+            260px;
+
+    }
+
+
+    .loader-narayana {
+
+        font-size:
+            42px;
+
+        letter-spacing:
+            6px;
+
+    }
+
+
+    .loader-sub {
+
+        font-size:
+            6px;
+
+        letter-spacing:
+            3px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media(max-width:380px) {
+
+    .hero h1 {
+
+        font-size:
+            58px;
+
+    }
+
+
+    .hero h1 span {
+
+        font-size:
+            20px;
+
+        letter-spacing:
+            5px;
+
+    }
+
+
+    .time strong {
+
+        font-size:
+            36px;
+
+    }
+
+
+    .detail {
+
+        padding:
+            25px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div class="cursor-glow"></div>
+
+
+<!-- =========================================================
+     AMBIENT LIGHT
+========================================================= -->
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+<div class="ambient three"></div>
+
+
+<!-- =========================================================
+     SHOOTING STARS
+========================================================= -->
+
+<div class="stars">
+
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+</div>
+
+
+<!-- =========================================================
+     PARTICLES
+========================================================= -->
+
+<div class="particles">
+
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+
+</div>
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div id="loader">
+
+    <div class="loader-ring"></div>
+
+    <div class="loader-narayana">
+        NARAYANA
+    </div>
+
+    <div class="loader-line"></div>
+
+    <div class="loader-sub">
+        Freshers' Celebration • 2026
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <div class="logo">
+        NARAYANA
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#invitation">
+                Invitation
+            </a>
+        </li>
+
+        <li>
+            <a href="#details">
+                Details
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="hero-orbit"></div>
+
+    <div class="floating-symbol symbol-one">
+        ✦
+    </div>
+
+    <div class="floating-symbol symbol-two">
+        ◇
+    </div>
+
+    <div class="floating-symbol symbol-three">
+        ✧
+    </div>
+
+
+    <div class="hero-content">
+
+        <div class="official">
+
+            Official Invitation
+
+        </div>
+
+
+        <div class="college-name">
+
+            NARAYANA
+
+        </div>
+
+
+        <h1>
+
+            NARAYANA
+
+            <span>
+                FRESHERS' 2026
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            A new beginning.
+            New friendships.
+            New experiences.
+            New memories.
+
+            <br>
+
+            Join us as we welcome the newest
+            members of the Narayana community.
+
+        </p>
+
+    </div>
+
+
+    <div class="scroll">
+
+        SCROLL
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     INVITATION
+========================================================= -->
+
+<section
+    id="invitation"
+    class="invitation"
+>
+
+    <div class="center">
+
+        <div class="section-label">
+
+            You Are Cordially Invited
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            An Invitation to Remember
+
+        </h2>
+
+    </div>
+
+
+    <div class="invitation-card reveal">
+
+        <h2>
+
+            Dear Freshers,
+
+        </h2>
+
+
+        <p>
+
+            It gives us immense pleasure to welcome you
+            to <strong>NARAYANA</strong>.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            As you begin an exciting new chapter of your
+            academic journey, we cordially invite you to
+            our Freshers' celebration — an occasion
+            dedicated to welcoming you into the
+            Narayana community.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            Join us for a day filled with celebration,
+            performances, activities, new friendships
+            and memories that will remain a special
+            part of your college journey.
+
+        </p>
+
+
+        <div class="signature">
+
+            With warm regards,
+
+            <br>
+
+            The Organising Committee
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DETAILS
+========================================================= -->
+
+<section
+    id="details"
+    class="details"
+>
+
+    <div class="center">
+
+        <div class="section-label">
+
+            Event Information
+
+        </div>
+
+
+        <h2 class="section-title">
+
+            Event Details
+
+        </h2>
+
+    </div>
+
+
+    <div class="details-grid">
+
+
+        <!-- DATE -->
+
+        <div class="detail reveal">
+
+            <div class="detail-icon">
+                ◷
+            </div>
+
+            <h3>
+                Date
+            </h3>
+
+            <p>
+                Sunday, 23 August 2026
+            </p>
+
+        </div>
+
+
+        <!-- TIME -->
+
+        <div class="detail reveal">
+
+            <div class="detail-icon">
+                ◴
+            </div>
+
+            <h3>
+                Time
+            </h3>
+
+            <p>
+                9:00 AM – 5:00 PM
+            </p>
+
+        </div>
+
+
+        <!-- VENUE -->
+
+        <div class="detail reveal">
+
+            <div class="detail-icon">
+                ⌖
+            </div>
+
+            <h3>
+                Venue
+            </h3>
+
+            <p>
+
+                GMR Function Hall
+                <br>
+
+                NST Road, Opp. TRS Office
+                <br>
+
+                Vijaynagar Colony-I,
+                Bhuranpuram,
+                <br>
+
+                Khammam, Telangana 507002
+
+            </p>
+
+
+            <a
+                class="venue-map"
+                href="https://maps.app.goo.gl/roSL9bqDvBcxd5AM9"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                ⌖
+                Open in Google Maps
+
+            </a>
+
+        </div>
+
+
+        <!-- DRESS CODE -->
+
+        <div class="detail reveal">
+
+            <div class="detail-icon">
+                ◇
+            </div>
+
+            <h3>
+                Dress Code
+            </h3>
+
+            <p>
+                Formal / Traditional
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COUNTDOWN
+========================================================= -->
+
+<section class="countdown-section">
+
+    <div class="section-label">
+
+        The Countdown
+
+    </div>
+
+
+    <h2 class="section-title">
+
+        Until We Meet
+
+    </h2>
+
+
+    <div class="countdown">
+
+
+        <div class="time reveal">
+
+            <strong id="days">
+                00
+            </strong>
+
+            <span>
+                Days
+            </span>
+
+        </div>
+
+
+        <div class="time reveal">
+
+            <strong id="hours">
+                00
+            </strong>
+
+            <span>
+                Hours
+            </span>
+
+        </div>
+
+
+        <div class="time reveal">
+
+            <strong id="minutes">
+                00
+            </strong>
+
+            <span>
+                Minutes
+            </span>
+
+        </div>
+
+
+        <div class="time reveal">
+
+            <strong id="seconds">
+                00
+            </strong>
+
+            <span>
+                Seconds
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <p>
+
+        <strong>
+            NARAYANA
+        </strong>
+
+    </p>
+
+
+    <p style="margin-top:12px;">
+
+        Official Freshers' Celebration • 2026
+
+    </p>
+
+
+    <p style="margin-top:20px;">
+
+        © 2026 All Rights Reserved
+
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const eventDate =
+    new Date(
+        "August 23, 2026 09:00:00"
+    ).getTime();
+
+
+function updateCountdown() {
+
+    const now =
+        new Date().getTime();
+
+    const distance =
+        eventDate - now;
+
+
+    if (distance <= 0) {
+
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(2,"0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.querySelector(".cursor-glow");
+
+
+let mouseX = 0;
+let mouseY = 0;
+
+let glowX = 0;
+let glowY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    (e) => {
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+    }
+);
+
+
+function animateCursor() {
+
+    glowX +=
+        (mouseX - glowX) * .08;
+
+    glowY +=
+        (mouseY - glowY) * .08;
+
+
+    cursorGlow.style.left =
+        glowX + "px";
+
+    cursorGlow.style.top =
+        glowY + "px";
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+
+}
+
+
+if (window.innerWidth > 700) {
+
+    animateCursor();
+
+}
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const hero =
+    document.querySelector(".hero");
+
+const heroContent =
+    document.querySelector(".hero-content");
+
+
+document.addEventListener(
+    "mousemove",
+    (e) => {
+
+        if (window.innerWidth < 700)
+            return;
+
+
+        const x =
+            (e.clientX /
+            window.innerWidth - .5);
+
+
+        const y =
+            (e.clientY /
+            window.innerHeight - .5);
+
+
+        heroContent.style.transform =
+            `
+            translate(
+                ${x * 12}px,
+                ${y * 12}px
+            )
+            rotateX(${y * -2}deg)
+            rotateY(${x * 2}deg)
+            `;
+
+    }
+);
+
+
+/* =========================================================
+   3D INVITATION CARD
+========================================================= */
+
+const card =
+    document.querySelector(".invitation-card");
+
+
+if (window.innerWidth > 700) {
+
+    card.addEventListener(
+        "mousemove",
+        (e) => {
+
+            const rect =
+                card.getBoundingClientRect();
+
+
+            const x =
+                e.clientX - rect.left;
+
+
+            const y =
+                e.clientY - rect.top;
+
+
+            const rotateY =
+                ((x / rect.width) - .5) * 10;
+
+
+            const rotateX =
+                ((y / rect.height) - .5) * -10;
+
+
+            card.style.transform =
+                `
+                perspective(1200px)
+                rotateX(${rotateX}deg)
+                rotateY(${rotateY}deg)
+                translateY(-10px)
+                scale(1.01)
+                `;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                (entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: .12
+        }
+
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   RANDOMIZE PARTICLES
+========================================================= */
+
+document.querySelectorAll(
+    ".particle"
+).forEach(
+    particle => {
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.animationDelay =
+            Math.random() * 12 + "s";
+
+
+        const size =
+            Math.random() * 3 + 1;
+
+
+        particle.style.width =
+            size + "px";
+
+
+        particle.style.height =
+            size + "px";
+
+    }
+);
+
+
+/* =========================================================
+   MAGNETIC MAP BUTTON
+========================================================= */
+
+const mapButton =
+    document.querySelector(".venue-map");
+
+
+if (mapButton && window.innerWidth > 700) {
+
+    mapButton.addEventListener(
+        "mousemove",
+        (e) => {
+
+            const rect =
+                mapButton.getBoundingClientRect();
+
+
+            const x =
+                e.clientX - rect.left;
+
+
+            const y =
+                e.clientY - rect.top;
+
+
+            const moveX =
+                (x / rect.width - .5) * 8;
+
+
+            const moveY =
+                (y / rect.height - .5) * 8;
+
+
+            mapButton.style.transform =
+                `
+                translate(
+                    ${moveX}px,
+                    ${moveY}px
+                )
+                scale(1.04)
+                `;
+
+        }
+    );
+
+
+    mapButton.addEventListener(
+        "mouseleave",
+        () => {
+
+            mapButton.style.transform =
+                "";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SMOOTH NAV SCROLL
+========================================================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(
+    link => {
+
+        link.addEventListener(
+            "click",
+            (e) => {
+
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
+
+
+                if (!target)
+                    return;
+
+
+                e.preventDefault();
+
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   COUNTDOWN NUMBER CHANGE EFFECT
+========================================================= */
+
+const countdownIds = [
+    "days",
+    "hours",
+    "minutes",
+    "seconds"
+];
+
+
+let previousValues = {};
+
+
+function animateCountdownNumbers() {
+
+    countdownIds.forEach(
+        id => {
+
+            const element =
+                document.getElementById(id);
+
+
+            if (!element)
+                return;
+
+
+            const value =
+                element.textContent;
+
+
+            if (
+                previousValues[id] !==
+                undefined &&
+                previousValues[id] !== value
+            ) {
+
+                element.animate(
+                    [
+                        {
+                            transform:
+                                "translateY(-12px) scale(1.15)",
+                            opacity: .3
+                        },
+
+                        {
+                            transform:
+                                "translateY(0) scale(1)",
+                            opacity: 1
+                        }
+                    ],
+                    {
+                        duration: 350,
+                        easing:
+                            "cubic-bezier(.16,1,.3,1)"
+                    }
+                );
+
+            }
+
+
+            previousValues[id] =
+                value;
+
+        }
+    );
+
+}
+
+
+setInterval(
+    animateCountdownNumbers,
+    250
+);
+
+
+/* =========================================================
+   PAGE VISIBILITY
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if (document.hidden) {
+
+            document.title =
+                "NARAYANA • Come Join Us ✦";
+
+        } else {
+
+            document.title =
+                "NARAYANA | Freshers' 2026";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PREVENT HORIZONTAL PARALLAX ON MOBILE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (window.innerWidth <= 700) {
+
+            heroContent.style.transform =
+                "";
+
+            card.style.transform =
+                "";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
