@@ -7,117 +7,410 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#05080f">
 
-<title>NARAYANA | SUREZOAR 2026</title>
+<title>NARAYANA | SERENOVA 2026</title>
 
 <style>
 
 /* =========================================================
-   IMPORTS
+   FONTS
 ========================================================= */
 
 @import url(
-'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap'
+'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap'
 );
+
 
 /* =========================================================
    ROOT
 ========================================================= */
 
 :root {
-    --black: #030509;
-    --navy: #07101d;
-    --navy2: #0b1727;
 
-    --gold: #d8b46a;
-    --gold2: #f5d98d;
-    --gold3: #fff0b9;
+    --black:#020308;
+    --black2:#05080f;
 
-    --white: #ffffff;
-    --muted: #aab4c2;
+    --navy:#07101d;
+    --navy2:#0b1727;
 
-    --line: rgba(216,180,106,.28);
+    --gold:#d8b46a;
+    --gold2:#f5d98d;
+    --gold3:#fff0b9;
+
+    --white:#ffffff;
+    --muted:#aab4c2;
+
+    --line:rgba(216,180,106,.28);
+
+    --mouse-x:50%;
+    --mouse-y:50%;
+
+    --scroll-progress:0%;
 }
+
 
 /* =========================================================
    RESET
 ========================================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
 html {
-    scroll-behavior: smooth;
+
+    scroll-behavior:smooth;
+
 }
 
 body {
 
     background:
+
         radial-gradient(
             circle at 50% 0%,
             #10243d 0%,
-            var(--black) 48%
+            var(--black) 45%
         );
 
-    color: var(--white);
+    color:var(--white);
 
-    font-family: "Inter", sans-serif;
+    font-family:"Inter",sans-serif;
 
-    overflow-x: hidden;
+    overflow-x:hidden;
+
+    min-height:100vh;
+
+    cursor:default;
+
 }
 
+
 /* =========================================================
-   CINEMATIC PAGE INTRO
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor {
+
+    position:fixed;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--gold2);
+
+    box-shadow:
+        0 0 15px var(--gold),
+        0 0 35px rgba(216,180,106,.5);
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    transform:
+        translate(-50%,-50%);
+
+    mix-blend-mode:screen;
+
+    transition:
+        width .25s,
+        height .25s,
+        opacity .25s;
+
+}
+
+.cursor-ring {
+
+    position:fixed;
+
+    width:38px;
+    height:38px;
+
+    border:1px solid rgba(245,217,141,.65);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transform:
+        translate(-50%,-50%);
+
+    transition:
+        width .35s cubic-bezier(.2,.8,.2,1),
+        height .35s cubic-bezier(.2,.8,.2,1),
+        border-color .3s;
+
+}
+
+.cursor.active {
+
+    width:22px;
+    height:22px;
+
+}
+
+.cursor-ring.active {
+
+    width:65px;
+    height:65px;
+
+    border-color:var(--gold2);
+
+}
+
+
+/* =========================================================
+   CURSOR SPOTLIGHT
+========================================================= */
+
+body::before {
+
+    content:"";
+
+    position:fixed;
+
+    width:650px;
+    height:650px;
+
+    left:var(--mouse-x);
+    top:var(--mouse-y);
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(216,180,106,.065),
+            transparent 68%
+        );
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+
+/* =========================================================
+   AMBIENT ORBS
+========================================================= */
+
+.ambient {
+
+    position:fixed;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    filter:blur(100px);
+
+    z-index:-5;
+
+}
+
+.ambient.one {
+
+    width:650px;
+    height:650px;
+
+    top:-400px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+        rgba(216,180,106,.065);
+
+    animation:
+        breathe 8s ease-in-out infinite alternate;
+
+}
+
+.ambient.two {
+
+    width:500px;
+    height:500px;
+
+    right:-250px;
+    bottom:-250px;
+
+    background:
+        rgba(20,80,130,.1);
+
+    animation:
+        orbMove 15s ease-in-out infinite alternate;
+
+}
+
+.ambient.three {
+
+    width:350px;
+    height:350px;
+
+    left:-200px;
+    top:45%;
+
+    background:
+        rgba(80,40,120,.07);
+
+    animation:
+        orbThree 18s ease-in-out infinite alternate;
+
+}
+
+
+@keyframes breathe {
+
+    from {
+        transform:translateX(-50%) scale(.8);
+        opacity:.45;
+    }
+
+    to {
+        transform:translateX(-50%) scale(1.3);
+        opacity:1;
+    }
+
+}
+
+
+@keyframes orbMove {
+
+    to {
+        transform:translate(-150px,-100px);
+    }
+
+}
+
+
+@keyframes orbThree {
+
+    to {
+        transform:translate(180px,-100px) scale(1.3);
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+.scroll-progress {
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:var(--scroll-progress);
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            var(--gold3),
+            var(--gold)
+        );
+
+    box-shadow:
+        0 0 15px var(--gold);
+
+    z-index:10001;
+
+}
+
+
+/* =========================================================
+   LOADER
 ========================================================= */
 
 #loader {
 
-    position: fixed;
-    inset: 0;
+    position:fixed;
 
-    background: #020308;
+    inset:0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background:#020308;
 
-    flex-direction: column;
+    display:flex;
 
-    z-index: 9999;
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    z-index:99999;
 
     animation:
-        loaderOut 1s ease 2.7s forwards;
+        loaderOut 1.2s ease 3s forwards;
 
-    pointer-events: none;
+    pointer-events:none;
+
 }
+
 
 .loader-narayana {
 
-    font-size: clamp(40px, 10vw, 100px);
+    font-size:clamp(40px,10vw,100px);
 
-    font-weight: 900;
+    font-weight:900;
 
-    letter-spacing: 12px;
+    letter-spacing:12px;
 
-    color: var(--gold2);
+    color:var(--gold2);
 
     text-shadow:
         0 0 15px rgba(216,180,106,.4),
         0 0 50px rgba(216,180,106,.25);
 
     animation:
-        logoReveal 1.6s
+        logoReveal 1.7s
         cubic-bezier(.2,.8,.2,1);
+
 }
+
+
+.loader-sub {
+
+    margin-top:14px;
+
+    color:#8e98a8;
+
+    font-size:8px;
+
+    letter-spacing:7px;
+
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:
+        fadeLoaderSub 1s ease 1.5s forwards;
+
+}
+
 
 .loader-line {
 
-    width: 0;
-    height: 1px;
+    width:0;
+    height:1px;
 
-    margin-top: 20px;
+    margin-top:22px;
 
     background:
         linear-gradient(
@@ -129,418 +422,629 @@ body {
 
     animation:
         lineGrow 1.5s ease .5s forwards;
+
 }
+
+
+.loader-pulse {
+
+    position:absolute;
+
+    width:200px;
+    height:200px;
+
+    border:1px solid rgba(216,180,106,.1);
+
+    border-radius:50%;
+
+    animation:
+        loaderPulse 2.5s ease-out infinite;
+
+}
+
 
 @keyframes logoReveal {
 
     0% {
-        opacity: 0;
+
+        opacity:0;
 
         transform:
             scale(.5)
             translateY(30px);
 
-        letter-spacing: 35px;
+        letter-spacing:35px;
 
-        filter: blur(12px);
+        filter:blur(12px);
+
     }
 
     100% {
-        opacity: 1;
+
+        opacity:1;
 
         transform:
             scale(1)
             translateY(0);
 
-        letter-spacing: 12px;
+        letter-spacing:12px;
 
-        filter: blur(0);
+        filter:blur(0);
+
     }
+
 }
+
+
+@keyframes fadeLoaderSub {
+
+    to {
+        opacity:1;
+    }
+
+}
+
 
 @keyframes lineGrow {
 
     to {
-        width: 300px;
+        width:300px;
     }
+
 }
+
+
+@keyframes loaderPulse {
+
+    0% {
+
+        transform:scale(.4);
+
+        opacity:0;
+
+    }
+
+    30% {
+        opacity:1;
+    }
+
+    100% {
+
+        transform:scale(2);
+
+        opacity:0;
+
+    }
+
+}
+
 
 @keyframes loaderOut {
 
     to {
-        opacity: 0;
-        visibility: hidden;
+
+        opacity:0;
+        visibility:hidden;
+
     }
+
 }
+
 
 /* =========================================================
-   AMBIENT LIGHT
-========================================================= */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    width: 700px;
-    height: 700px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(216,180,106,.055);
-
-    filter: blur(130px);
-
-    top: -400px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    animation:
-        breathe 8s
-        ease-in-out
-        infinite
-        alternate;
-
-    pointer-events: none;
-
-    z-index: -2;
-}
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(20,80,130,.08);
-
-    filter: blur(120px);
-
-    right: -250px;
-    bottom: -250px;
-
-    animation:
-        orbMove 15s
-        ease-in-out
-        infinite
-        alternate;
-
-    pointer-events: none;
-
-    z-index: -2;
-}
-
-@keyframes breathe {
-
-    from {
-        transform:
-            translateX(-50%)
-            scale(.8);
-
-        opacity: .5;
-    }
-
-    to {
-        transform:
-            translateX(-50%)
-            scale(1.3);
-
-        opacity: 1;
-    }
-}
-
-@keyframes orbMove {
-
-    from {
-        transform:
-            translate(0,0);
-    }
-
-    to {
-        transform:
-            translate(-150px,-100px);
-    }
-}
-
-/* =========================================================
-   PARTICLES
+   PARTICLE SYSTEM
 ========================================================= */
 
 .particles {
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    pointer-events: none;
+    pointer-events:none;
 
-    z-index: 0;
+    overflow:hidden;
 
-    overflow: hidden;
+    z-index:0;
+
 }
+
 
 .particle {
 
-    position: absolute;
+    position:absolute;
 
-    width: 3px;
-    height: 3px;
+    width:2px;
+    height:2px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: var(--gold2);
+    background:var(--gold2);
 
     box-shadow:
         0 0 10px var(--gold);
 
-    opacity: 0;
+    opacity:0;
 
     animation:
         particleFloat
-        linear
-        infinite;
+        linear infinite;
+
 }
 
-.particle:nth-child(1) {
-    left: 5%;
-    animation-duration: 11s;
-    animation-delay: 1s;
-}
-
-.particle:nth-child(2) {
-    left: 12%;
-    animation-duration: 17s;
-    animation-delay: 4s;
-}
-
-.particle:nth-child(3) {
-    left: 20%;
-    animation-duration: 13s;
-    animation-delay: 2s;
-}
-
-.particle:nth-child(4) {
-    left: 30%;
-    animation-duration: 20s;
-    animation-delay: 6s;
-}
-
-.particle:nth-child(5) {
-    left: 42%;
-    animation-duration: 15s;
-    animation-delay: 1s;
-}
-
-.particle:nth-child(6) {
-    left: 53%;
-    animation-duration: 18s;
-    animation-delay: 8s;
-}
-
-.particle:nth-child(7) {
-    left: 64%;
-    animation-duration: 14s;
-    animation-delay: 3s;
-}
-
-.particle:nth-child(8) {
-    left: 75%;
-    animation-duration: 19s;
-    animation-delay: 7s;
-}
-
-.particle:nth-child(9) {
-    left: 86%;
-    animation-duration: 12s;
-    animation-delay: 2s;
-}
-
-.particle:nth-child(10) {
-    left: 94%;
-    animation-duration: 16s;
-    animation-delay: 5s;
-}
 
 @keyframes particleFloat {
 
     0% {
-        top: 110%;
-        opacity: 0;
 
         transform:
-            translateX(0)
-            scale(.3);
+            translate3d(0,110vh,0)
+            scale(.2);
+
+        opacity:0;
+
     }
 
     15% {
-        opacity: .45;
+        opacity:.55;
     }
 
     50% {
+
         transform:
-            translateX(80px)
+            translate3d(
+                var(--drift),
+                45vh,
+                0
+            )
             scale(1);
+
     }
 
     85% {
-        opacity: .25;
+        opacity:.2;
     }
 
     100% {
-        top: -10%;
-        opacity: 0;
 
         transform:
-            translateX(-80px)
-            scale(.2);
+            translate3d(
+                calc(var(--drift) * -1),
+                -10vh,
+                0
+            )
+            scale(.15);
+
+        opacity:0;
+
     }
+
 }
 
+
 /* =========================================================
-   NAVIGATION
+   SHOOTING STARS
+========================================================= */
+
+.shooting-stars {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+
+.shooting-star {
+
+    position:absolute;
+
+    width:120px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold2),
+            white
+        );
+
+    opacity:0;
+
+    transform:
+        rotate(-35deg);
+
+}
+
+
+.shooting-star::after {
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+    top:-2px;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 12px var(--gold2);
+
+}
+
+
+.shooting-star:nth-child(1) {
+
+    top:18%;
+    left:15%;
+
+    animation:
+        shooting 8s linear 2s infinite;
+
+}
+
+.shooting-star:nth-child(2) {
+
+    top:35%;
+    left:75%;
+
+    animation:
+        shooting 11s linear 5s infinite;
+
+}
+
+.shooting-star:nth-child(3) {
+
+    top:12%;
+    left:55%;
+
+    animation:
+        shooting 14s linear 9s infinite;
+
+}
+
+
+@keyframes shooting {
+
+    0% {
+
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            rotate(-35deg)
+            scale(.3);
+
+    }
+
+    5% {
+        opacity:1;
+    }
+
+    15% {
+
+        opacity:0;
+
+        transform:
+            translate(450px,250px)
+            rotate(-35deg)
+            scale(1);
+
+    }
+
+    100% {
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
+   CONSTELLATION
+========================================================= */
+
+.constellation {
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    opacity:.45;
+
+}
+
+
+.constellation span {
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:var(--gold2);
+
+    box-shadow:
+        0 0 10px var(--gold);
+
+    animation:
+        starPulse 3s ease-in-out infinite alternate;
+
+}
+
+
+.constellation span:nth-child(1) {
+    left:15%;
+    top:25%;
+}
+
+.constellation span:nth-child(2) {
+    left:28%;
+    top:18%;
+}
+
+.constellation span:nth-child(3) {
+    left:42%;
+    top:29%;
+}
+
+.constellation span:nth-child(4) {
+    left:68%;
+    top:22%;
+}
+
+.constellation span:nth-child(5) {
+    left:82%;
+    top:35%;
+}
+
+.constellation span:nth-child(6) {
+    left:72%;
+    top:48%;
+}
+
+.constellation span:nth-child(7) {
+    left:22%;
+    top:55%;
+}
+
+.constellation span:nth-child(8) {
+    left:35%;
+    top:68%;
+}
+
+
+@keyframes starPulse {
+
+    from {
+        opacity:.25;
+        transform:scale(.7);
+    }
+
+    to {
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =========================================================
+   NAV
 ========================================================= */
 
 nav {
 
-    position: fixed;
+    position:fixed;
 
-    top: 0;
-    left: 0;
+    top:0;
+    left:0;
 
-    width: 100%;
+    width:100%;
 
-    padding: 22px 7%;
+    padding:22px 7%;
 
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
+    align-items:center;
 
-    z-index: 100;
+    z-index:100;
 
     background:
         rgba(3,5,9,.58);
 
-    backdrop-filter: blur(20px);
+    backdrop-filter:blur(20px);
 
     border-bottom:
         1px solid
         rgba(255,255,255,.05);
 
     animation:
-        navDrop 1s
-        ease 3s both;
+        navDrop 1s ease 3.2s both;
+
+    transition:
+        padding .4s,
+        background .4s;
+
 }
+
+
+nav.scrolled {
+
+    padding-top:15px;
+    padding-bottom:15px;
+
+    background:
+        rgba(3,5,9,.82);
+
+}
+
 
 @keyframes navDrop {
 
     from {
-        opacity: 0;
-
-        transform:
-            translateY(-30px);
+        opacity:0;
+        transform:translateY(-30px);
     }
 
     to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
+        opacity:1;
+        transform:translateY(0);
     }
+
 }
+
 
 .logo {
 
-    font-size: 23px;
+    font-size:23px;
 
-    font-weight: 900;
+    font-weight:900;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    color: var(--gold2);
+    color:var(--gold2);
 
     text-shadow:
         0 0 20px
         rgba(216,180,106,.25);
 
-    transition: .4s;
+    transition:.4s;
+
 }
+
 
 .logo:hover {
 
     transform:
-        scale(1.05);
+        scale(1.06);
 
     text-shadow:
         0 0 30px
         rgba(216,180,106,.7);
+
 }
+
 
 .nav-links {
 
-    display: flex;
+    display:flex;
 
-    gap: 35px;
+    gap:35px;
 
-    list-style: none;
+    list-style:none;
+
 }
+
 
 .nav-links a {
 
-    position: relative;
+    position:relative;
 
-    text-decoration: none;
+    text-decoration:none;
 
-    color: #dce2e9;
+    color:#dce2e9;
 
-    font-size: 10px;
+    font-size:10px;
 
-    letter-spacing: 2px;
+    letter-spacing:2px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
-    transition: .3s;
+    transition:.3s;
+
 }
+
 
 .nav-links a::before {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    bottom: -9px;
+    bottom:-9px;
+    left:50%;
 
-    left: 50%;
+    width:0;
+    height:1px;
 
-    width: 0;
+    background:var(--gold);
 
-    height: 1px;
+    transform:translateX(-50%);
 
-    background: var(--gold);
+    transition:.4s;
+
+}
+
+
+.nav-links a::after {
+
+    content:"";
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:var(--gold2);
+
+    left:50%;
+    bottom:-16px;
 
     transform:
-        translateX(-50%);
+        translateX(-50%)
+        scale(0);
 
-    transition: .4s;
+    transition:.4s;
+
 }
 
-.nav-links a:hover {
-    color: var(--gold2);
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color:var(--gold2);
+
 }
 
-.nav-links a:hover::before {
-    width: 100%;
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+
+    width:100%;
+
 }
+
+
+.nav-links a.active::after {
+
+    transform:
+        translateX(-50%)
+        scale(1);
+
+}
+
 
 /* =========================================================
    HERO
@@ -548,235 +1052,272 @@ nav {
 
 .hero {
 
-    min-height: 100vh;
+    min-height:100vh;
 
-    position: relative;
+    position:relative;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
 
-    text-align: center;
+    text-align:center;
 
     padding:
         130px 20px 80px;
 
-    overflow: hidden;
+    overflow:hidden;
+
 }
+
 
 .hero::before {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 700px;
-    height: 700px;
+    width:700px;
+    height:700px;
 
     border:
         1px solid
         rgba(216,180,106,.08);
 
-    border-radius: 50%;
+    border-radius:50%;
 
     animation:
-        rotateRing 25s
-        linear infinite;
+        rotateRing 25s linear infinite;
+
 }
+
 
 .hero::after {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 480px;
-    height: 480px;
+    width:480px;
+    height:480px;
 
     border:
         1px solid
         rgba(216,180,106,.05);
 
-    border-radius: 50%;
+    border-radius:50%;
 
     animation:
-        rotateRingReverse 18s
-        linear infinite;
+        rotateRingReverse 18s linear infinite;
+
 }
+
+
+.hero-ring-three {
+
+    position:absolute;
+
+    width:900px;
+    height:300px;
+
+    border:
+        1px solid
+        rgba(216,180,106,.035);
+
+    border-radius:50%;
+
+    transform:rotate(-25deg);
+
+    animation:
+        orbitSlow 30s linear infinite;
+
+}
+
 
 @keyframes rotateRing {
 
     to {
-        transform:
-            rotate(360deg);
+        transform:rotate(360deg);
     }
+
 }
+
 
 @keyframes rotateRingReverse {
 
     to {
-        transform:
-            rotate(-360deg);
+        transform:rotate(-360deg);
     }
+
 }
+
+
+@keyframes orbitSlow {
+
+    to {
+        transform:
+            rotate(335deg);
+    }
+
+}
+
 
 .hero-content {
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
+
+    transition:
+        transform .15s ease-out;
+
 }
 
-/* =========================================================
-   OFFICIAL BADGE
-========================================================= */
 
 .official {
 
-    display: inline-flex;
+    display:inline-flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 10px;
+    gap:10px;
 
-    padding:
-        10px 20px;
+    padding:10px 20px;
 
     border:
         1px solid
         var(--line);
 
-    border-radius: 100px;
+    border-radius:100px;
 
-    color: var(--gold2);
+    color:var(--gold2);
 
-    font-size: 9px;
+    font-size:9px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
     animation:
-        badgeIn 1s ease 3.2s both,
-        badgePulse 3s ease-in-out 4.5s infinite;
+        badgeIn 1s ease 3.5s both,
+        badgePulse 3s ease-in-out 5s infinite;
+
 }
+
+
+.official::before {
+
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--gold2);
+
+    box-shadow:
+        0 0 15px var(--gold);
+
+    animation:
+        dotPulse 1.8s infinite;
+
+}
+
 
 @keyframes badgeIn {
 
     from {
-        opacity: 0;
-
-        transform:
-            scale(.5);
+        opacity:0;
+        transform:scale(.5);
     }
 
     to {
-        opacity: 1;
-
-        transform:
-            scale(1);
+        opacity:1;
+        transform:scale(1);
     }
+
 }
 
+
 @keyframes badgePulse {
-
-    0%,100% {
-
-        box-shadow:
-            0 0 0
-            rgba(216,180,106,0);
-    }
 
     50% {
 
         box-shadow:
             0 0 35px
             rgba(216,180,106,.15);
+
     }
+
 }
 
-.official::before {
-
-    content: "";
-
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: var(--gold2);
-
-    box-shadow:
-        0 0 15px
-        var(--gold);
-
-    animation:
-        dotPulse 1.8s infinite;
-}
 
 @keyframes dotPulse {
 
     50% {
-        transform:
-            scale(1.6);
+        transform:scale(1.7);
     }
+
 }
 
-/* =========================================================
-   COLLEGE NAME
-========================================================= */
 
 .college-name {
 
-    margin-top: 30px;
+    margin-top:30px;
 
-    color: #cbd4df;
+    color:#cbd4df;
 
-    font-size: 13px;
+    font-size:13px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    letter-spacing: 7px;
+    letter-spacing:7px;
 
     animation:
-        fadeUp 1s ease 3.5s both;
+        fadeUp 1s ease 3.7s both;
+
 }
 
+
 /* =========================================================
-   MAIN TITLE
+   HERO TITLE
 ========================================================= */
 
 .hero h1 {
 
-    margin-top: 25px;
+    margin-top:25px;
 
     font-size:
         clamp(70px,15vw,190px);
 
-    line-height: .75;
+    line-height:.72;
 
-    font-weight: 900;
+    font-weight:900;
 
-    letter-spacing: -8px;
+    letter-spacing:-8px;
 
-    color: #fff;
+    color:#fff;
+
+    transform-style:preserve-3d;
 
     animation:
         giantReveal
         1.8s
         cubic-bezier(.16,1,.3,1)
-        3.7s
+        3.9s
         both;
+
 }
+
 
 @keyframes giantReveal {
 
     from {
 
-        opacity: 0;
+        opacity:0;
 
         transform:
             perspective(800px)
@@ -784,13 +1325,13 @@ nav {
             translateY(100px)
             scale(.65);
 
-        filter:
-            blur(15px);
+        filter:blur(15px);
+
     }
 
     to {
 
-        opacity: 1;
+        opacity:1;
 
         transform:
             perspective(800px)
@@ -798,158 +1339,239 @@ nav {
             translateY(0)
             scale(1);
 
-        filter:
-            blur(0);
+        filter:blur(0);
+
     }
+
 }
 
-.hero h1 span {
 
-    display: block;
+.hero h1 .word {
 
-    margin-top: 28px;
+    display:block;
 
-    font-size: .38em;
+}
 
-    font-weight: 500;
 
-    letter-spacing: 16px;
+.hero h1 .serenova {
 
-    color: var(--gold2);
+    margin-top:28px;
+
+    font-size:.38em;
+
+    font-weight:500;
+
+    letter-spacing:16px;
+
+    color:var(--gold2);
 
     text-shadow:
         0 0 35px
         rgba(216,180,106,.35);
 
-    animation:
-        goldReveal
-        1.5s
-        ease 4.3s both;
 }
 
-@keyframes goldReveal {
 
-    from {
+.hero h1 .year {
 
-        opacity: 0;
+    display:block;
 
-        letter-spacing: 40px;
-    }
+    margin-top:18px;
+
+    font-size:.18em;
+
+    font-weight:500;
+
+    letter-spacing:12px;
+
+    color:#b7c0cb;
+
+}
+
+
+/* =========================================================
+   LETTER ANIMATION
+========================================================= */
+
+.letter {
+
+    display:inline-block;
+
+    opacity:0;
+
+    transform:
+        translateY(50px)
+        rotateX(70deg);
+
+    filter:blur(8px);
+
+    animation:
+        letterIn .9s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+
+}
+
+
+@keyframes letterIn {
 
     to {
 
-        opacity: 1;
+        opacity:1;
 
-        letter-spacing: 16px;
+        transform:
+            translateY(0)
+            rotateX(0);
+
+        filter:blur(0);
+
     }
+
 }
+
+
+.hero h1 .serenova::after {
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold3),
+            transparent
+        );
+
+    transform:
+        translateX(-100%);
+
+    animation:
+        textShimmer 7s ease-in-out 6s infinite;
+
+}
+
+
+@keyframes textShimmer {
+
+    0%,70%,100% {
+        transform:translateX(-100%);
+    }
+
+    80% {
+        transform:translateX(100%);
+    }
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
 
 .hero-description {
 
-    max-width: 650px;
+    max-width:650px;
 
-    margin:
-        45px auto 0;
+    margin:45px auto 0;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 14px;
+    font-size:14px;
 
-    line-height: 2;
+    line-height:2;
 
     animation:
-        fadeUp
-        1.2s
-        ease
-        4.6s
-        both;
+        fadeUp 1.2s ease 5.2s both;
+
 }
 
-/* =========================================================
-   FADE UP
-========================================================= */
 
 @keyframes fadeUp {
 
     from {
 
-        opacity: 0;
+        opacity:0;
 
-        transform:
-            translateY(30px);
+        transform:translateY(30px);
+
     }
 
     to {
 
-        opacity: 1;
+        opacity:1;
 
-        transform:
-            translateY(0);
+        transform:translateY(0);
+
     }
+
 }
 
+
 /* =========================================================
-   SCROLL INDICATOR
+   SCROLL
 ========================================================= */
 
 .scroll {
 
-    position: absolute;
+    position:absolute;
 
-    bottom: 25px;
-
-    left: 50%;
+    bottom:25px;
+    left:50%;
 
     transform:
         translateX(-50%);
 
-    color: #687486;
+    color:#687486;
 
-    font-size: 8px;
+    font-size:8px;
 
-    letter-spacing: 4px;
+    letter-spacing:4px;
 
     animation:
-        scrollMove
-        2s
-        ease-in-out
-        infinite;
+        scrollMove 2s ease-in-out infinite;
+
 }
+
 
 .scroll::after {
 
-    content: "";
+    content:"";
 
-    display: block;
+    display:block;
 
-    width: 1px;
+    width:1px;
+    height:38px;
 
-    height: 38px;
-
-    margin:
-        10px auto;
+    margin:10px auto;
 
     background:
         linear-gradient(
             var(--gold),
             transparent
         );
+
 }
+
 
 @keyframes scrollMove {
 
     0%,100% {
-
-        transform:
-            translate(-50%,0);
+        transform:translate(-50%,0);
     }
 
     50% {
-
-        transform:
-            translate(-50%,10px);
+        transform:translate(-50%,10px);
     }
+
 }
+
 
 /* =========================================================
    SECTIONS
@@ -957,32 +1579,37 @@ nav {
 
 section {
 
-    position: relative;
+    position:relative;
 
-    z-index: 1;
+    z-index:1;
 
     padding:
         120px 7%;
+
 }
 
+
 .center {
-    text-align: center;
+    text-align:center;
 }
+
 
 .section-label {
 
-    color: var(--gold);
+    color:var(--gold);
 
-    font-size: 9px;
+    font-size:9px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    letter-spacing: 4px;
+    letter-spacing:4px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
-    margin-bottom: 18px;
+    margin-bottom:18px;
+
 }
+
 
 .section-title {
 
@@ -993,8 +1620,45 @@ section {
     font-size:
         clamp(45px,7vw,75px);
 
-    font-weight: 700;
+    font-weight:700;
+
 }
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+
+    opacity:0;
+
+    transform:
+        translateY(60px)
+        scale(.95);
+
+    filter:blur(8px);
+
+    transition:
+        opacity 1s ease,
+        transform 1.1s cubic-bezier(.2,.8,.2,1),
+        filter 1s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:blur(0);
+
+}
+
 
 /* =========================================================
    INVITATION
@@ -1008,21 +1672,22 @@ section {
             rgba(216,180,106,.07),
             transparent 60%
         );
+
 }
+
 
 .invitation-card {
 
-    max-width: 950px;
+    max-width:950px;
 
-    margin:
-        60px auto 0;
+    margin:60px auto 0;
 
     padding:
         clamp(45px,8vw,90px);
 
-    position: relative;
+    position:relative;
 
-    text-align: center;
+    text-align:center;
 
     background:
         rgba(255,255,255,.025);
@@ -1031,57 +1696,108 @@ section {
         1px solid
         var(--line);
 
-    overflow: hidden;
+    overflow:hidden;
 
-    transform-style:
-        preserve-3d;
+    transform-style:preserve-3d;
 
     transition:
-        transform .7s
-        cubic-bezier(.2,.8,.2,1),
+        transform .15s ease-out,
         box-shadow .7s;
+
 }
+
+
+/* holographic border */
 
 .invitation-card::before {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    inset: -2px;
+    inset:-2px;
 
     background:
-        linear-gradient(
-            120deg,
-            transparent 20%,
-            rgba(255,255,255,.15),
-            transparent 80%
+        conic-gradient(
+            from 0deg,
+            transparent,
+            transparent 35%,
+            rgba(245,217,141,.7),
+            transparent 45%,
+            transparent 70%,
+            rgba(245,217,141,.35),
+            transparent
+        );
+
+    animation:
+        borderRotate 7s linear infinite;
+
+    z-index:-2;
+
+}
+
+
+.invitation-card::after {
+
+    content:"";
+
+    position:absolute;
+
+    inset:1px;
+
+    background:
+        rgba(5,8,15,.96);
+
+    z-index:-1;
+
+}
+
+
+@keyframes borderRotate {
+
+    to {
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* cursor spotlight */
+
+.card-light {
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(245,217,141,.13),
+            transparent 70%
         );
 
     transform:
-        translateX(-100%);
+        translate(-50%,-50%);
 
-    transition: 1s;
+    pointer-events:none;
+
+    opacity:0;
+
+    transition:opacity .3s;
+
 }
 
-.invitation-card:hover::before {
 
-    transform:
-        translateX(100%);
+.invitation-card:hover .card-light {
+
+    opacity:1;
+
 }
 
-.invitation-card:hover {
-
-    transform:
-        perspective(1000px)
-        rotateX(2deg)
-        rotateY(-2deg)
-        translateY(-10px);
-
-    box-shadow:
-        0 35px 100px
-        rgba(0,0,0,.35);
-}
 
 .invitation-card h2 {
 
@@ -1089,34 +1805,40 @@ section {
         "Cormorant Garamond",
         serif;
 
-    font-size: 48px;
+    font-size:48px;
 
-    color: var(--gold2);
+    color:var(--gold2);
 
-    margin-bottom: 30px;
+    margin-bottom:30px;
+
 }
+
 
 .invitation-card p {
 
-    color: #ccd4de;
+    color:#ccd4de;
 
-    font-size: 15px;
+    font-size:15px;
 
-    line-height: 2;
+    line-height:2;
+
 }
+
 
 .signature {
 
-    margin-top: 40px;
+    margin-top:40px;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 27px;
+    font-size:27px;
 
-    color: var(--gold2);
+    color:var(--gold2);
+
 }
+
 
 /* =========================================================
    DETAILS
@@ -1131,30 +1853,33 @@ section {
             rgba(255,255,255,.015),
             transparent
         );
+
 }
+
 
 .details-grid {
 
-    max-width: 1100px;
+    max-width:1100px;
 
-    margin:
-        65px auto 0;
+    margin:65px auto 0;
 
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         repeat(2,1fr);
 
-    gap: 20px;
+    gap:20px;
+
 }
+
 
 .detail {
 
-    position: relative;
+    position:relative;
 
-    padding: 40px;
+    padding:40px;
 
-    overflow: hidden;
+    overflow:hidden;
 
     background:
         rgba(255,255,255,.025);
@@ -1163,145 +1888,280 @@ section {
         1px solid
         rgba(255,255,255,.07);
 
+    transform-style:preserve-3d;
+
     transition:
-        .5s
-        cubic-bezier(.2,.8,.2,1);
+        transform .2s ease-out,
+        border-color .5s,
+        box-shadow .5s;
+
 }
+
+
+.detail::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at var(--card-x,50%) var(--card-y,50%),
+            rgba(216,180,106,.11),
+            transparent 35%
+        );
+
+    opacity:0;
+
+    transition:opacity .4s;
+
+}
+
+
+.detail:hover::before {
+
+    opacity:1;
+
+}
+
 
 .detail::after {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 200px;
-    height: 200px;
+    width:200px;
+    height:200px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         rgba(216,180,106,.07);
 
-    filter:
-        blur(50px);
+    filter:blur(50px);
 
-    top: -120px;
-    right: -120px;
+    top:-120px;
+    right:-120px;
 
-    transition: .5s;
+    transition:.5s;
+
 }
+
 
 .detail:hover {
 
-    transform:
-        translateY(-12px)
-        scale(1.015);
-
-    border-color:
-        var(--line);
+    border-color:var(--line);
 
     box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.3);
+        0 25px 70px rgba(0,0,0,.3);
+
 }
+
 
 .detail:hover::after {
 
-    transform:
-        scale(1.5);
+    transform:scale(1.5);
+
 }
+
 
 .detail-icon {
 
-    font-size: 25px;
+    position:relative;
 
-    color: var(--gold2);
+    z-index:2;
 
-    margin-bottom: 22px;
+    font-size:25px;
 
-    transition: .5s;
+    color:var(--gold2);
+
+    margin-bottom:22px;
+
+    transition:.6s;
+
 }
+
 
 .detail:hover .detail-icon {
 
     transform:
-        rotateY(180deg)
-        scale(1.2);
+        rotateY(360deg)
+        scale(1.25);
+
 }
+
+
+/* venue radar */
+
+.detail.venue .detail-icon::after {
+
+    content:"";
+
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    left:50%;
+    top:50%;
+
+    border:
+        1px solid
+        var(--gold);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        radar 2s ease-out infinite;
+
+}
+
+
+@keyframes radar {
+
+    0% {
+
+        opacity:.8;
+        transform:
+            translate(-50%,-50%)
+            scale(.4);
+
+    }
+
+    100% {
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(2.2);
+
+    }
+
+}
+
 
 .detail h3 {
 
-    color: var(--gold2);
+    color:var(--gold2);
 
-    font-size: 10px;
+    font-size:10px;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
-    margin-bottom: 12px;
+    margin-bottom:12px;
+
 }
+
 
 .detail p {
 
-    color: #dce2e9;
+    color:#dce2e9;
 
-    font-size: 15px;
+    font-size:15px;
 
-    line-height: 1.7;
+    line-height:1.7;
+
 }
 
+
 /* =========================================================
-   VENUE MAP BUTTON
+   MAGNETIC MAP BUTTON
 ========================================================= */
 
 .venue-map {
 
-    display: inline-flex;
+    position:relative;
 
-    align-items: center;
+    display:inline-flex;
 
-    gap: 8px;
+    align-items:center;
 
-    margin-top: 18px;
+    gap:8px;
 
-    padding:
-        10px 16px;
+    margin-top:18px;
+
+    padding:10px 16px;
 
     border:
         1px solid
         var(--line);
 
-    color: var(--gold2);
+    color:var(--gold2);
 
-    text-decoration: none;
+    text-decoration:none;
 
-    font-size: 9px;
+    font-size:9px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    letter-spacing: 2px;
+    letter-spacing:2px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
 
-    transition: .4s;
+    overflow:hidden;
+
+    transition:.3s;
+
 }
+
+
+.venue-map::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(245,217,141,.15),
+            transparent
+        );
+
+    transform:translateX(-100%);
+
+}
+
+
+.venue-map:hover::before {
+
+    animation:
+        buttonSweep .8s ease;
+
+}
+
+
+@keyframes buttonSweep {
+
+    to {
+        transform:translateX(100%);
+    }
+
+}
+
 
 .venue-map:hover {
 
-    background:
-        rgba(216,180,106,.08);
-
-    border-color:
-        var(--gold2);
+    border-color:var(--gold2);
 
     box-shadow:
         0 0 25px
-        rgba(216,180,106,.12);
+        rgba(216,180,106,.15);
 
-    transform:
-        translateY(-3px);
 }
+
 
 /* =========================================================
    COUNTDOWN
@@ -1309,43 +2169,159 @@ section {
 
 .countdown-section {
 
-    text-align: center;
+    position:relative;
+
+    text-align:center;
 
     background:
         var(--navy2);
 
-    overflow: hidden;
+    overflow:hidden;
+
 }
+
+
+.countdown-section::before,
+.countdown-section::after {
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    width:400px;
+    height:400px;
+
+    border:
+        1px solid
+        rgba(216,180,106,.05);
+
+    border-radius:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    animation:
+        wave 6s ease-out infinite;
+
+}
+
+
+.countdown-section::after {
+
+    animation-delay:3s;
+
+}
+
+
+@keyframes wave {
+
+    0% {
+
+        opacity:.7;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.4);
+
+    }
+
+    100% {
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(2.5);
+
+    }
+
+}
+
 
 .countdown {
 
-    margin-top: 55px;
+    margin-top:55px;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    gap: 15px;
+    gap:15px;
 
-    flex-wrap: wrap;
+    flex-wrap:wrap;
+
+    position:relative;
+
+    z-index:2;
+
 }
+
 
 .time {
 
-    min-width: 120px;
+    min-width:120px;
 
-    padding:
-        30px 20px;
+    padding:30px 20px;
 
     border:
         1px solid
         var(--line);
 
     background:
-        rgba(0,0,0,.15);
+        rgba(0,0,0,.2);
 
-    transition: .5s;
+    position:relative;
+
+    overflow:hidden;
+
+    transition:
+        transform .5s,
+        box-shadow .5s;
+
 }
+
+
+.time::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    transform:translateX(-100%);
+
+}
+
+
+.time:hover::before {
+
+    animation:
+        timerSweep 1s ease;
+
+}
+
+
+@keyframes timerSweep {
+
+    to {
+        transform:translateX(100%);
+    }
+
+}
+
 
 .time:hover {
 
@@ -1356,57 +2332,94 @@ section {
     box-shadow:
         0 20px 50px
         rgba(216,180,106,.12);
+
 }
+
 
 .time strong {
 
-    display: block;
+    display:block;
 
     font-family:
         "Cormorant Garamond",
         serif;
 
-    font-size: 55px;
+    font-size:55px;
 
-    color: var(--gold2);
+    color:var(--gold2);
 
     text-shadow:
         0 0 25px
         rgba(216,180,106,.3);
 
-    animation:
-        numberGlow
-        2.5s
-        ease-in-out
-        infinite;
 }
 
-@keyframes numberGlow {
+
+.time strong.changed {
+
+    animation:
+        numberChange .55s ease;
+
+}
+
+
+@keyframes numberChange {
+
+    0% {
+
+        transform:
+            translateY(-18px)
+            rotateX(70deg);
+
+        opacity:.2;
+
+        text-shadow:
+            0 0 50px var(--gold2);
+
+    }
 
     50% {
 
-        text-shadow:
-            0 0 40px
-            rgba(216,180,106,.65);
+        transform:
+            translateY(0)
+            rotateX(0);
+
+        opacity:1;
+
     }
+
+    100% {
+
+        transform:
+            scale(1);
+
+        text-shadow:
+            0 0 25px
+            rgba(216,180,106,.3);
+
+    }
+
 }
+
 
 .time span {
 
-    display: block;
+    display:block;
 
-    margin-top: 10px;
+    margin-top:10px;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 8px;
+    font-size:8px;
 
-    font-weight: 700;
+    font-weight:700;
 
-    letter-spacing: 3px;
+    letter-spacing:3px;
 
-    text-transform: uppercase;
+    text-transform:uppercase;
+
 }
+
 
 /* =========================================================
    FOOTER
@@ -1414,104 +2427,258 @@ section {
 
 footer {
 
-    padding:
-        55px 7%;
+    position:relative;
 
-    text-align: center;
+    padding:55px 7%;
+
+    text-align:center;
 
     border-top:
         1px solid
         rgba(255,255,255,.06);
 
-    color: #657182;
+    color:#657182;
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 2px;
+    letter-spacing:2px;
+
+    overflow:hidden;
+
 }
+
+
+footer::before {
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:1px;
+
+    top:0;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px var(--gold);
+
+}
+
 
 footer strong {
 
-    color: var(--gold);
+    color:var(--gold);
 
-    font-size: 12px;
+    font-size:12px;
 
-    letter-spacing: 4px;
+    letter-spacing:4px;
+
+    transition:.5s;
+
 }
 
+
+footer strong:hover {
+
+    letter-spacing:10px;
+
+}
+
+
 /* =========================================================
-   SCROLL REVEAL
+   PARTICLE BURST
 ========================================================= */
 
-.reveal {
+.burst {
 
-    opacity: 0;
+    position:fixed;
 
-    transform:
-        translateY(45px)
-        scale(.97);
+    width:5px;
+    height:5px;
 
-    filter:
-        blur(5px);
+    border-radius:50%;
+
+    background:var(--gold2);
+
+    box-shadow:
+        0 0 12px var(--gold);
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    animation:
+        burst .9s ease-out forwards;
+
+}
+
+
+@keyframes burst {
+
+    to {
+
+        transform:
+            translate(
+                var(--tx),
+                var(--ty)
+            )
+            scale(0);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   RIPPLE
+========================================================= */
+
+.ripple {
+
+    position:fixed;
+
+    width:20px;
+    height:20px;
+
+    border:
+        1px solid
+        var(--gold2);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9997;
+
+    animation:
+        ripple .8s ease-out forwards;
+
+}
+
+
+@keyframes ripple {
+
+    to {
+
+        width:150px;
+        height:150px;
+
+        margin-left:-65px;
+        margin-top:-65px;
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* =========================================================
+   EVENT START
+========================================================= */
+
+.event-live {
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(2,3,8,.92);
+
+    backdrop-filter:blur(15px);
+
+    z-index:99990;
+
+    opacity:0;
+
+    visibility:hidden;
 
     transition:
-        opacity .9s ease,
-        transform 1s
-        cubic-bezier(.2,.8,.2,1),
-        filter 1s ease;
+        opacity 1s;
+
 }
 
-.reveal.visible {
 
-    opacity: 1;
+.event-live.show {
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+
+.event-live-content {
+
+    text-align:center;
 
     transform:
-        translateY(0)
+        scale(.6);
+
+    transition:
+        transform 1s
+        cubic-bezier(.16,1,.3,1);
+
+}
+
+
+.event-live.show
+.event-live-content {
+
+    transform:
         scale(1);
 
-    filter:
-        blur(0);
 }
 
-/* =========================================================
-   STAGGER DETAILS
-========================================================= */
 
-.detail:nth-child(1) {
-    transition-delay: .05s;
+.event-live-label {
+
+    color:var(--gold);
+
+    font-size:10px;
+
+    letter-spacing:5px;
+
 }
 
-.detail:nth-child(2) {
-    transition-delay: .15s;
+
+.event-live h2 {
+
+    margin-top:20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(55px,10vw,120px);
+
+    color:var(--gold2);
+
+    text-shadow:
+        0 0 50px
+        rgba(216,180,106,.5);
+
 }
 
-.detail:nth-child(3) {
-    transition-delay: .25s;
-}
-
-.detail:nth-child(4) {
-    transition-delay: .35s;
-}
-
-/* =========================================================
-   STAGGER COUNTDOWN
-========================================================= */
-
-.time:nth-child(1) {
-    transition-delay: .05s;
-}
-
-.time:nth-child(2) {
-    transition-delay: .15s;
-}
-
-.time:nth-child(3) {
-    transition-delay: .25s;
-}
-
-.time:nth-child(4) {
-    transition-delay: .35s;
-}
 
 /* =========================================================
    MOBILE
@@ -1519,105 +2686,227 @@ footer strong {
 
 @media(max-width:700px) {
 
+    .cursor,
+    .cursor-ring {
+
+        display:none;
+
+    }
+
     nav {
+
         padding:
             18px 5%;
+
     }
 
     .nav-links {
-        display: none;
+
+        display:none;
+
     }
 
     .logo {
-        font-size: 18px;
+
+        font-size:18px;
+
     }
 
     .hero {
+
         padding:
             120px 15px 80px;
+
     }
 
     .hero::before {
-        width: 450px;
-        height: 450px;
+
+        width:450px;
+        height:450px;
+
     }
 
     .hero::after {
-        width: 320px;
-        height: 320px;
+
+        width:320px;
+        height:320px;
+
+    }
+
+    .hero-ring-three {
+
+        width:600px;
+
     }
 
     .hero h1 {
 
         font-size:
             clamp(
-                60px,
+                58px,
                 18vw,
                 110px
             );
 
-        letter-spacing: -5px;
+        letter-spacing:-5px;
+
     }
 
-    .hero h1 span {
-        letter-spacing: 8px;
+    .hero h1 .serenova {
+
+        letter-spacing:8px;
+
+    }
+
+    .hero h1 .year {
+
+        letter-spacing:7px;
+
     }
 
     .college-name {
 
-        font-size: 10px;
+        font-size:10px;
 
-        letter-spacing: 4px;
+        letter-spacing:4px;
+
     }
 
     section {
+
         padding:
             85px 5%;
+
     }
 
     .details-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:1fr;
+
     }
 
     .invitation-card {
+
         padding:
             45px 25px;
+
     }
 
     .invitation-card h2 {
-        font-size: 38px;
+
+        font-size:38px;
+
     }
 
     .time {
 
-        min-width: 75px;
+        min-width:75px;
 
         padding:
             22px 10px;
+
     }
 
     .time strong {
-        font-size: 38px;
+
+        font-size:38px;
+
     }
 
     .loader-narayana {
-        letter-spacing: 6px;
+
+        letter-spacing:6px;
+
     }
 
     .venue-map {
 
-        font-size: 8px;
+        font-size:8px;
 
         padding:
             9px 12px;
+
     }
+
+    .particle {
+
+        width:2px;
+        height:2px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media(hover:none) {
+
+    .invitation-card,
+    .detail {
+
+        transform:none !important;
+
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+
+<!-- =========================================================
+     SCROLL PROGRESS
+========================================================= -->
+
+<div class="scroll-progress"></div>
+
+
+<!-- =========================================================
+     AMBIENT LIGHT
+========================================================= -->
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+<div class="ambient three"></div>
+
 
 <!-- =========================================================
      LOADER
@@ -1625,38 +2914,46 @@ footer strong {
 
 <div id="loader">
 
+    <div class="loader-pulse"></div>
+
     <div class="loader-narayana">
         NARAYANA
+    </div>
+
+    <div class="loader-sub">
+        Presents
     </div>
 
     <div class="loader-line"></div>
 
 </div>
 
+
 <!-- =========================================================
      PARTICLES
 ========================================================= -->
 
-<div class="particles">
+<div class="particles" id="particles"></div>
 
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+
+<!-- =========================================================
+     SHOOTING STARS
+========================================================= -->
+
+<div class="shooting-stars">
+
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
 
 </div>
+
 
 <!-- =========================================================
      NAVIGATION
 ========================================================= -->
 
-<nav>
+<nav id="navbar">
 
     <div class="logo">
         NARAYANA
@@ -1680,31 +2977,61 @@ footer strong {
 
 </nav>
 
+
 <!-- =========================================================
      HERO
 ========================================================= -->
 
 <header class="hero">
 
-    <div class="hero-content">
+    <div class="constellation">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <div class="hero-ring-three"></div>
+
+    <div
+        class="hero-content"
+        id="heroContent"
+    >
 
         <div class="official">
             Official Invitation
         </div>
 
+
         <div class="college-name">
-            NARAYANA
         </div>
+
 
         <h1>
 
-            NARAYANA
+            <span class="word">
+                NARAYANA
+            </span>
 
-            <span>
-                SERENOVA 2026
+            <span
+                class="serenova"
+                id="serenova"
+            >
+                SERENOVA
+            </span>
+
+            <span class="year">
+                2026
             </span>
 
         </h1>
+
 
         <p class="hero-description">
 
@@ -1722,11 +3049,13 @@ footer strong {
 
     </div>
 
+
     <div class="scroll">
         SCROLL
     </div>
 
 </header>
+
 
 <!-- =========================================================
      INVITATION
@@ -1739,21 +3068,32 @@ footer strong {
 
     <div class="center">
 
-        <div class="section-label">
+        <div class="section-label reveal">
             You Are Cordially Invited
         </div>
 
-        <h2 class="section-title">
+        <h2 class="section-title reveal">
             An Invitation to Remember
         </h2>
 
     </div>
 
-    <div class="invitation-card">
+
+    <div
+        class="invitation-card reveal"
+        id="invitationCard"
+    >
+
+        <div
+            class="card-light"
+            id="cardLight"
+        ></div>
+
 
         <h2>
             Dear GUESTS,
         </h2>
+
 
         <p>
 
@@ -1763,7 +3103,9 @@ footer strong {
 
         </p>
 
+
         <br>
+
 
         <p>
 
@@ -1777,7 +3119,9 @@ footer strong {
 
         </p>
 
+
         <br>
+
 
         <p>
 
@@ -1788,6 +3132,7 @@ footer strong {
             part of your college journey.
 
         </p>
+
 
         <div class="signature">
 
@@ -1803,6 +3148,7 @@ footer strong {
 
 </section>
 
+
 <!-- =========================================================
      DETAILS
 ========================================================= -->
@@ -1814,21 +3160,23 @@ footer strong {
 
     <div class="center">
 
-        <div class="section-label">
+        <div class="section-label reveal">
             Event Information
         </div>
 
-        <h2 class="section-title">
+        <h2 class="section-title reveal">
             Event Details
         </h2>
 
     </div>
 
+
     <div class="details-grid">
+
 
         <!-- DATE -->
 
-        <div class="detail">
+        <div class="detail reveal">
 
             <div class="detail-icon">
                 ◷
@@ -1844,9 +3192,10 @@ footer strong {
 
         </div>
 
+
         <!-- TIME -->
 
-        <div class="detail">
+        <div class="detail reveal">
 
             <div class="detail-icon">
                 ◴
@@ -1862,9 +3211,10 @@ footer strong {
 
         </div>
 
+
         <!-- VENUE -->
 
-        <div class="detail">
+        <div class="detail venue reveal">
 
             <div class="detail-icon">
                 ⌖
@@ -1891,8 +3241,9 @@ footer strong {
 
             </p>
 
+
             <a
-                class="venue-map"
+                class="venue-map magnetic"
                 href="https://maps.app.goo.gl/roSL9bqDvBcxd5AM9"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -1905,9 +3256,10 @@ footer strong {
 
         </div>
 
-        <!-- DRESS CODE -->
 
-        <div class="detail">
+        <!-- DRESS -->
+
+        <div class="detail reveal">
 
             <div class="detail-icon">
                 ◇
@@ -1923,9 +3275,11 @@ footer strong {
 
         </div>
 
+
     </div>
 
 </section>
+
 
 <!-- =========================================================
      COUNTDOWN
@@ -1933,17 +3287,19 @@ footer strong {
 
 <section class="countdown-section">
 
-    <div class="section-label">
+    <div class="section-label reveal">
         The Countdown
     </div>
 
-    <h2 class="section-title">
+    <h2 class="section-title reveal">
         Until We Meet
     </h2>
 
+
     <div class="countdown">
 
-        <div class="time">
+
+        <div class="time reveal">
 
             <strong id="days">
                 00
@@ -1955,7 +3311,8 @@ footer strong {
 
         </div>
 
-        <div class="time">
+
+        <div class="time reveal">
 
             <strong id="hours">
                 00
@@ -1967,7 +3324,8 @@ footer strong {
 
         </div>
 
-        <div class="time">
+
+        <div class="time reveal">
 
             <strong id="minutes">
                 00
@@ -1979,7 +3337,8 @@ footer strong {
 
         </div>
 
-        <div class="time">
+
+        <div class="time reveal">
 
             <strong id="seconds">
                 00
@@ -1991,9 +3350,11 @@ footer strong {
 
         </div>
 
+
     </div>
 
 </section>
+
 
 <!-- =========================================================
      FOOTER
@@ -2009,173 +3370,443 @@ footer strong {
 
     </p>
 
+
     <p style="margin-top:12px;">
-
         Official SERENOVA Celebration • 2026
-
     </p>
 
+
     <p style="margin-top:20px;">
-
         © 2026 All Rights Reserved
-
     </p>
 
 </footer>
 
+
 <!-- =========================================================
-     JAVASCRIPT
+     EVENT LIVE SCREEN
 ========================================================= -->
+
+<div
+    class="event-live"
+    id="eventLive"
+>
+
+    <div class="event-live-content">
+
+        <div class="event-live-label">
+            THE MOMENT HAS ARRIVED
+        </div>
+
+        <h2>
+            SERENOVA
+        </h2>
+
+    </div>
+
+</div>
+
 
 <script>
 
 /* =========================================================
-   COUNTDOWN
+   PARTICLE GENERATOR
 ========================================================= */
 
-const eventDate =
-    new Date(
-        "August 23, 2026 09:00:00"
-    ).getTime();
+const particleContainer =
+    document.getElementById("particles");
 
-function updateCountdown() {
 
-    const now =
-        new Date().getTime();
+for(let i = 0; i < 110; i++){
 
-    const distance =
-        eventDate - now;
+    const particle =
+        document.createElement("div");
 
-    if (distance <= 0) {
+    particle.className =
+        "particle";
 
-        document.getElementById("days")
-            .textContent = "00";
+    particle.style.left =
+        Math.random() * 100 + "%";
 
-        document.getElementById("hours")
-            .textContent = "00";
+    particle.style.width =
+        (Math.random() * 3 + 1) + "px";
 
-        document.getElementById("minutes")
-            .textContent = "00";
+    particle.style.height =
+        particle.style.width;
 
-        document.getElementById("seconds")
-            .textContent = "00";
+    particle.style.animationDuration =
+        (Math.random() * 18 + 9) + "s";
 
-        return;
-    }
+    particle.style.animationDelay =
+        -(Math.random() * 20) + "s";
 
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
+    particle.style.setProperty(
+        "--drift",
+        (Math.random() * 240 - 120) + "px"
+    );
 
-    const hours =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
-        );
-
-    const minutes =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
-        );
-
-    const seconds =
-        Math.floor(
-            (
-                distance %
-                (1000 * 60)
-            ) /
-            1000
-        );
-
-    document.getElementById("days")
-        .textContent =
-        String(days)
-        .padStart(2,"0");
-
-    document.getElementById("hours")
-        .textContent =
-        String(hours)
-        .padStart(2,"0");
-
-    document.getElementById("minutes")
-        .textContent =
-        String(minutes)
-        .padStart(2,"0");
-
-    document.getElementById("seconds")
-        .textContent =
-        String(seconds)
-        .padStart(2,"0");
+    particleContainer.appendChild(
+        particle
+    );
 
 }
 
-updateCountdown();
-
-setInterval(
-    updateCountdown,
-    1000
-);
 
 /* =========================================================
-   MOUSE PARALLAX
+   CUSTOM CURSOR
 ========================================================= */
 
-const hero =
-    document.querySelector(".hero");
+const cursor =
+    document.querySelector(".cursor");
 
-const heroContent =
-    document.querySelector(".hero-content");
+const cursorRing =
+    document.querySelector(".cursor-ring");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+let ringX = mouseX;
+let ringY = mouseY;
+
 
 document.addEventListener(
     "mousemove",
-    (e) => {
+    e => {
 
-        if (window.innerWidth < 700)
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        document.documentElement.style.setProperty(
+            "--mouse-x",
+            mouseX + "px"
+        );
+
+        document.documentElement.style.setProperty(
+            "--mouse-y",
+            mouseY + "px"
+        );
+
+        cursor.style.left =
+            mouseX + "px";
+
+        cursor.style.top =
+            mouseY + "px";
+
+    }
+);
+
+
+function animateCursorRing(){
+
+    ringX +=
+        (mouseX - ringX) * .14;
+
+    ringY +=
+        (mouseY - ringY) * .14;
+
+    cursorRing.style.left =
+        ringX + "px";
+
+    cursorRing.style.top =
+        ringY + "px";
+
+    requestAnimationFrame(
+        animateCursorRing
+    );
+
+}
+
+animateCursorRing();
+
+
+document
+    .querySelectorAll("a,button,.detail,.invitation-card")
+    .forEach(el => {
+
+        el.addEventListener(
+            "mouseenter",
+            () => {
+
+                cursor.classList.add("active");
+
+                cursorRing.classList.add("active");
+
+            }
+        );
+
+        el.addEventListener(
+            "mouseleave",
+            () => {
+
+                cursor.classList.remove("active");
+
+                cursorRing.classList.remove("active");
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const heroContent =
+    document.getElementById("heroContent");
+
+
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        if(window.innerWidth < 700)
             return;
 
         const x =
             (
                 e.clientX /
-                window.innerWidth
-                - .5
-            ) * 10;
+                window.innerWidth -
+                .5
+            ) * 14;
 
         const y =
             (
                 e.clientY /
-                window.innerHeight
-                - .5
+                window.innerHeight -
+                .5
             ) * 10;
 
+
         heroContent.style.transform =
-            `translate(${x}px, ${y}px)`;
+            `translate3d(${x}px,${y}px,0)
+             rotateX(${-y * .25}deg)
+             rotateY(${x * .25}deg)`;
 
     }
 );
 
+
 /* =========================================================
-   3D INVITATION CARD
+   SERENOVA LETTER ANIMATION
+========================================================= */
+
+const serenova =
+    document.getElementById("serenova");
+
+const serenovaText =
+    serenova.textContent.trim();
+
+serenova.textContent = "";
+
+
+[...serenovaText].forEach(
+    (letter,index) => {
+
+        const span =
+            document.createElement("span");
+
+        span.className =
+            "letter";
+
+        span.textContent =
+            letter;
+
+        span.style.animationDelay =
+            (4.4 + index * .09) + "s";
+
+        serenova.appendChild(span);
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+function updateScrollProgress(){
+
+    const scrollTop =
+        window.scrollY;
+
+    const height =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress =
+        height > 0
+        ? (scrollTop / height) * 100
+        : 0;
+
+    document.documentElement.style.setProperty(
+        "--scroll-progress",
+        progress + "%"
+    );
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    {passive:true}
+);
+
+updateScrollProgress();
+
+
+/* =========================================================
+   NAVIGATION SHRINK
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 60
+        );
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
+   ACTIVE NAV
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navLinks =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+
+const navObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        navLinks.forEach(
+                            link => {
+
+                                link.classList.remove(
+                                    "active"
+                                );
+
+                                if(
+                                    link.getAttribute("href") ===
+                                    "#" + entry.target.id
+                                ){
+
+                                    link.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.35
+        }
+    );
+
+
+sections.forEach(
+    section =>
+        navObserver.observe(section)
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    element =>
+        revealObserver.observe(element)
+);
+
+
+/* =========================================================
+   INVITATION 3D CARD
 ========================================================= */
 
 const card =
-    document.querySelector(
-        ".invitation-card"
+    document.getElementById(
+        "invitationCard"
     );
 
-if (window.innerWidth > 700) {
+const cardLight =
+    document.getElementById(
+        "cardLight"
+    );
+
+
+if(window.innerWidth > 700){
 
     card.addEventListener(
         "mousemove",
-        (e) => {
+        e => {
 
             const rect =
                 card.getBoundingClientRect();
@@ -2190,109 +3821,715 @@ if (window.innerWidth > 700) {
 
             const rotateY =
                 (
-                    (x / rect.width)
-                    - .5
-                ) * 8;
+                    x / rect.width -
+                    .5
+                ) * 9;
 
             const rotateX =
                 (
-                    (y / rect.height)
-                    - .5
-                ) * -8;
+                    y / rect.height -
+                    .5
+                ) * -9;
 
-            card.style.transform = `
 
-                perspective(1000px)
-
+            card.style.transform =
+                `
+                perspective(1200px)
                 rotateX(${rotateX}deg)
-
                 rotateY(${rotateY}deg)
-
                 translateY(-10px)
+                `;
 
-            `;
+
+            cardLight.style.left =
+                x + "px";
+
+            cardLight.style.top =
+                y + "px";
 
         }
     );
+
 
     card.addEventListener(
         "mouseleave",
         () => {
 
-            card.style.transform = "";
+            card.style.transform =
+                "";
 
         }
     );
 
 }
 
+
 /* =========================================================
-   SCROLL REVEAL
+   DETAIL CARD 3D MAGNETIC EFFECT
 ========================================================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".section-label, " +
-        ".section-title, " +
-        ".invitation-card, " +
-        ".detail, " +
-        ".time"
-    );
+document
+    .querySelectorAll(".detail")
+    .forEach(detail => {
 
-const observer =
-    new IntersectionObserver(
-        (entries) => {
+        detail.addEventListener(
+            "mousemove",
+            e => {
 
-            entries.forEach(
-                (entry) => {
+                if(window.innerWidth < 700)
+                    return;
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                const rect =
+                    detail.getBoundingClientRect();
 
-                        entry.target
-                            .classList
-                            .add("visible");
+                const x =
+                    e.clientX -
+                    rect.left;
 
-                    }
+                const y =
+                    e.clientY -
+                    rect.top;
 
-                }
-            );
+                const rx =
+                    (
+                        y / rect.height -
+                        .5
+                    ) * -5;
 
-        },
-        {
-            threshold: .15
-        }
-    );
+                const ry =
+                    (
+                        x / rect.width -
+                        .5
+                    ) * 5;
 
-revealElements.forEach(
-    element => {
 
-        element.classList
-            .add("reveal");
+                detail.style.transform =
+                    `
+                    perspective(800px)
+                    rotateX(${rx}deg)
+                    rotateY(${ry}deg)
+                    translateY(-10px)
+                    scale(1.015)
+                    `;
 
-        observer.observe(element);
+
+                detail.style.setProperty(
+                    "--card-x",
+                    x + "px"
+                );
+
+                detail.style.setProperty(
+                    "--card-y",
+                    y + "px"
+                );
+
+            }
+        );
+
+
+        detail.addEventListener(
+            "mouseleave",
+            () => {
+
+                detail.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   MAGNETIC BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".magnetic")
+    .forEach(button => {
+
+        button.addEventListener(
+            "mousemove",
+            e => {
+
+                if(window.innerWidth < 700)
+                    return;
+
+                const rect =
+                    button.getBoundingClientRect();
+
+                const x =
+                    e.clientX -
+                    rect.left -
+                    rect.width / 2;
+
+                const y =
+                    e.clientY -
+                    rect.top -
+                    rect.height / 2;
+
+                button.style.transform =
+                    `
+                    translate(
+                        ${x * .15}px,
+                        ${y * .15}px
+                    )
+                    `;
+
+            }
+        );
+
+
+        button.addEventListener(
+            "mouseleave",
+            () => {
+
+                button.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   RIPPLE ON CLICK
+========================================================= */
+
+document.addEventListener(
+    "click",
+    e => {
+
+        const ripple =
+            document.createElement("div");
+
+        ripple.className =
+            "ripple";
+
+        ripple.style.left =
+            e.clientX + "px";
+
+        ripple.style.top =
+            e.clientY + "px";
+
+        document.body.appendChild(
+            ripple
+        );
+
+        setTimeout(
+            () => ripple.remove(),
+            900
+        );
 
     }
 );
 
+
 /* =========================================================
-   RANDOM PARTICLE HORIZONTAL MOVEMENT
+   PARTICLE BURST
+========================================================= */
+
+function createBurst(
+    x,
+    y,
+    amount = 25
+){
+
+    for(
+        let i = 0;
+        i < amount;
+        i++
+    ){
+
+        const p =
+            document.createElement(
+                "div"
+            );
+
+        p.className =
+            "burst";
+
+        p.style.left =
+            x + "px";
+
+        p.style.top =
+            y + "px";
+
+
+        const angle =
+            Math.random() *
+            Math.PI * 2;
+
+        const distance =
+            40 +
+            Math.random() * 160;
+
+
+        p.style.setProperty(
+            "--tx",
+            Math.cos(angle) *
+            distance +
+            "px"
+        );
+
+        p.style.setProperty(
+            "--ty",
+            Math.sin(angle) *
+            distance +
+            "px"
+        );
+
+
+        document.body.appendChild(p);
+
+
+        setTimeout(
+            () => p.remove(),
+            1000
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PREMIUM RANDOM MOMENTS
+========================================================= */
+
+function premiumMoment(){
+
+    const choice =
+        Math.floor(
+            Math.random() * 3
+        );
+
+
+    if(choice === 0){
+
+        createBurst(
+            window.innerWidth / 2,
+            window.innerHeight / 2,
+            20
+        );
+
+    }
+
+
+    if(choice === 1){
+
+        const title =
+            document.querySelector(
+                ".serenova"
+            );
+
+        title.style.textShadow =
+            `
+            0 0 20px var(--gold2),
+            0 0 60px var(--gold)
+            `;
+
+
+        setTimeout(
+            () => {
+
+                title.style.textShadow =
+                    "";
+
+            },
+            900
+        );
+
+    }
+
+
+    if(choice === 2){
+
+        document.body.animate(
+            [
+                {
+                    filter:"brightness(1)"
+                },
+                {
+                    filter:"brightness(1.08)"
+                },
+                {
+                    filter:"brightness(1)"
+                }
+            ],
+            {
+                duration:900
+            }
+        );
+
+    }
+
+}
+
+
+setInterval(
+    premiumMoment,
+    12000
+);
+
+
+/* =========================================================
+   SCROLL VELOCITY EFFECT
+========================================================= */
+
+let lastScroll =
+    window.scrollY;
+
+let scrollVelocity = 0;
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        scrollVelocity =
+            Math.abs(
+                window.scrollY -
+                lastScroll
+            );
+
+        lastScroll =
+            window.scrollY;
+
+        document.documentElement.style.setProperty(
+            "--scroll-speed",
+            Math.min(
+                scrollVelocity,
+                30
+            )
+        );
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+const eventDate =
+    new Date(
+        "August 23, 2026 09:00:00"
+    ).getTime();
+
+
+const previousValues = {
+
+    days:null,
+    hours:null,
+    minutes:null,
+    seconds:null
+
+};
+
+
+function animateNumber(
+    id,
+    value,
+    key
+){
+
+    const element =
+        document.getElementById(id);
+
+    const formatted =
+        String(value)
+            .padStart(2,"0");
+
+
+    if(
+        previousValues[key] !==
+        formatted
+    ){
+
+        element.classList.remove(
+            "changed"
+        );
+
+        void element.offsetWidth;
+
+        element.classList.add(
+            "changed"
+        );
+
+    }
+
+
+    element.textContent =
+        formatted;
+
+    previousValues[key] =
+        formatted;
+
+}
+
+
+let eventFinished = false;
+
+
+function updateCountdown(){
+
+    const now =
+        Date.now();
+
+    const distance =
+        eventDate - now;
+
+
+    if(distance <= 0){
+
+        animateNumber(
+            "days",
+            0,
+            "days"
+        );
+
+        animateNumber(
+            "hours",
+            0,
+            "hours"
+        );
+
+        animateNumber(
+            "minutes",
+            0,
+            "minutes"
+        );
+
+        animateNumber(
+            "seconds",
+            0,
+            "seconds"
+        );
+
+
+        if(!eventFinished){
+
+            eventFinished =
+                true;
+
+            setTimeout(
+                () => {
+
+                    document
+                        .getElementById(
+                            "eventLive"
+                        )
+                        .classList
+                        .add("show");
+
+                    createBurst(
+                        window.innerWidth / 2,
+                        window.innerHeight / 2,
+                        100
+                    );
+
+                },
+                1000
+            );
+
+        }
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+
+    const seconds =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    animateNumber(
+        "days",
+        days,
+        "days"
+    );
+
+    animateNumber(
+        "hours",
+        hours,
+        "hours"
+    );
+
+    animateNumber(
+        "minutes",
+        minutes,
+        "minutes"
+    );
+
+    animateNumber(
+        "seconds",
+        seconds,
+        "seconds"
+    );
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================================================
+   CLOSE EVENT LIVE SCREEN
 ========================================================= */
 
 document
-    .querySelectorAll(".particle")
-    .forEach(
-        particle => {
+    .getElementById("eventLive")
+    .addEventListener(
+        "click",
+        () => {
 
-            particle.style.left =
-                Math.random() * 100 + "%";
-
-            particle.style.animationDelay =
-                Math.random() * 10 + "s";
+            document
+                .getElementById(
+                    "eventLive"
+                )
+                .classList
+                .remove("show");
 
         }
     );
+
+
+/* =========================================================
+   TOUCH PARTICLE BURST
+========================================================= */
+
+document.addEventListener(
+    "touchstart",
+    e => {
+
+        if(
+            e.touches.length !== 1
+        )
+            return;
+
+        const touch =
+            e.touches[0];
+
+        createBurst(
+            touch.clientX,
+            touch.clientY,
+            8
+        );
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
+   PARALLAX ON SCROLL
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.innerWidth < 700)
+            return;
+
+        const scroll =
+            window.scrollY;
+
+        const hero =
+            document.querySelector(
+                ".hero"
+            );
+
+        if(scroll <
+            window.innerHeight
+        ){
+
+            const amount =
+                scroll * .22;
+
+            hero.style.backgroundPosition =
+                `center ${amount}px`;
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================================
+   INITIAL HERO PARTICLE BURST
+========================================================= */
+
+setTimeout(
+    () => {
+
+        createBurst(
+            window.innerWidth / 2,
+            window.innerHeight * .47,
+            35
+        );
+
+    },
+    4800
+);
+
+
+/* =========================================================
+   CONSOLE
+========================================================= */
+
+console.log(
+`
+╔══════════════════════════════════════╗
+║          SERENOVA 2026              ║
+║          NARAYANA                   ║
+║                                    ║
+║      CINEMATIC MODE ACTIVATED      ║
+╚══════════════════════════════════════╝
+`
+);
 
 </script>
 
