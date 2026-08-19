@@ -5,10 +5,9 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05080f">
 
-<meta name="theme-color" content="#030509">
-
-<title>NARAYANA | Freshers' 2026</title>
+<title>NARAYANA | SUREZOAR 2026</title>
 
 <style>
 
@@ -20,19 +19,14 @@
 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap'
 );
 
-
 /* =========================================================
    ROOT
 ========================================================= */
 
 :root {
-
     --black: #030509;
-    --black2: #050912;
-
     --navy: #07101d;
     --navy2: #0b1727;
-    --navy3: #10243d;
 
     --gold: #d8b46a;
     --gold2: #f5d98d;
@@ -42,42 +36,29 @@
     --muted: #aab4c2;
 
     --line: rgba(216,180,106,.28);
-    --line2: rgba(255,255,255,.08);
-
 }
-
 
 /* =========================================================
    RESET
 ========================================================= */
 
 * {
-
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
 }
-
 
 body {
 
-    min-height: 100vh;
-
     background:
         radial-gradient(
-            circle at 50% -10%,
-            #173451 0%,
-            #0b1727 25%,
-            #030509 65%
+            circle at 50% 0%,
+            #10243d 0%,
+            var(--black) 48%
         );
 
     color: var(--white);
@@ -85,409 +66,58 @@ body {
     font-family: "Inter", sans-serif;
 
     overflow-x: hidden;
-
-    cursor: default;
-
 }
-
 
 /* =========================================================
-   GLOBAL GRAIN
-========================================================= */
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 9998;
-
-    opacity: .045;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-
-    animation:
-        grainMove .2s steps(2) infinite;
-
-}
-
-
-@keyframes grainMove {
-
-    0% {
-        transform: translate(0,0);
-    }
-
-    25% {
-        transform: translate(-2%,2%);
-    }
-
-    50% {
-        transform: translate(2%,-1%);
-    }
-
-    75% {
-        transform: translate(1%,2%);
-    }
-
-    100% {
-        transform: translate(-1%,-2%);
-    }
-
-}
-
-
-/* =========================================================
-   CURSOR GLOW
-========================================================= */
-
-.cursor-glow {
-
-    position: fixed;
-
-    width: 350px;
-    height: 350px;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    z-index: 1;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(216,180,106,.10),
-            rgba(216,180,106,.035) 30%,
-            transparent 70%
-        );
-
-    transform:
-        translate(-50%,-50%);
-
-    transition:
-        opacity .4s;
-
-    mix-blend-mode:
-        screen;
-
-}
-
-
-/* =========================================================
-   AMBIENT ORBS
-========================================================= */
-
-.ambient {
-
-    position: fixed;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    filter: blur(100px);
-
-    z-index: -3;
-
-}
-
-
-.ambient.one {
-
-    width: 650px;
-    height: 650px;
-
-    top: -400px;
-    left: 50%;
-
-    background:
-        rgba(216,180,106,.09);
-
-    animation:
-        ambientOne 10s ease-in-out infinite alternate;
-
-}
-
-
-.ambient.two {
-
-    width: 500px;
-    height: 500px;
-
-    right: -300px;
-    bottom: -250px;
-
-    background:
-        rgba(20,90,150,.10);
-
-    animation:
-        ambientTwo 14s ease-in-out infinite alternate;
-
-}
-
-
-.ambient.three {
-
-    width: 350px;
-    height: 350px;
-
-    left: -200px;
-    top: 45%;
-
-    background:
-        rgba(100,70,20,.07);
-
-    animation:
-        ambientThree 12s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes ambientOne {
-
-    0% {
-
-        transform:
-            translateX(-50%)
-            scale(.75);
-
-        opacity: .4;
-
-    }
-
-    50% {
-
-        transform:
-            translateX(-50%)
-            scale(1.2);
-
-    }
-
-    100% {
-
-        transform:
-            translateX(-50%)
-            scale(1.5)
-            translateY(80px);
-
-        opacity: 1;
-
-    }
-
-}
-
-
-@keyframes ambientTwo {
-
-    0% {
-
-        transform:
-            translate(0,0)
-            scale(.8);
-
-    }
-
-    100% {
-
-        transform:
-            translate(-160px,-120px)
-            scale(1.4);
-
-    }
-
-}
-
-
-@keyframes ambientThree {
-
-    0% {
-
-        transform:
-            translate(0,0);
-
-    }
-
-    50% {
-
-        transform:
-            translate(100px,-100px);
-
-    }
-
-    100% {
-
-        transform:
-            translate(180px,100px)
-            scale(1.3);
-
-    }
-
-}
-
-
-/* =========================================================
-   LOADER
+   CINEMATIC PAGE INTRO
 ========================================================= */
 
 #loader {
 
     position: fixed;
-
     inset: 0;
 
+    background: #020308;
+
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     flex-direction: column;
 
-    background:
-        radial-gradient(
-            circle,
-            #0c1c2e,
-            #020308 70%
-        );
-
-    z-index: 10000;
+    z-index: 9999;
 
     animation:
-        loaderExit 1.2s cubic-bezier(.77,0,.18,1) 3.1s forwards;
+        loaderOut 1s ease 2.7s forwards;
 
+    pointer-events: none;
 }
-
-
-.loader-ring {
-
-    position: absolute;
-
-    width: 320px;
-    height: 320px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid rgba(216,180,106,.15);
-
-    animation:
-        loaderRing 8s linear infinite;
-
-}
-
-
-.loader-ring::before,
-.loader-ring::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 25px;
-
-    border-radius: 50%;
-
-    border:
-        1px dashed rgba(216,180,106,.12);
-
-}
-
-
-.loader-ring::after {
-
-    inset: 55px;
-
-    border-style: solid;
-
-    border-color:
-        rgba(216,180,106,.08);
-
-}
-
-
-@keyframes loaderRing {
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
 
 .loader-narayana {
 
-    position: relative;
-
-    font-size:
-        clamp(38px,10vw,105px);
+    font-size: clamp(40px, 10vw, 100px);
 
     font-weight: 900;
 
-    letter-spacing: 14px;
+    letter-spacing: 12px;
 
     color: var(--gold2);
 
     text-shadow:
-        0 0 15px rgba(216,180,106,.5),
-        0 0 45px rgba(216,180,106,.25);
+        0 0 15px rgba(216,180,106,.4),
+        0 0 50px rgba(216,180,106,.25);
 
     animation:
-        loaderLogo 1.8s cubic-bezier(.16,1,.3,1);
-
+        logoReveal 1.6s
+        cubic-bezier(.2,.8,.2,1);
 }
-
-
-@keyframes loaderLogo {
-
-    0% {
-
-        opacity: 0;
-
-        transform:
-            scale(.4)
-            translateY(40px);
-
-        letter-spacing: 45px;
-
-        filter: blur(18px);
-
-    }
-
-    70% {
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        transform:
-            scale(1)
-            translateY(0);
-
-        letter-spacing: 14px;
-
-        filter: blur(0);
-
-    }
-
-}
-
 
 .loader-line {
 
     width: 0;
-
     height: 1px;
 
-    margin-top: 25px;
+    margin-top: 20px;
 
     background:
         linear-gradient(
@@ -497,98 +127,153 @@ body::after {
             transparent
         );
 
-    box-shadow:
-        0 0 20px var(--gold);
-
     animation:
-        loaderLine 1.6s ease .5s forwards;
-
+        lineGrow 1.5s ease .5s forwards;
 }
 
+@keyframes logoReveal {
 
-@keyframes loaderLine {
-
-    to {
-        width: min(400px,70vw);
-    }
-
-}
-
-
-.loader-sub {
-
-    margin-top: 20px;
-
-    font-size: 8px;
-
-    letter-spacing: 5px;
-
-    color: #687486;
-
-    text-transform: uppercase;
-
-    animation:
-        loaderSub 1s ease 1s both;
-
-}
-
-
-@keyframes loaderSub {
-
-    from {
-
+    0% {
         opacity: 0;
 
         transform:
-            translateY(15px);
+            scale(.5)
+            translateY(30px);
 
-    }
+        letter-spacing: 35px;
 
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
-
-@keyframes loaderExit {
-
-    0% {
-
-        opacity: 1;
-
-        clip-path:
-            inset(0 0 0 0);
-
-    }
-
-    70% {
-
-        opacity: 1;
-
+        filter: blur(12px);
     }
 
     100% {
+        opacity: 1;
 
-        opacity: 0;
+        transform:
+            scale(1)
+            translateY(0);
 
-        visibility: hidden;
+        letter-spacing: 12px;
 
-        clip-path:
-            inset(0 0 100% 0);
-
+        filter: blur(0);
     }
-
 }
 
+@keyframes lineGrow {
+
+    to {
+        width: 300px;
+    }
+}
+
+@keyframes loaderOut {
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
 /* =========================================================
-   PARTICLE FIELD
+   AMBIENT LIGHT
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(216,180,106,.055);
+
+    filter: blur(130px);
+
+    top: -400px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    animation:
+        breathe 8s
+        ease-in-out
+        infinite
+        alternate;
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(20,80,130,.08);
+
+    filter: blur(120px);
+
+    right: -250px;
+    bottom: -250px;
+
+    animation:
+        orbMove 15s
+        ease-in-out
+        infinite
+        alternate;
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+@keyframes breathe {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(.8);
+
+        opacity: .5;
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1.3);
+
+        opacity: 1;
+    }
+}
+
+@keyframes orbMove {
+
+    from {
+        transform:
+            translate(0,0);
+    }
+
+    to {
+        transform:
+            translate(-150px,-100px);
+    }
+}
+
+/* =========================================================
+   PARTICLES
 ========================================================= */
 
 .particles {
@@ -602,276 +287,124 @@ body::after {
     z-index: 0;
 
     overflow: hidden;
-
 }
-
 
 .particle {
 
     position: absolute;
 
-    bottom: -20px;
-
-    width: 2px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
 
     border-radius: 50%;
 
     background: var(--gold2);
 
     box-shadow:
-        0 0 8px var(--gold),
-        0 0 18px rgba(216,180,106,.5);
-
-    animation:
-        particleRise linear infinite;
-
-}
-
-
-.particle:nth-child(1) {
-    left: 4%;
-    animation-duration: 10s;
-    animation-delay: 1s;
-}
-
-.particle:nth-child(2) {
-    left: 9%;
-    animation-duration: 15s;
-    animation-delay: 4s;
-}
-
-.particle:nth-child(3) {
-    left: 16%;
-    animation-duration: 12s;
-    animation-delay: 2s;
-}
-
-.particle:nth-child(4) {
-    left: 23%;
-    animation-duration: 18s;
-    animation-delay: 7s;
-}
-
-.particle:nth-child(5) {
-    left: 31%;
-    animation-duration: 14s;
-    animation-delay: 1s;
-}
-
-.particle:nth-child(6) {
-    left: 39%;
-    animation-duration: 17s;
-    animation-delay: 5s;
-}
-
-.particle:nth-child(7) {
-    left: 47%;
-    animation-duration: 13s;
-    animation-delay: 3s;
-}
-
-.particle:nth-child(8) {
-    left: 55%;
-    animation-duration: 20s;
-    animation-delay: 8s;
-}
-
-.particle:nth-child(9) {
-    left: 63%;
-    animation-duration: 11s;
-    animation-delay: 2s;
-}
-
-.particle:nth-child(10) {
-    left: 71%;
-    animation-duration: 16s;
-    animation-delay: 6s;
-}
-
-.particle:nth-child(11) {
-    left: 78%;
-    animation-duration: 13s;
-    animation-delay: 1s;
-}
-
-.particle:nth-child(12) {
-    left: 85%;
-    animation-duration: 19s;
-    animation-delay: 5s;
-}
-
-.particle:nth-child(13) {
-    left: 92%;
-    animation-duration: 12s;
-    animation-delay: 3s;
-}
-
-.particle:nth-child(14) {
-    left: 97%;
-    animation-duration: 17s;
-    animation-delay: 7s;
-}
-
-
-@keyframes particleRise {
-
-    0% {
-
-        transform:
-            translate3d(0,0,0)
-            scale(.2);
-
-        opacity: 0;
-
-    }
-
-    10% {
-        opacity: .6;
-    }
-
-    35% {
-
-        transform:
-            translate3d(70px,-30vh,0)
-            scale(1);
-
-    }
-
-    60% {
-
-        transform:
-            translate3d(-50px,-65vh,0)
-            scale(.8);
-
-        opacity: .35;
-
-    }
-
-    100% {
-
-        transform:
-            translate3d(80px,-115vh,0)
-            scale(.1);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================================================
-   SHOOTING STARS
-========================================================= */
-
-.stars {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 0;
-
-    overflow: hidden;
-
-}
-
-
-.star {
-
-    position: absolute;
-
-    width: 120px;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold2),
-            transparent
-        );
-
-    transform:
-        rotate(-35deg);
+        0 0 10px var(--gold);
 
     opacity: 0;
 
     animation:
-        shootingStar 7s linear infinite;
-
+        particleFloat
+        linear
+        infinite;
 }
 
+.particle:nth-child(1) {
+    left: 5%;
+    animation-duration: 11s;
+    animation-delay: 1s;
+}
 
-.star:nth-child(1) {
+.particle:nth-child(2) {
+    left: 12%;
+    animation-duration: 17s;
+    animation-delay: 4s;
+}
 
-    top: 18%;
-    left: 15%;
-
+.particle:nth-child(3) {
+    left: 20%;
+    animation-duration: 13s;
     animation-delay: 2s;
-
 }
 
-
-.star:nth-child(2) {
-
-    top: 35%;
-    left: 70%;
-
-    animation-delay: 5s;
-
+.particle:nth-child(4) {
+    left: 30%;
+    animation-duration: 20s;
+    animation-delay: 6s;
 }
 
+.particle:nth-child(5) {
+    left: 42%;
+    animation-duration: 15s;
+    animation-delay: 1s;
+}
 
-.star:nth-child(3) {
-
-    top: 10%;
-    left: 80%;
-
+.particle:nth-child(6) {
+    left: 53%;
+    animation-duration: 18s;
     animation-delay: 8s;
-
 }
 
+.particle:nth-child(7) {
+    left: 64%;
+    animation-duration: 14s;
+    animation-delay: 3s;
+}
 
-@keyframes shootingStar {
+.particle:nth-child(8) {
+    left: 75%;
+    animation-duration: 19s;
+    animation-delay: 7s;
+}
+
+.particle:nth-child(9) {
+    left: 86%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(10) {
+    left: 94%;
+    animation-duration: 16s;
+    animation-delay: 5s;
+}
+
+@keyframes particleFloat {
 
     0% {
-
+        top: 110%;
         opacity: 0;
 
         transform:
-            translate(-200px,-100px)
-            rotate(-35deg);
-
+            translateX(0)
+            scale(.3);
     }
 
-    10% {
-
-        opacity: .6;
-
+    15% {
+        opacity: .45;
     }
 
-    20% {
-
-        opacity: 0;
-
+    50% {
         transform:
-            translate(500px,300px)
-            rotate(-35deg);
+            translateX(80px)
+            scale(1);
+    }
 
+    85% {
+        opacity: .25;
     }
 
     100% {
-
+        top: -10%;
         opacity: 0;
 
+        transform:
+            translateX(-80px)
+            scale(.2);
     }
-
 }
-
 
 /* =========================================================
    NAVIGATION
@@ -891,95 +424,40 @@ nav {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     z-index: 100;
 
     background:
-        rgba(3,5,9,.45);
+        rgba(3,5,9,.58);
 
-    backdrop-filter:
-        blur(22px)
-        saturate(150%);
+    backdrop-filter: blur(20px);
 
     border-bottom:
-        1px solid rgba(255,255,255,.05);
+        1px solid
+        rgba(255,255,255,.05);
 
     animation:
-        navDrop 1.2s cubic-bezier(.16,1,.3,1) 3.3s both;
-
+        navDrop 1s
+        ease 3s both;
 }
-
-
-nav::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -1px;
-
-    width: 0;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-
-    animation:
-        navLine 3s ease 4s infinite;
-
-}
-
-
-@keyframes navLine {
-
-    0% {
-        left: 0;
-        width: 0;
-    }
-
-    50% {
-        left: 15%;
-        width: 70%;
-    }
-
-    100% {
-        left: 100%;
-        width: 0;
-    }
-
-}
-
 
 @keyframes navDrop {
 
     from {
-
         opacity: 0;
 
         transform:
-            translateY(-50px);
-
+            translateY(-30px);
     }
 
     to {
-
         opacity: 1;
 
         transform:
             translateY(0);
-
     }
-
 }
-
 
 .logo {
 
@@ -992,26 +470,21 @@ nav::after {
     color: var(--gold2);
 
     text-shadow:
-        0 0 20px rgba(216,180,106,.25);
+        0 0 20px
+        rgba(216,180,106,.25);
 
-    transition:
-        .5s cubic-bezier(.16,1,.3,1);
-
+    transition: .4s;
 }
-
 
 .logo:hover {
 
     transform:
-        scale(1.08)
-        rotate(-2deg);
+        scale(1.05);
 
     text-shadow:
-        0 0 15px var(--gold),
-        0 0 40px rgba(216,180,106,.5);
-
+        0 0 30px
+        rgba(216,180,106,.7);
 }
-
 
 .nav-links {
 
@@ -1020,9 +493,7 @@ nav::after {
     gap: 35px;
 
     list-style: none;
-
 }
-
 
 .nav-links a {
 
@@ -1038,10 +509,8 @@ nav::after {
 
     text-transform: uppercase;
 
-    transition: .4s;
-
+    transition: .3s;
 }
-
 
 .nav-links a::before {
 
@@ -1049,7 +518,7 @@ nav::after {
 
     position: absolute;
 
-    bottom: -10px;
+    bottom: -9px;
 
     left: 50%;
 
@@ -1063,29 +532,15 @@ nav::after {
         translateX(-50%);
 
     transition: .4s;
-
-    box-shadow:
-        0 0 10px var(--gold);
-
 }
-
 
 .nav-links a:hover {
-
     color: var(--gold2);
-
-    transform:
-        translateY(-2px);
-
 }
-
 
 .nav-links a:hover::before {
-
     width: 100%;
-
 }
-
 
 /* =========================================================
    HERO
@@ -1100,21 +555,15 @@ nav::after {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
 
-    padding: 130px 20px 80px;
+    padding:
+        130px 20px 80px;
 
     overflow: hidden;
-
-    perspective: 1000px;
-
 }
-
-
-/* Rotating rings */
 
 .hero::before {
 
@@ -1122,19 +571,19 @@ nav::after {
 
     position: absolute;
 
-    width: 720px;
-    height: 720px;
+    width: 700px;
+    height: 700px;
 
     border:
-        1px solid rgba(216,180,106,.09);
+        1px solid
+        rgba(216,180,106,.08);
 
     border-radius: 50%;
 
     animation:
-        heroRing 25s linear infinite;
-
+        rotateRing 25s
+        linear infinite;
 }
-
 
 .hero::after {
 
@@ -1142,100 +591,42 @@ nav::after {
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 480px;
+    height: 480px;
 
     border:
-        1px solid rgba(216,180,106,.06);
+        1px solid
+        rgba(216,180,106,.05);
 
     border-radius: 50%;
 
     animation:
-        heroRingReverse 18s linear infinite;
-
+        rotateRingReverse 18s
+        linear infinite;
 }
 
-
-@keyframes heroRing {
-
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    50% {
-        transform: rotate(180deg) scale(1.08);
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-
-}
-
-
-@keyframes heroRingReverse {
-
-    0% {
-        transform: rotate(360deg) scale(.9);
-    }
-
-    50% {
-        transform: rotate(180deg) scale(1.08);
-    }
-
-    100% {
-        transform: rotate(0deg) scale(.9);
-    }
-
-}
-
-
-/* Extra orbit */
-
-.hero-orbit {
-
-    position: absolute;
-
-    width: 850px;
-    height: 280px;
-
-    border:
-        1px solid rgba(216,180,106,.045);
-
-    border-radius: 50%;
-
-    transform:
-        rotateX(65deg)
-        rotateZ(-20deg);
-
-    animation:
-        orbitSpin 20s linear infinite;
-
-}
-
-
-@keyframes orbitSpin {
+@keyframes rotateRing {
 
     to {
         transform:
-            rotateX(65deg)
-            rotateZ(340deg);
+            rotate(360deg);
     }
-
 }
 
+@keyframes rotateRingReverse {
+
+    to {
+        transform:
+            rotate(-360deg);
+    }
+}
 
 .hero-content {
 
     position: relative;
 
     z-index: 2;
-
-    transition:
-        transform .15s ease-out;
-
 }
-
 
 /* =========================================================
    OFFICIAL BADGE
@@ -1249,10 +640,12 @@ nav::after {
 
     gap: 10px;
 
-    padding: 11px 21px;
+    padding:
+        10px 20px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     border-radius: 100px;
 
@@ -1266,68 +659,44 @@ nav::after {
 
     text-transform: uppercase;
 
-    background:
-        rgba(216,180,106,.025);
-
-    box-shadow:
-        inset 0 0 20px rgba(216,180,106,.02);
-
     animation:
-        badgeIn 1.2s cubic-bezier(.16,1,.3,1) 3.5s both,
-        badgePulse 3s ease-in-out 5s infinite;
-
+        badgeIn 1s ease 3.2s both,
+        badgePulse 3s ease-in-out 4.5s infinite;
 }
-
 
 @keyframes badgeIn {
 
     from {
-
         opacity: 0;
 
         transform:
-            scale(.4)
-            rotateX(60deg);
-
-        filter: blur(10px);
-
+            scale(.5);
     }
 
     to {
-
         opacity: 1;
 
         transform:
-            scale(1)
-            rotateX(0);
-
-        filter: blur(0);
-
+            scale(1);
     }
-
 }
-
 
 @keyframes badgePulse {
 
     0%,100% {
 
         box-shadow:
-            0 0 0 rgba(216,180,106,0),
-            inset 0 0 20px rgba(216,180,106,.02);
-
+            0 0 0
+            rgba(216,180,106,0);
     }
 
     50% {
 
         box-shadow:
-            0 0 40px rgba(216,180,106,.14),
-            inset 0 0 25px rgba(216,180,106,.05);
-
+            0 0 35px
+            rgba(216,180,106,.15);
     }
-
 }
-
 
 .official::before {
 
@@ -1341,27 +710,20 @@ nav::after {
     background: var(--gold2);
 
     box-shadow:
-        0 0 10px var(--gold),
-        0 0 20px var(--gold);
+        0 0 15px
+        var(--gold);
 
     animation:
-        dotPulse 1.5s ease-in-out infinite;
-
+        dotPulse 1.8s infinite;
 }
-
 
 @keyframes dotPulse {
 
-    0%,100% {
-        transform: scale(.8);
-    }
-
     50% {
-        transform: scale(1.7);
+        transform:
+            scale(1.6);
     }
-
 }
-
 
 /* =========================================================
    COLLEGE NAME
@@ -1380,40 +742,11 @@ nav::after {
     letter-spacing: 7px;
 
     animation:
-        textReveal 1.2s ease 3.8s both;
-
+        fadeUp 1s ease 3.5s both;
 }
-
-
-@keyframes textReveal {
-
-    from {
-
-        opacity: 0;
-
-        letter-spacing: 25px;
-
-        transform:
-            translateY(20px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        letter-spacing: 7px;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
 
 /* =========================================================
-   HERO TITLE
+   MAIN TITLE
 ========================================================= */
 
 .hero h1 {
@@ -1421,7 +754,7 @@ nav::after {
     margin-top: 25px;
 
     font-size:
-        clamp(65px,15vw,190px);
+        clamp(70px,15vw,190px);
 
     line-height: .75;
 
@@ -1431,85 +764,31 @@ nav::after {
 
     color: #fff;
 
-    position: relative;
-
     animation:
-        giantReveal 1.8s cubic-bezier(.16,1,.3,1) 4s both;
-
+        giantReveal
+        1.8s
+        cubic-bezier(.16,1,.3,1)
+        3.7s
+        both;
 }
-
-
-.hero h1::before {
-
-    content: "NARAYANA";
-
-    position: absolute;
-
-    inset: 0;
-
-    color: transparent;
-
-    -webkit-text-stroke:
-        1px rgba(216,180,106,.13);
-
-    transform:
-        translate(8px,8px);
-
-    z-index: -1;
-
-    animation:
-        ghostFloat 5s ease-in-out infinite;
-
-}
-
-
-@keyframes ghostFloat {
-
-    0%,100% {
-
-        transform:
-            translate(8px,8px);
-
-        opacity: .5;
-
-    }
-
-    50% {
-
-        transform:
-            translate(-4px,-6px);
-
-        opacity: 1;
-
-    }
-
-}
-
 
 @keyframes giantReveal {
 
-    0% {
+    from {
 
         opacity: 0;
 
         transform:
             perspective(800px)
-            rotateX(70deg)
-            translateY(130px)
-            scale(.55);
+            rotateX(60deg)
+            translateY(100px)
+            scale(.65);
 
         filter:
-            blur(20px);
-
+            blur(15px);
     }
 
-    60% {
-
-        opacity: 1;
-
-    }
-
-    100% {
+    to {
 
         opacity: 1;
 
@@ -1521,13 +800,8 @@ nav::after {
 
         filter:
             blur(0);
-
     }
-
 }
-
-
-/* Gold subtitle */
 
 .hero h1 span {
 
@@ -1544,15 +818,14 @@ nav::after {
     color: var(--gold2);
 
     text-shadow:
-        0 0 20px rgba(216,180,106,.25),
-        0 0 60px rgba(216,180,106,.15);
+        0 0 35px
+        rgba(216,180,106,.35);
 
     animation:
-        goldReveal 1.5s cubic-bezier(.16,1,.3,1) 4.6s both,
-        goldShimmer 4s ease-in-out 6.5s infinite;
-
+        goldReveal
+        1.5s
+        ease 4.3s both;
 }
-
 
 @keyframes goldReveal {
 
@@ -1560,13 +833,7 @@ nav::after {
 
         opacity: 0;
 
-        letter-spacing: 45px;
-
-        transform:
-            scaleX(1.5);
-
-        filter: blur(8px);
-
+        letter-spacing: 40px;
     }
 
     to {
@@ -1574,47 +841,15 @@ nav::after {
         opacity: 1;
 
         letter-spacing: 16px;
-
-        transform:
-            scaleX(1);
-
-        filter: blur(0);
-
     }
-
 }
-
-
-@keyframes goldShimmer {
-
-    0%,100% {
-
-        text-shadow:
-            0 0 20px rgba(216,180,106,.25),
-            0 0 60px rgba(216,180,106,.15);
-
-    }
-
-    50% {
-
-        text-shadow:
-            0 0 30px rgba(216,180,106,.7),
-            0 0 80px rgba(216,180,106,.3);
-
-    }
-
-}
-
-
-/* =========================================================
-   HERO DESCRIPTION
-========================================================= */
 
 .hero-description {
 
     max-width: 650px;
 
-    margin: 45px auto 0;
+    margin:
+        45px auto 0;
 
     color: var(--muted);
 
@@ -1623,23 +858,25 @@ nav::after {
     line-height: 2;
 
     animation:
-        descriptionReveal 1.3s ease 5s both;
-
+        fadeUp
+        1.2s
+        ease
+        4.6s
+        both;
 }
 
+/* =========================================================
+   FADE UP
+========================================================= */
 
-@keyframes descriptionReveal {
+@keyframes fadeUp {
 
     from {
 
         opacity: 0;
 
         transform:
-            translateY(35px);
-
-        filter:
-            blur(6px);
-
+            translateY(30px);
     }
 
     to {
@@ -1648,17 +885,11 @@ nav::after {
 
         transform:
             translateY(0);
-
-        filter:
-            blur(0);
-
     }
-
 }
 
-
 /* =========================================================
-   SCROLL
+   SCROLL INDICATOR
 ========================================================= */
 
 .scroll {
@@ -1679,47 +910,11 @@ nav::after {
     letter-spacing: 4px;
 
     animation:
-        scrollMove 2s ease-in-out infinite;
-
+        scrollMove
+        2s
+        ease-in-out
+        infinite;
 }
-
-
-.scroll::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 80px;
-    height: 80px;
-
-    left: 50%;
-    top: -15px;
-
-    transform:
-        translateX(-50%);
-
-    border:
-        1px solid rgba(216,180,106,.08);
-
-    border-radius: 50%;
-
-    animation:
-        scrollRing 3s linear infinite;
-
-}
-
-
-@keyframes scrollRing {
-
-    to {
-        transform:
-            translateX(-50%)
-            rotate(360deg);
-    }
-
-}
-
 
 .scroll::after {
 
@@ -1731,54 +926,15 @@ nav::after {
 
     height: 38px;
 
-    margin: 10px auto;
+    margin:
+        10px auto;
 
     background:
         linear-gradient(
             var(--gold),
             transparent
         );
-
-    animation:
-        scrollLine 1.8s ease-in-out infinite;
-
 }
-
-
-@keyframes scrollLine {
-
-    0% {
-
-        transform:
-            scaleY(.3);
-
-        transform-origin:
-            top;
-
-    }
-
-    50% {
-
-        transform:
-            scaleY(1);
-
-        transform-origin:
-            top;
-
-    }
-
-    100% {
-
-        transform:
-            scaleY(.3);
-
-        transform-origin:
-            bottom;
-
-    }
-
-}
-
 
 @keyframes scrollMove {
 
@@ -1786,18 +942,14 @@ nav::after {
 
         transform:
             translate(-50%,0);
-
     }
 
     50% {
 
         transform:
             translate(-50%,10px);
-
     }
-
 }
-
 
 /* =========================================================
    SECTIONS
@@ -1809,17 +961,13 @@ section {
 
     z-index: 1;
 
-    padding: 130px 7%;
-
+    padding:
+        120px 7%;
 }
-
 
 .center {
-
     text-align: center;
-
 }
-
 
 .section-label {
 
@@ -1834,9 +982,7 @@ section {
     text-transform: uppercase;
 
     margin-bottom: 18px;
-
 }
-
 
 .section-title {
 
@@ -1845,67 +991,10 @@ section {
         serif;
 
     font-size:
-        clamp(44px,7vw,75px);
+        clamp(45px,7vw,75px);
 
     font-weight: 700;
-
-    line-height: 1;
-
 }
-
-
-/* =========================================================
-   SECTION DECORATION
-========================================================= */
-
-.section-label::before,
-.section-label::after {
-
-    content: "✦";
-
-    display: inline-block;
-
-    color: var(--gold);
-
-    margin: 0 14px;
-
-    animation:
-        sparkle 2s ease-in-out infinite;
-
-}
-
-
-.section-label::after {
-
-    animation-delay: 1s;
-
-}
-
-
-@keyframes sparkle {
-
-    0%,100% {
-
-        opacity: .3;
-
-        transform:
-            scale(.7)
-            rotate(0deg);
-
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform:
-            scale(1.3)
-            rotate(180deg);
-
-    }
-
-}
-
 
 /* =========================================================
    INVITATION
@@ -1919,38 +1008,14 @@ section {
             rgba(216,180,106,.07),
             transparent 60%
         );
-
 }
-
-
-.invitation::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 7%;
-    right: 7%;
-    top: 0;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--line),
-            transparent
-        );
-
-}
-
 
 .invitation-card {
 
     max-width: 950px;
 
-    margin: 60px auto 0;
+    margin:
+        60px auto 0;
 
     padding:
         clamp(45px,8vw,90px);
@@ -1960,28 +1025,22 @@ section {
     text-align: center;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
-        );
+        rgba(255,255,255,.025);
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     overflow: hidden;
 
-    transform-style: preserve-3d;
+    transform-style:
+        preserve-3d;
 
     transition:
-        transform .25s ease-out,
+        transform .7s
+        cubic-bezier(.2,.8,.2,1),
         box-shadow .7s;
-
-    box-shadow:
-        0 20px 80px rgba(0,0,0,.25);
-
 }
-
 
 .invitation-card::before {
 
@@ -1993,75 +1052,36 @@ section {
 
     background:
         linear-gradient(
-            115deg,
+            120deg,
             transparent 20%,
-            rgba(255,255,255,.13),
-            transparent 40%
+            rgba(255,255,255,.15),
+            transparent 80%
         );
 
     transform:
-        translateX(-120%);
+        translateX(-100%);
 
-    transition:
-        1.2s;
-
+    transition: 1s;
 }
-
 
 .invitation-card:hover::before {
 
     transform:
-        translateX(120%);
-
+        translateX(100%);
 }
-
-
-.invitation-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    border-radius: 50%;
-
-    right: -180px;
-    bottom: -180px;
-
-    background:
-        rgba(216,180,106,.08);
-
-    filter: blur(60px);
-
-    animation:
-        cardOrb 6s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes cardOrb {
-
-    from {
-        transform: scale(.7);
-    }
-
-    to {
-        transform: scale(1.5);
-    }
-
-}
-
 
 .invitation-card:hover {
 
+    transform:
+        perspective(1000px)
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateY(-10px);
+
     box-shadow:
-        0 40px 120px rgba(0,0,0,.5),
-        0 0 60px rgba(216,180,106,.05);
-
+        0 35px 100px
+        rgba(0,0,0,.35);
 }
-
 
 .invitation-card h2 {
 
@@ -2069,99 +1089,21 @@ section {
         "Cormorant Garamond",
         serif;
 
-    font-size:
-        clamp(38px,6vw,52px);
+    font-size: 48px;
 
-    color:
-        var(--gold2);
+    color: var(--gold2);
 
-    margin-bottom:
-        30px;
-
-    position: relative;
-
-    animation:
-        headingFloat 4s ease-in-out infinite;
-
+    margin-bottom: 30px;
 }
-
-
-@keyframes headingFloat {
-
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
-
-}
-
 
 .invitation-card p {
 
-    color:
-        #ccd4de;
+    color: #ccd4de;
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    line-height:
-        2;
-
+    line-height: 2;
 }
-
-
-.invitation-card strong {
-
-    color:
-        var(--gold2);
-
-    position: relative;
-
-}
-
-
-.invitation-card strong::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    bottom: -3px;
-
-    height: 1px;
-
-    background:
-        var(--gold);
-
-    transform:
-        scaleX(0);
-
-    transform-origin:
-        center;
-
-    animation:
-        underlinePulse 3s ease-in-out infinite;
-
-}
-
-
-@keyframes underlinePulse {
-
-    0%,100% {
-        transform: scaleX(0);
-    }
-
-    50% {
-        transform: scaleX(1);
-    }
-
-}
-
 
 .signature {
 
@@ -2174,31 +1116,7 @@ section {
     font-size: 27px;
 
     color: var(--gold2);
-
-    animation:
-        signatureGlow 3s ease-in-out infinite;
-
 }
-
-
-@keyframes signatureGlow {
-
-    0%,100% {
-
-        text-shadow:
-            0 0 0 rgba(216,180,106,0);
-
-    }
-
-    50% {
-
-        text-shadow:
-            0 0 25px rgba(216,180,106,.3);
-
-    }
-
-}
-
 
 /* =========================================================
    DETAILS
@@ -2213,15 +1131,14 @@ section {
             rgba(255,255,255,.015),
             transparent
         );
-
 }
-
 
 .details-grid {
 
     max-width: 1100px;
 
-    margin: 65px auto 0;
+    margin:
+        65px auto 0;
 
     display: grid;
 
@@ -2229,9 +1146,7 @@ section {
         repeat(2,1fr);
 
     gap: 20px;
-
 }
-
 
 .detail {
 
@@ -2245,51 +1160,13 @@ section {
         rgba(255,255,255,.025);
 
     border:
-        1px solid rgba(255,255,255,.07);
+        1px solid
+        rgba(255,255,255,.07);
 
     transition:
-        transform .6s cubic-bezier(.16,1,.3,1),
-        border-color .5s,
-        box-shadow .5s;
-
-    transform-style:
-        preserve-3d;
-
+        .5s
+        cubic-bezier(.2,.8,.2,1);
 }
-
-
-.detail::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            120deg,
-            transparent,
-            rgba(216,180,106,.06),
-            transparent
-        );
-
-    transform:
-        translateX(-120%);
-
-    transition:
-        1s;
-
-}
-
-
-.detail:hover::before {
-
-    transform:
-        translateX(120%);
-
-}
-
 
 .detail::after {
 
@@ -2297,8 +1174,8 @@ section {
 
     position: absolute;
 
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
 
     border-radius: 50%;
 
@@ -2308,66 +1185,49 @@ section {
     filter:
         blur(50px);
 
-    top: -130px;
-    right: -130px;
+    top: -120px;
+    right: -120px;
 
-    transition: .7s;
-
+    transition: .5s;
 }
-
 
 .detail:hover {
 
     transform:
-        translateY(-15px)
-        scale(1.025);
+        translateY(-12px)
+        scale(1.015);
 
     border-color:
         var(--line);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.4),
-        0 0 40px rgba(216,180,106,.04);
-
+        0 25px 70px
+        rgba(0,0,0,.3);
 }
-
 
 .detail:hover::after {
 
     transform:
-        scale(1.8);
-
+        scale(1.5);
 }
-
 
 .detail-icon {
 
-    position: relative;
-
-    font-size: 28px;
+    font-size: 25px;
 
     color: var(--gold2);
 
     margin-bottom: 22px;
 
-    display: inline-block;
-
-    transition: .6s;
-
+    transition: .5s;
 }
-
 
 .detail:hover .detail-icon {
 
     transform:
         rotateY(180deg)
-        scale(1.25);
-
-    text-shadow:
-        0 0 20px var(--gold);
-
+        scale(1.2);
 }
-
 
 .detail h3 {
 
@@ -2380,9 +1240,7 @@ section {
     text-transform: uppercase;
 
     margin-bottom: 12px;
-
 }
-
 
 .detail p {
 
@@ -2391,17 +1249,13 @@ section {
     font-size: 15px;
 
     line-height: 1.7;
-
 }
-
 
 /* =========================================================
    VENUE MAP BUTTON
 ========================================================= */
 
 .venue-map {
-
-    position: relative;
 
     display: inline-flex;
 
@@ -2411,9 +1265,12 @@ section {
 
     margin-top: 18px;
 
-    padding: 11px 17px;
+    padding:
+        10px 16px;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
 
     color: var(--gold2);
 
@@ -2427,64 +1284,24 @@ section {
 
     text-transform: uppercase;
 
-    overflow: hidden;
-
     transition: .4s;
-
 }
-
-
-.venue-map::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(216,180,106,.15),
-            transparent
-        );
-
-    transform:
-        translateX(-100%);
-
-    animation:
-        buttonShine 3s linear infinite;
-
-}
-
-
-@keyframes buttonShine {
-
-    to {
-        transform:
-            translateX(100%);
-    }
-
-}
-
 
 .venue-map:hover {
 
-    color: var(--gold3);
+    background:
+        rgba(216,180,106,.08);
 
     border-color:
         var(--gold2);
 
-    transform:
-        translateY(-4px)
-        scale(1.03);
-
     box-shadow:
-        0 0 30px rgba(216,180,106,.15);
+        0 0 25px
+        rgba(216,180,106,.12);
 
+    transform:
+        translateY(-3px);
 }
-
 
 /* =========================================================
    COUNTDOWN
@@ -2495,63 +1312,12 @@ section {
     text-align: center;
 
     background:
-        radial-gradient(
-            circle at center,
-            #10243d,
-            var(--navy2) 55%,
-            #07101d
-        );
+        var(--navy2);
 
     overflow: hidden;
-
 }
-
-
-.countdown-section::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 800px;
-    height: 800px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    border:
-        1px solid rgba(216,180,106,.05);
-
-    border-radius: 50%;
-
-    animation:
-        countdownOrbit 30s linear infinite;
-
-}
-
-
-@keyframes countdownOrbit {
-
-    to {
-
-        transform:
-            translate(-50%,-50%)
-            rotate(360deg)
-            scale(1.1);
-
-    }
-
-}
-
 
 .countdown {
-
-    position: relative;
-
-    z-index: 2;
 
     margin-top: 55px;
 
@@ -2562,115 +1328,35 @@ section {
     gap: 15px;
 
     flex-wrap: wrap;
-
 }
-
 
 .time {
 
     min-width: 120px;
 
-    padding: 30px 20px;
+    padding:
+        30px 20px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
-        rgba(0,0,0,.18);
+        rgba(0,0,0,.15);
 
-    backdrop-filter:
-        blur(10px);
-
-    transition:
-        .6s cubic-bezier(.16,1,.3,1);
-
-    position: relative;
-
-    overflow: hidden;
-
+    transition: .5s;
 }
-
-
-.time::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(216,180,106,.06),
-            transparent 50%
-        );
-
-}
-
-
-.time::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: -100%;
-
-    top: 0;
-
-    width: 60%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.06),
-            transparent
-        );
-
-    transform:
-        skewX(-20deg);
-
-    animation:
-        timeSweep 4s ease-in-out infinite;
-
-}
-
-
-@keyframes timeSweep {
-
-    0%,40% {
-
-        left: -100%;
-
-    }
-
-    70%,100% {
-
-        left: 150%;
-
-    }
-
-}
-
 
 .time:hover {
 
     transform:
-        translateY(-14px)
-        scale(1.06);
+        translateY(-12px)
+        scale(1.04);
 
     box-shadow:
-        0 25px 70px rgba(216,180,106,.12);
-
-    border-color:
-        rgba(216,180,106,.5);
-
+        0 20px 50px
+        rgba(216,180,106,.12);
 }
-
 
 .time strong {
 
@@ -2685,33 +1371,25 @@ section {
     color: var(--gold2);
 
     text-shadow:
-        0 0 25px rgba(216,180,106,.3);
+        0 0 25px
+        rgba(216,180,106,.3);
 
     animation:
-        numberGlow 2.5s ease-in-out infinite;
-
+        numberGlow
+        2.5s
+        ease-in-out
+        infinite;
 }
 
-
 @keyframes numberGlow {
-
-    0%,100% {
-
-        text-shadow:
-            0 0 20px rgba(216,180,106,.25);
-
-    }
 
     50% {
 
         text-shadow:
-            0 0 45px rgba(216,180,106,.75),
-            0 0 80px rgba(216,180,106,.25);
-
+            0 0 40px
+            rgba(216,180,106,.65);
     }
-
 }
-
 
 .time span {
 
@@ -2728,9 +1406,7 @@ section {
     letter-spacing: 3px;
 
     text-transform: uppercase;
-
 }
-
 
 /* =========================================================
    FOOTER
@@ -2738,100 +1414,30 @@ section {
 
 footer {
 
-    position: relative;
-
-    padding: 65px 7%;
+    padding:
+        55px 7%;
 
     text-align: center;
 
     border-top:
-        1px solid rgba(255,255,255,.06);
+        1px solid
+        rgba(255,255,255,.06);
 
     color: #657182;
 
     font-size: 9px;
 
     letter-spacing: 2px;
-
-    overflow: hidden;
-
 }
-
-
-footer::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 300px;
-    height: 300px;
-
-    border-radius: 50%;
-
-    left: 50%;
-    top: -250px;
-
-    transform:
-        translateX(-50%);
-
-    background:
-        rgba(216,180,106,.08);
-
-    filter: blur(70px);
-
-    animation:
-        footerGlow 5s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes footerGlow {
-
-    to {
-        transform:
-            translateX(-50%)
-            scale(1.5);
-
-    }
-
-}
-
 
 footer strong {
 
-    position: relative;
-
     color: var(--gold);
 
-    font-size: 13px;
+    font-size: 12px;
 
-    letter-spacing: 5px;
-
-    animation:
-        footerPulse 3s ease-in-out infinite;
-
+    letter-spacing: 4px;
 }
-
-
-@keyframes footerPulse {
-
-    0%,100% {
-
-        text-shadow:
-            0 0 0 rgba(216,180,106,0);
-
-    }
-
-    50% {
-
-        text-shadow:
-            0 0 25px rgba(216,180,106,.4);
-
-    }
-
-}
-
 
 /* =========================================================
    SCROLL REVEAL
@@ -2842,20 +1448,18 @@ footer strong {
     opacity: 0;
 
     transform:
-        translateY(70px)
-        scale(.92)
-        rotateX(10deg);
+        translateY(45px)
+        scale(.97);
 
     filter:
-        blur(8px);
+        blur(5px);
 
     transition:
-        opacity 1s ease,
-        transform 1.2s cubic-bezier(.16,1,.3,1),
+        opacity .9s ease,
+        transform 1s
+        cubic-bezier(.2,.8,.2,1),
         filter 1s ease;
-
 }
-
 
 .reveal.visible {
 
@@ -2863,17 +1467,14 @@ footer strong {
 
     transform:
         translateY(0)
-        scale(1)
-        rotateX(0);
+        scale(1);
 
     filter:
         blur(0);
-
 }
 
-
 /* =========================================================
-   STAGGER
+   STAGGER DETAILS
 ========================================================= */
 
 .detail:nth-child(1) {
@@ -2892,6 +1493,10 @@ footer strong {
     transition-delay: .35s;
 }
 
+/* =========================================================
+   STAGGER COUNTDOWN
+========================================================= */
+
 .time:nth-child(1) {
     transition-delay: .05s;
 }
@@ -2908,563 +1513,125 @@ footer strong {
     transition-delay: .35s;
 }
 
-
-/* =========================================================
-   FLOATING DECORATIONS
-========================================================= */
-
-.floating-symbol {
-
-    position: absolute;
-
-    color: var(--gold);
-
-    opacity: .18;
-
-    font-size: 25px;
-
-    pointer-events: none;
-
-    animation:
-        floatingSymbol 6s ease-in-out infinite;
-
-}
-
-
-.symbol-one {
-
-    left: 10%;
-    top: 25%;
-
-}
-
-
-.symbol-two {
-
-    right: 10%;
-    top: 40%;
-
-    animation-delay: 2s;
-
-}
-
-
-.symbol-three {
-
-    left: 15%;
-    bottom: 20%;
-
-    animation-delay: 4s;
-
-}
-
-
-@keyframes floatingSymbol {
-
-    0%,100% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-30px)
-            rotate(180deg);
-
-    }
-
-}
-
-
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media(max-width:700px) {
 
-    body {
-        overflow-x: hidden;
-    }
-
-
     nav {
-
         padding:
             18px 5%;
-
     }
-
 
     .nav-links {
-
-        display:
-            none;
-
+        display: none;
     }
-
 
     .logo {
-
-        font-size:
-            18px;
-
+        font-size: 18px;
     }
-
 
     .hero {
-
-        min-height:
-            100svh;
-
         padding:
-            110px 15px 80px;
-
+            120px 15px 80px;
     }
-
 
     .hero::before {
-
-        width:
-            450px;
-
-        height:
-            450px;
-
+        width: 450px;
+        height: 450px;
     }
-
 
     .hero::after {
-
-        width:
-            320px;
-
-        height:
-            320px;
-
+        width: 320px;
+        height: 320px;
     }
-
-
-    .hero-orbit {
-
-        width:
-            500px;
-
-        height:
-            180px;
-
-    }
-
 
     .hero h1 {
 
         font-size:
-            clamp(55px,18vw,105px);
+            clamp(
+                60px,
+                18vw,
+                110px
+            );
 
-        letter-spacing:
-            -5px;
-
+        letter-spacing: -5px;
     }
-
 
     .hero h1 span {
-
-        margin-top:
-            22px;
-
-        letter-spacing:
-            7px;
-
-        font-size:
-            .34em;
-
+        letter-spacing: 8px;
     }
-
 
     .college-name {
 
-        font-size:
-            9px;
+        font-size: 10px;
 
-        letter-spacing:
-            4px;
-
-        margin-top:
-            24px;
-
+        letter-spacing: 4px;
     }
-
-
-    .official {
-
-        font-size:
-            7px;
-
-        letter-spacing:
-            2px;
-
-        padding:
-            9px 15px;
-
-    }
-
-
-    .hero-description {
-
-        font-size:
-            12px;
-
-        line-height:
-            1.9;
-
-        margin-top:
-            35px;
-
-        max-width:
-            340px;
-
-    }
-
 
     section {
-
         padding:
-            90px 5%;
-
+            85px 5%;
     }
-
-
-    .section-title {
-
-        font-size:
-            clamp(40px,12vw,60px);
-
-    }
-
-
-    .section-label {
-
-        font-size:
-            7px;
-
-        letter-spacing:
-            3px;
-
-    }
-
-
-    .section-label::before,
-    .section-label::after {
-
-        margin:
-            0 7px;
-
-    }
-
 
     .details-grid {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            15px;
-
+        grid-template-columns: 1fr;
     }
-
-
-    .detail {
-
-        padding:
-            30px;
-
-    }
-
-
-    .detail p {
-
-        font-size:
-            13px;
-
-    }
-
 
     .invitation-card {
-
         padding:
             45px 25px;
-
-        margin-top:
-            45px;
-
     }
-
 
     .invitation-card h2 {
-
-        font-size:
-            38px;
-
+        font-size: 38px;
     }
-
-
-    .invitation-card p {
-
-        font-size:
-            13px;
-
-    }
-
-
-    .signature {
-
-        font-size:
-            23px;
-
-    }
-
-
-    .countdown {
-
-        gap:
-            8px;
-
-        margin-top:
-            40px;
-
-    }
-
 
     .time {
 
-        min-width:
-            calc(50% - 8px);
+        min-width: 75px;
 
         padding:
-            20px 8px;
-
+            22px 10px;
     }
-
 
     .time strong {
-
-        font-size:
-            42px;
-
+        font-size: 38px;
     }
 
-
-    .time span {
-
-        font-size:
-            7px;
-
-        letter-spacing:
-            2px;
-
+    .loader-narayana {
+        letter-spacing: 6px;
     }
-
 
     .venue-map {
 
-        font-size:
-            8px;
+        font-size: 8px;
 
         padding:
             9px 12px;
-
     }
-
-
-    .floating-symbol {
-
-        display:
-            none;
-
-    }
-
-
-    .cursor-glow {
-
-        display:
-            none;
-
-    }
-
-
-    .ambient {
-
-        filter:
-            blur(80px);
-
-    }
-
-
-    .ambient.one {
-
-        width:
-            400px;
-
-        height:
-            400px;
-
-    }
-
-
-    .ambient.two {
-
-        width:
-            300px;
-
-        height:
-            300px;
-
-    }
-
-
-    .loader-ring {
-
-        width:
-            260px;
-
-        height:
-            260px;
-
-    }
-
-
-    .loader-narayana {
-
-        font-size:
-            42px;
-
-        letter-spacing:
-            6px;
-
-    }
-
-
-    .loader-sub {
-
-        font-size:
-            6px;
-
-        letter-spacing:
-            3px;
-
-    }
-
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media(max-width:380px) {
-
-    .hero h1 {
-
-        font-size:
-            58px;
-
-    }
-
-
-    .hero h1 span {
-
-        font-size:
-            20px;
-
-        letter-spacing:
-            5px;
-
-    }
-
-
-    .time strong {
-
-        font-size:
-            36px;
-
-    }
-
-
-    .detail {
-
-        padding:
-            25px;
-
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION ACCESSIBILITY
-========================================================= */
-
-@media(prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .01ms !important;
-
-        scroll-behavior:
-            auto !important;
-
-    }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
 <!-- =========================================================
-     CURSOR
+     LOADER
 ========================================================= -->
 
-<div class="cursor-glow"></div>
+<div id="loader">
 
+    <div class="loader-narayana">
+        NARAYANA
+    </div>
 
-<!-- =========================================================
-     AMBIENT LIGHT
-========================================================= -->
-
-<div class="ambient one"></div>
-<div class="ambient two"></div>
-<div class="ambient three"></div>
-
-
-<!-- =========================================================
-     SHOOTING STARS
-========================================================= -->
-
-<div class="stars">
-
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
+    <div class="loader-line"></div>
 
 </div>
-
 
 <!-- =========================================================
      PARTICLES
@@ -3482,34 +1649,8 @@ footer strong {
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
 
 </div>
-
-
-<!-- =========================================================
-     LOADER
-========================================================= -->
-
-<div id="loader">
-
-    <div class="loader-ring"></div>
-
-    <div class="loader-narayana">
-        NARAYANA
-    </div>
-
-    <div class="loader-line"></div>
-
-    <div class="loader-sub">
-        Freshers' Celebration • 2026
-    </div>
-
-</div>
-
 
 <!-- =========================================================
      NAVIGATION
@@ -3539,54 +1680,31 @@ footer strong {
 
 </nav>
 
-
 <!-- =========================================================
      HERO
 ========================================================= -->
 
 <header class="hero">
 
-    <div class="hero-orbit"></div>
-
-    <div class="floating-symbol symbol-one">
-        ✦
-    </div>
-
-    <div class="floating-symbol symbol-two">
-        ◇
-    </div>
-
-    <div class="floating-symbol symbol-three">
-        ✧
-    </div>
-
-
     <div class="hero-content">
 
         <div class="official">
-
             Official Invitation
-
         </div>
-
 
         <div class="college-name">
-
             NARAYANA
-
         </div>
-
 
         <h1>
 
             NARAYANA
 
             <span>
-                FRESHERS' 2026
+                SERENOVA 2026
             </span>
 
         </h1>
-
 
         <p class="hero-description">
 
@@ -3604,15 +1722,11 @@ footer strong {
 
     </div>
 
-
     <div class="scroll">
-
         SCROLL
-
     </div>
 
 </header>
-
 
 <!-- =========================================================
      INVITATION
@@ -3626,64 +1740,54 @@ footer strong {
     <div class="center">
 
         <div class="section-label">
-
             You Are Cordially Invited
-
         </div>
 
-
         <h2 class="section-title">
-
             An Invitation to Remember
-
         </h2>
 
     </div>
 
-
-    <div class="invitation-card reveal">
+    <div class="invitation-card">
 
         <h2>
-
-            Dear Freshers,
-
+            Dear GUESTS,
         </h2>
-
 
         <p>
 
-            It gives us immense pleasure to welcome you
-            to <strong>NARAYANA</strong>.
+            It gives us immense pleasure
+            to welcome you to
+            <strong>NARAYANA</strong>.
 
         </p>
 
-
         <br>
-
 
         <p>
 
-            As you begin an exciting new chapter of your
-            academic journey, we cordially invite you to
-            our Freshers' celebration — an occasion
-            dedicated to welcoming you into the
+            As you begin an exciting new
+            chapter of your academic journey,
+            we cordially invite you to our
+            <strong>SERENOVA 2026</strong>
+            celebration — an occasion dedicated
+            to welcoming you into the
             Narayana community.
 
         </p>
 
-
         <br>
-
 
         <p>
 
-            Join us for a day filled with celebration,
-            performances, activities, new friendships
-            and memories that will remain a special
+            Join us for a day filled with
+            celebration, performances,
+            activities, new friendships and
+            memories that will remain a special
             part of your college journey.
 
         </p>
-
 
         <div class="signature">
 
@@ -3699,7 +1803,6 @@ footer strong {
 
 </section>
 
-
 <!-- =========================================================
      DETAILS
 ========================================================= -->
@@ -3712,27 +1815,20 @@ footer strong {
     <div class="center">
 
         <div class="section-label">
-
             Event Information
-
         </div>
 
-
         <h2 class="section-title">
-
             Event Details
-
         </h2>
 
     </div>
 
-
     <div class="details-grid">
-
 
         <!-- DATE -->
 
-        <div class="detail reveal">
+        <div class="detail">
 
             <div class="detail-icon">
                 ◷
@@ -3748,10 +1844,9 @@ footer strong {
 
         </div>
 
-
         <!-- TIME -->
 
-        <div class="detail reveal">
+        <div class="detail">
 
             <div class="detail-icon">
                 ◴
@@ -3767,10 +1862,9 @@ footer strong {
 
         </div>
 
-
         <!-- VENUE -->
 
-        <div class="detail reveal">
+        <div class="detail">
 
             <div class="detail-icon">
                 ⌖
@@ -3783,19 +1877,19 @@ footer strong {
             <p>
 
                 GMR Function Hall
+
                 <br>
 
                 NST Road, Opp. TRS Office
+
                 <br>
 
                 Vijaynagar Colony-I,
                 Bhuranpuram,
-                <br>
-
-                Khammam, Telangana 507002
+                Khammam,
+                Telangana 507002
 
             </p>
-
 
             <a
                 class="venue-map"
@@ -3804,17 +1898,16 @@ footer strong {
                 rel="noopener noreferrer"
             >
 
-                ⌖
+                ⌖&nbsp;
                 Open in Google Maps
 
             </a>
 
         </div>
 
-
         <!-- DRESS CODE -->
 
-        <div class="detail reveal">
+        <div class="detail">
 
             <div class="detail-icon">
                 ◇
@@ -3830,11 +1923,9 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
-
 
 <!-- =========================================================
      COUNTDOWN
@@ -3843,23 +1934,16 @@ footer strong {
 <section class="countdown-section">
 
     <div class="section-label">
-
         The Countdown
-
     </div>
 
-
     <h2 class="section-title">
-
         Until We Meet
-
     </h2>
-
 
     <div class="countdown">
 
-
-        <div class="time reveal">
+        <div class="time">
 
             <strong id="days">
                 00
@@ -3871,8 +1955,7 @@ footer strong {
 
         </div>
 
-
-        <div class="time reveal">
+        <div class="time">
 
             <strong id="hours">
                 00
@@ -3884,8 +1967,7 @@ footer strong {
 
         </div>
 
-
-        <div class="time reveal">
+        <div class="time">
 
             <strong id="minutes">
                 00
@@ -3897,8 +1979,7 @@ footer strong {
 
         </div>
 
-
-        <div class="time reveal">
+        <div class="time">
 
             <strong id="seconds">
                 00
@@ -3910,11 +1991,9 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
-
 
 <!-- =========================================================
      FOOTER
@@ -3930,13 +2009,11 @@ footer strong {
 
     </p>
 
-
     <p style="margin-top:12px;">
 
-        Official Freshers' Celebration • 2026
+        Official SERENOVA Celebration • 2026
 
     </p>
-
 
     <p style="margin-top:20px;">
 
@@ -3946,6 +2023,9 @@ footer strong {
 
 </footer>
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script>
 
@@ -3958,7 +2038,6 @@ const eventDate =
         "August 23, 2026 09:00:00"
     ).getTime();
 
-
 function updateCountdown() {
 
     const now =
@@ -3967,25 +2046,28 @@ function updateCountdown() {
     const distance =
         eventDate - now;
 
-
     if (distance <= 0) {
 
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
+        document.getElementById("days")
+            .textContent = "00";
+
+        document.getElementById("hours")
+            .textContent = "00";
+
+        document.getElementById("minutes")
+            .textContent = "00";
+
+        document.getElementById("seconds")
+            .textContent = "00";
 
         return;
-
     }
-
 
     const days =
         Math.floor(
             distance /
             (1000 * 60 * 60 * 24)
         );
-
 
     const hours =
         Math.floor(
@@ -3996,7 +2078,6 @@ function updateCountdown() {
             (1000 * 60 * 60)
         );
 
-
     const minutes =
         Math.floor(
             (
@@ -4005,7 +2086,6 @@ function updateCountdown() {
             ) /
             (1000 * 60)
         );
-
 
     const seconds =
         Math.floor(
@@ -4016,28 +2096,27 @@ function updateCountdown() {
             1000
         );
 
-
     document.getElementById("days")
         .textContent =
-        String(days).padStart(2,"0");
-
+        String(days)
+        .padStart(2,"0");
 
     document.getElementById("hours")
         .textContent =
-        String(hours).padStart(2,"0");
-
+        String(hours)
+        .padStart(2,"0");
 
     document.getElementById("minutes")
         .textContent =
-        String(minutes).padStart(2,"0");
-
+        String(minutes)
+        .padStart(2,"0");
 
     document.getElementById("seconds")
         .textContent =
-        String(seconds).padStart(2,"0");
+        String(seconds)
+        .padStart(2,"0");
 
 }
-
 
 updateCountdown();
 
@@ -4046,65 +2125,8 @@ setInterval(
     1000
 );
 
-
 /* =========================================================
-   CURSOR GLOW
-========================================================= */
-
-const cursorGlow =
-    document.querySelector(".cursor-glow");
-
-
-let mouseX = 0;
-let mouseY = 0;
-
-let glowX = 0;
-let glowY = 0;
-
-
-document.addEventListener(
-    "mousemove",
-    (e) => {
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-    }
-);
-
-
-function animateCursor() {
-
-    glowX +=
-        (mouseX - glowX) * .08;
-
-    glowY +=
-        (mouseY - glowY) * .08;
-
-
-    cursorGlow.style.left =
-        glowX + "px";
-
-    cursorGlow.style.top =
-        glowY + "px";
-
-
-    requestAnimationFrame(
-        animateCursor
-    );
-
-}
-
-
-if (window.innerWidth > 700) {
-
-    animateCursor();
-
-}
-
-
-/* =========================================================
-   HERO PARALLAX
+   MOUSE PARALLAX
 ========================================================= */
 
 const hero =
@@ -4113,7 +2135,6 @@ const hero =
 const heroContent =
     document.querySelector(".hero-content");
 
-
 document.addEventListener(
     "mousemove",
     (e) => {
@@ -4121,38 +2142,34 @@ document.addEventListener(
         if (window.innerWidth < 700)
             return;
 
-
         const x =
-            (e.clientX /
-            window.innerWidth - .5);
-
+            (
+                e.clientX /
+                window.innerWidth
+                - .5
+            ) * 10;
 
         const y =
-            (e.clientY /
-            window.innerHeight - .5);
-
+            (
+                e.clientY /
+                window.innerHeight
+                - .5
+            ) * 10;
 
         heroContent.style.transform =
-            `
-            translate(
-                ${x * 12}px,
-                ${y * 12}px
-            )
-            rotateX(${y * -2}deg)
-            rotateY(${x * 2}deg)
-            `;
+            `translate(${x}px, ${y}px)`;
 
     }
 );
-
 
 /* =========================================================
    3D INVITATION CARD
 ========================================================= */
 
 const card =
-    document.querySelector(".invitation-card");
-
+    document.querySelector(
+        ".invitation-card"
+    );
 
 if (window.innerWidth > 700) {
 
@@ -4163,48 +2180,51 @@ if (window.innerWidth > 700) {
             const rect =
                 card.getBoundingClientRect();
 
-
             const x =
-                e.clientX - rect.left;
-
+                e.clientX -
+                rect.left;
 
             const y =
-                e.clientY - rect.top;
-
+                e.clientY -
+                rect.top;
 
             const rotateY =
-                ((x / rect.width) - .5) * 10;
-
+                (
+                    (x / rect.width)
+                    - .5
+                ) * 8;
 
             const rotateX =
-                ((y / rect.height) - .5) * -10;
+                (
+                    (y / rect.height)
+                    - .5
+                ) * -8;
 
+            card.style.transform = `
 
-            card.style.transform =
-                `
-                perspective(1200px)
+                perspective(1000px)
+
                 rotateX(${rotateX}deg)
+
                 rotateY(${rotateY}deg)
+
                 translateY(-10px)
-                scale(1.01)
-                `;
+
+            `;
 
         }
     );
-
 
     card.addEventListener(
         "mouseleave",
         () => {
 
-            card.style.transform =
-                "";
+            card.style.transform = "";
 
         }
     );
 
 }
-
 
 /* =========================================================
    SCROLL REVEAL
@@ -4212,13 +2232,15 @@ if (window.innerWidth > 700) {
 
 const revealElements =
     document.querySelectorAll(
-        ".reveal"
+        ".section-label, " +
+        ".section-title, " +
+        ".invitation-card, " +
+        ".detail, " +
+        ".time"
     );
-
 
 const observer =
     new IntersectionObserver(
-
         (entries) => {
 
             entries.forEach(
@@ -4228,9 +2250,9 @@ const observer =
                         entry.isIntersecting
                     ) {
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                        entry.target
+                            .classList
+                            .add("visible");
 
                     }
 
@@ -4238,276 +2260,39 @@ const observer =
             );
 
         },
-
         {
-            threshold: .12
+            threshold: .15
         }
-
     );
-
 
 revealElements.forEach(
     element => {
 
-        observer.observe(
-            element
-        );
+        element.classList
+            .add("reveal");
+
+        observer.observe(element);
 
     }
 );
 
-
 /* =========================================================
-   RANDOMIZE PARTICLES
+   RANDOM PARTICLE HORIZONTAL MOVEMENT
 ========================================================= */
 
-document.querySelectorAll(
-    ".particle"
-).forEach(
-    particle => {
+document
+    .querySelectorAll(".particle")
+    .forEach(
+        particle => {
 
-        particle.style.left =
-            Math.random() * 100 + "%";
+            particle.style.left =
+                Math.random() * 100 + "%";
 
-
-        particle.style.animationDelay =
-            Math.random() * 12 + "s";
-
-
-        const size =
-            Math.random() * 3 + 1;
-
-
-        particle.style.width =
-            size + "px";
-
-
-        particle.style.height =
-            size + "px";
-
-    }
-);
-
-
-/* =========================================================
-   MAGNETIC MAP BUTTON
-========================================================= */
-
-const mapButton =
-    document.querySelector(".venue-map");
-
-
-if (mapButton && window.innerWidth > 700) {
-
-    mapButton.addEventListener(
-        "mousemove",
-        (e) => {
-
-            const rect =
-                mapButton.getBoundingClientRect();
-
-
-            const x =
-                e.clientX - rect.left;
-
-
-            const y =
-                e.clientY - rect.top;
-
-
-            const moveX =
-                (x / rect.width - .5) * 8;
-
-
-            const moveY =
-                (y / rect.height - .5) * 8;
-
-
-            mapButton.style.transform =
-                `
-                translate(
-                    ${moveX}px,
-                    ${moveY}px
-                )
-                scale(1.04)
-                `;
+            particle.style.animationDelay =
+                Math.random() * 10 + "s";
 
         }
     );
-
-
-    mapButton.addEventListener(
-        "mouseleave",
-        () => {
-
-            mapButton.style.transform =
-                "";
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   SMOOTH NAV SCROLL
-========================================================= */
-
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(
-    link => {
-
-        link.addEventListener(
-            "click",
-            (e) => {
-
-                const target =
-                    document.querySelector(
-                        link.getAttribute("href")
-                    );
-
-
-                if (!target)
-                    return;
-
-
-                e.preventDefault();
-
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   COUNTDOWN NUMBER CHANGE EFFECT
-========================================================= */
-
-const countdownIds = [
-    "days",
-    "hours",
-    "minutes",
-    "seconds"
-];
-
-
-let previousValues = {};
-
-
-function animateCountdownNumbers() {
-
-    countdownIds.forEach(
-        id => {
-
-            const element =
-                document.getElementById(id);
-
-
-            if (!element)
-                return;
-
-
-            const value =
-                element.textContent;
-
-
-            if (
-                previousValues[id] !==
-                undefined &&
-                previousValues[id] !== value
-            ) {
-
-                element.animate(
-                    [
-                        {
-                            transform:
-                                "translateY(-12px) scale(1.15)",
-                            opacity: .3
-                        },
-
-                        {
-                            transform:
-                                "translateY(0) scale(1)",
-                            opacity: 1
-                        }
-                    ],
-                    {
-                        duration: 350,
-                        easing:
-                            "cubic-bezier(.16,1,.3,1)"
-                    }
-                );
-
-            }
-
-
-            previousValues[id] =
-                value;
-
-        }
-    );
-
-}
-
-
-setInterval(
-    animateCountdownNumbers,
-    250
-);
-
-
-/* =========================================================
-   PAGE VISIBILITY
-========================================================= */
-
-document.addEventListener(
-    "visibilitychange",
-    () => {
-
-        if (document.hidden) {
-
-            document.title =
-                "NARAYANA • Come Join Us ✦";
-
-        } else {
-
-            document.title =
-                "NARAYANA | Freshers' 2026";
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   PREVENT HORIZONTAL PARALLAX ON MOBILE
-========================================================= */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (window.innerWidth <= 700) {
-
-            heroContent.style.transform =
-                "";
-
-            card.style.transform =
-                "";
-
-        }
-
-    }
-);
 
 </script>
 
