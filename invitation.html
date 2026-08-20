@@ -3906,6 +3906,267 @@ footer strong {
 
 }
 
+/* =========================================================
+   CINEMATIC SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 28px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 9px;
+
+    z-index: 10;
+
+    color: #aeb7ca;
+
+    animation:
+        scrollEntrance 1.2s ease 5.5s both;
+
+}
+
+
+/* TEXT */
+
+.scroll-text {
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    opacity: .75;
+
+    text-shadow:
+        0 0 12px
+        rgba(199,155,255,.4);
+
+}
+
+
+/* MOUSE */
+
+.scroll-mouse {
+
+    position: relative;
+
+    width: 22px;
+
+    height: 34px;
+
+    border:
+
+        1px solid
+        rgba(199,155,255,.7);
+
+    border-radius: 14px;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(147,104,255,.18),
+
+        inset 0 0 10px
+        rgba(199,155,255,.08);
+
+    animation:
+        mouseFloat 2.2s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* MOUSE WHEEL */
+
+.scroll-wheel {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 6px;
+
+    width: 3px;
+
+    height: 7px;
+
+    border-radius: 5px;
+
+    background:
+        var(--gold2);
+
+    box-shadow:
+
+        0 0 8px
+        var(--gold2),
+
+        0 0 15px
+        rgba(232,189,116,.5);
+
+    transform:
+        translateX(-50%);
+
+    animation:
+        wheelScroll 1.7s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ARROW */
+
+.scroll-arrow {
+
+    color:
+        var(--gold2);
+
+    font-size:14px;
+
+    line-height:1;
+
+    text-shadow:
+
+        0 0 12px
+        var(--gold2);
+
+    animation:
+        arrowBounce 1.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+/* ENTRANCE */
+
+@keyframes scrollEntrance {
+
+    from {
+
+        opacity:0;
+
+        transform:
+            translate(-50%,30px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:
+            translate(-50%,0);
+
+    }
+
+}
+
+
+/* MOUSE FLOAT */
+
+@keyframes mouseFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(5px);
+
+    }
+
+}
+
+
+/* WHEEL MOVEMENT */
+
+@keyframes wheelScroll {
+
+    0% {
+
+        opacity:0;
+
+        transform:
+            translate(-50%,0);
+
+    }
+
+    20% {
+
+        opacity:1;
+
+    }
+
+    70% {
+
+        opacity:1;
+
+        transform:
+            translate(-50%,11px);
+
+    }
+
+    100% {
+
+        opacity:0;
+
+        transform:
+            translate(-50%,15px);
+
+    }
+
+}
+
+
+/* ARROW MOVEMENT */
+
+@keyframes arrowBounce {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+        opacity:.55;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(6px);
+
+        opacity:1;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -4047,8 +4308,32 @@ footer strong {
         </p>
 
     </div>
+    
+    <!-- SCROLL INDICATOR -->
+
+
 
 </header>
+
+<!-- SCROLL INDICATOR -->
+
+<div class="scroll-indicator">
+
+    <span class="scroll-text">
+        SCROLL TO EXPLORE
+    </span>
+
+    <div class="scroll-mouse">
+
+        <div class="scroll-wheel"></div>
+
+    </div>
+
+    <div class="scroll-arrow">
+        ↓
+    </div>
+
+</div>
 
 
 <!-- =========================================================
