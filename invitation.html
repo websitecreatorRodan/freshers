@@ -3910,12 +3910,15 @@ footer strong {
    CINEMATIC SCROLL INDICATOR
 ========================================================= */
 
+/* =========================================================
+   CINEMATIC SCROLL INDICATOR
+========================================================= */
+
 .scroll-indicator {
 
-    position: absolute;
+    position: fixed;
 
     left: 50%;
-
     bottom: 28px;
 
     transform:
@@ -3929,12 +3932,172 @@ footer strong {
 
     gap: 9px;
 
-    z-index: 10;
+    z-index: 99990;
 
     color: #aeb7ca;
 
+    pointer-events: none;
+
     animation:
-        scrollEntrance 1.2s ease 5.5s both;
+        scrollEntrance
+        1.2s
+        ease
+        5.5s
+        both;
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+
+/* TEXT */
+
+.scroll-text {
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    opacity: .75;
+
+    text-shadow:
+        0 0 12px
+        rgba(199,155,255,.4);
+}
+
+
+/* MOUSE */
+
+.scroll-mouse {
+
+    position: relative;
+
+    width: 22px;
+    height: 34px;
+
+    border:
+        1px solid
+        rgba(199,155,255,.7);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 0 15px
+        rgba(147,104,255,.18),
+
+        inset 0 0 10px
+        rgba(199,155,255,.08);
+
+    animation:
+        mouseFloat
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+
+/* MOUSE WHEEL */
+
+.scroll-wheel {
+
+    position: absolute;
+
+    left: 50%;
+    top: 6px;
+
+    width: 3px;
+    height: 7px;
+
+    border-radius: 5px;
+
+    background:
+        var(--gold2);
+
+    box-shadow:
+        0 0 8px
+        var(--gold2),
+
+        0 0 15px
+        rgba(232,189,116,.5);
+
+    transform:
+        translateX(-50%);
+
+    animation:
+        wheelScroll
+        1.7s
+        ease-in-out
+        infinite;
+}
+
+
+/* ARROW */
+
+.scroll-arrow {
+
+    color:
+        var(--gold2);
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 12px
+        var(--gold2);
+
+    animation:
+        arrowBounce
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   HIDE INDICATOR AFTER USER STARTS SCROLLING
+========================================================= */
+
+.scroll-indicator.scrolled {
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .scroll-indicator {
+
+        bottom:
+            max(
+                20px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .scroll-text {
+
+        font-size: 6px;
+
+        letter-spacing: 3px;
+    }
 
 }
 
@@ -5827,6 +5990,50 @@ setInterval(
 
     },
     9000
+);
+
+   /* =========================================================
+   SCROLL INDICATOR VISIBILITY
+========================================================= */
+
+const scrollIndicator =
+    document.querySelector(
+        ".scroll-indicator"
+    );
+
+let scrollIndicatorTimer;
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (!scrollIndicator) return;
+
+        /*
+         * Keep it visible at the very top.
+         * Once the visitor actually scrolls,
+         * smoothly remove it so it never sits
+         * over the poster/content.
+         */
+
+        if (window.scrollY > 40) {
+
+            scrollIndicator.classList.add(
+                "scrolled"
+            );
+
+        } else {
+
+            scrollIndicator.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    },
+    {
+        passive: true
+    }
 );
 
 </script>
