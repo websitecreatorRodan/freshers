@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -8,10 +9,18 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
-<meta name="theme-color" content="#050505">
-<meta name="color-scheme" content="dark">
+<meta
+    name="theme-color"
+    content="#050505"
+>
+
+<meta
+    name="color-scheme"
+    content="dark"
+>
 
 <title>Narayana — Opening</title>
+
 
 <style>
 
@@ -35,6 +44,7 @@ body {
 }
 
 body {
+
     background:
         radial-gradient(
             circle at 50% 50%,
@@ -57,14 +67,17 @@ body {
 
 
 /* =========================================================
-   MAIN STARTUP SCREEN
+   STARTUP SCREEN
 ========================================================= */
 
 .startup {
+
     position: fixed;
+
     inset: 0;
 
     display: grid;
+
     place-items: center;
 
     overflow: hidden;
@@ -87,10 +100,11 @@ body {
 
 
 /* =========================================================
-   AMBIENT LIGHT
+   AMBIENT GOLD LIGHT
 ========================================================= */
 
 .ambient-light {
+
     position: absolute;
 
     width: min(85vw, 850px);
@@ -117,7 +131,9 @@ body {
     pointer-events: none;
 }
 
+
 @keyframes ambientAppear {
+
     from {
         opacity: 0;
         transform: scale(0.65);
@@ -129,7 +145,9 @@ body {
     }
 }
 
+
 @keyframes ambientPulse {
+
     0%,
     100% {
         transform: scale(1);
@@ -142,16 +160,19 @@ body {
 
 
 /* =========================================================
-   LOGO WRAPPER
+   LOGO STAGE
 ========================================================= */
 
 .logo-stage {
+
     position: relative;
 
     width: min(88vw, 780px);
+
     aspect-ratio: 1 / 1;
 
     display: grid;
+
     place-items: center;
 
     z-index: 5;
@@ -161,13 +182,15 @@ body {
 
 
 /* =========================================================
-   BUBBLE
+   GLOWING BUBBLE
 ========================================================= */
 
 .logo-bubble {
+
     position: absolute;
 
     width: 23%;
+
     aspect-ratio: 1;
 
     border-radius: 50%;
@@ -194,13 +217,19 @@ body {
     filter: blur(0.1px);
 
     animation:
-        bubbleAppear 0.75s cubic-bezier(.17,.89,.32,1.35) forwards;
+        bubbleAppear
+        0.75s
+        cubic-bezier(.17,.89,.32,1.35)
+        forwards;
 }
 
+
 .logo-bubble::before {
+
     content: "";
 
     position: absolute;
+
     inset: 8%;
 
     border-radius: inherit;
@@ -210,7 +239,9 @@ body {
     opacity: 0.65;
 }
 
+
 .logo-bubble::after {
+
     content: "";
 
     position: absolute;
@@ -228,29 +259,37 @@ body {
     filter: blur(3px);
 }
 
+
 @keyframes bubbleAppear {
 
     0% {
+
         opacity: 0;
+
         transform:
             scale(0.02)
             translateZ(-300px);
     }
 
     45% {
+
         opacity: 1;
+
         transform:
             scale(1.22)
             translateZ(0);
     }
 
     70% {
+
         transform:
             scale(0.92);
     }
 
     100% {
+
         opacity: 0;
+
         transform:
             scale(1.8);
     }
@@ -258,10 +297,11 @@ body {
 
 
 /* =========================================================
-   LOGO
+   MAIN LOGO
 ========================================================= */
 
 .logo {
+
     width: 100%;
     height: 100%;
 
@@ -274,7 +314,10 @@ body {
     opacity: 0;
 
     filter:
-        drop-shadow(0 0 6px rgba(222,174,70,0.1));
+        drop-shadow(
+            0 0 6px
+            rgba(222,174,70,0.1)
+        );
 
     animation:
         logoReveal
@@ -286,19 +329,27 @@ body {
     transform-origin: center;
 }
 
+
 @keyframes logoReveal {
 
     0% {
+
         opacity: 0;
+
         transform:
             scale(0.28)
             translateY(40px);
+
         filter:
             blur(14px)
-            drop-shadow(0 0 0 rgba(0,0,0,0));
+            drop-shadow(
+                0 0 0
+                rgba(0,0,0,0)
+            );
     }
 
     45% {
+
         opacity: 1;
 
         transform:
@@ -314,12 +365,14 @@ body {
     }
 
     70% {
+
         transform:
             scale(0.97)
             translateY(2px);
     }
 
     100% {
+
         opacity: 1;
 
         transform:
@@ -337,23 +390,27 @@ body {
 
 
 /* =========================================================
-   GOLD MATERIAL
+   GOLD GRADIENTS
 ========================================================= */
 
 .gold {
+
     fill: url(#goldGradient);
 }
 
+
 .gold-stroke {
+
     stroke: url(#goldStrokeGradient);
 }
 
 
 /* =========================================================
-   TOP TEXT
+   TOP ARC TEXT
 ========================================================= */
 
 .arc-text {
+
     fill: #e1bc67;
 
     font-family:
@@ -376,6 +433,7 @@ body {
 ========================================================= */
 
 .bottom-text {
+
     fill: #d8b35d;
 
     font-family:
@@ -392,13 +450,15 @@ body {
     text-anchor: middle;
 }
 
+
 .bottom-text-strong {
+
     font-weight: 800;
 }
 
 
 /* =========================================================
-   MAIN N
+   LARGE N
 ========================================================= */
 
 .n-letter {
@@ -423,12 +483,13 @@ body {
 
 
 /* =========================================================
-   LOGO COMPONENT INITIAL STATE
+   LOGO COMPONENTS
 ========================================================= */
 
 .logo-part {
 
     transform-box: fill-box;
+
     transform-origin: center;
 
     opacity: 0;
@@ -440,41 +501,51 @@ body {
         forwards;
 }
 
+
 .part-1 {
     animation-delay: 0.42s;
 }
+
 
 .part-2 {
     animation-delay: 0.50s;
 }
 
+
 .part-3 {
     animation-delay: 0.58s;
 }
+
 
 .part-4 {
     animation-delay: 0.65s;
 }
 
+
 .part-5 {
     animation-delay: 0.72s;
 }
 
+
 .part-6 {
-    animation-delay: 0.80s;
+    animation-delay: 0.79s;
 }
+
 
 .part-7 {
     animation-delay: 0.88s;
 }
 
+
 .part-8 {
     animation-delay: 0.96s;
 }
 
+
 .part-9 {
     animation-delay: 1.04s;
 }
+
 
 @keyframes partAssemble {
 
@@ -521,34 +592,49 @@ body {
 
 
 /* =========================================================
-   STAR PARTICLES
+   STARS
 ========================================================= */
 
 .star {
+
     fill: #dfb660;
 
     filter:
         drop-shadow(
-            0 0 5px rgba(222,178,84,0.45)
+            0 0 5px
+            rgba(222,178,84,0.45)
         );
 
     transform-box: fill-box;
+
     transform-origin: center;
 
     animation:
-        starAppear 0.7s ease forwards;
+        starAppear
+        0.7s
+        ease
+        forwards;
 }
+
 
 @keyframes starAppear {
 
     from {
+
         opacity: 0;
-        transform: scale(0) rotate(-90deg);
+
+        transform:
+            scale(0)
+            rotate(-90deg);
     }
 
     to {
+
         opacity: 1;
-        transform: scale(1) rotate(0deg);
+
+        transform:
+            scale(1)
+            rotate(0deg);
     }
 }
 
@@ -558,6 +644,7 @@ body {
 ========================================================= */
 
 .logo.dismantle .logo-part:nth-child(1) {
+
     animation:
         dismantleLeftTop
         1.15s
@@ -565,7 +652,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(2) {
+
     animation:
         dismantleLeftBottom
         1.15s
@@ -573,7 +662,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(3) {
+
     animation:
         dismantleTop
         1.10s
@@ -581,7 +672,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(4) {
+
     animation:
         dismantleRightTop
         1.15s
@@ -589,7 +682,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(5) {
+
     animation:
         dismantleRightBottom
         1.15s
@@ -597,15 +692,19 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(6) {
+
     animation:
-        dismantleBottom
-        1.20s
+        dismantleStars
+        1.15s
         cubic-bezier(.55,.05,.68,.19)
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(7) {
+
     animation:
         dismantleN
         1.10s
@@ -613,7 +712,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(8) {
+
     animation:
         dismantleBook
         1.25s
@@ -621,7 +722,9 @@ body {
         forwards;
 }
 
+
 .logo.dismantle .logo-part:nth-child(9) {
+
     animation:
         dismantleText
         1.30s
@@ -637,121 +740,452 @@ body {
 @keyframes dismantleLeftTop {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(-150px,-65px) rotate(-13deg);
+
+        transform:
+            translate(-150px,-65px)
+            rotate(-13deg);
     }
 }
+
 
 @keyframes dismantleLeftBottom {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(-120px,95px) rotate(-9deg);
+
+        transform:
+            translate(-120px,95px)
+            rotate(-9deg);
     }
 }
+
 
 @keyframes dismantleTop {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(0,-125px) rotate(5deg);
+
+        transform:
+            translate(0,-125px)
+            rotate(5deg);
     }
 }
+
 
 @keyframes dismantleRightTop {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(150px,-70px) rotate(13deg);
+
+        transform:
+            translate(150px,-70px)
+            rotate(13deg);
     }
 }
+
 
 @keyframes dismantleRightBottom {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(145px,90px) rotate(11deg);
+
+        transform:
+            translate(145px,90px)
+            rotate(11deg);
     }
 }
 
-@keyframes dismantleBottom {
+
+/* =========================================================
+   STARS DISMANTLE
+========================================================= */
+
+@keyframes dismantleStars {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) rotate(0);
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(1);
+    }
+
+    30% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(1.03);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(20px,125px) rotate(-7deg);
+
+        transform:
+            translate(0,0)
+            rotate(0)
+            scale(0.85);
     }
 }
+
+
+.logo.dismantle .part-6 .star:nth-child(1) {
+
+    animation:
+        starDismantleLeft1
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(2) {
+
+    animation:
+        starDismantleLeft2
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.04s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(3) {
+
+    animation:
+        starDismantleLeft3
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.08s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(4) {
+
+    animation:
+        starDismantleLeft4
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.12s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(5) {
+
+    animation:
+        starDismantleLeft5
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.16s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(6) {
+
+    animation:
+        starDismantleRight1
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.04s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(7) {
+
+    animation:
+        starDismantleRight2
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.08s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(8) {
+
+    animation:
+        starDismantleRight3
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.12s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(9) {
+
+    animation:
+        starDismantleRight4
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.16s
+        forwards;
+}
+
+
+.logo.dismantle .part-6 .star:nth-child(10) {
+
+    animation:
+        starDismantleRight5
+        1.05s
+        cubic-bezier(.55,.05,.68,.19)
+        0.20s
+        forwards;
+}
+
+
+@keyframes starDismantleLeft1 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(-130px,-100px)
+            rotate(-45deg)
+            scale(.4);
+    }
+}
+
+
+@keyframes starDismantleLeft2 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(-160px,-50px)
+            rotate(-35deg)
+            scale(.35);
+    }
+}
+
+
+@keyframes starDismantleLeft3 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(-175px,0)
+            rotate(-20deg)
+            scale(.3);
+    }
+}
+
+
+@keyframes starDismantleLeft4 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(-160px,55px)
+            rotate(25deg)
+            scale(.35);
+    }
+}
+
+
+@keyframes starDismantleLeft5 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(-125px,105px)
+            rotate(40deg)
+            scale(.4);
+    }
+}
+
+
+@keyframes starDismantleRight1 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(130px,-100px)
+            rotate(45deg)
+            scale(.4);
+    }
+}
+
+
+@keyframes starDismantleRight2 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(160px,-50px)
+            rotate(35deg)
+            scale(.35);
+    }
+}
+
+
+@keyframes starDismantleRight3 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(175px,0)
+            rotate(20deg)
+            scale(.3);
+    }
+}
+
+
+@keyframes starDismantleRight4 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(160px,55px)
+            rotate(-25deg)
+            scale(.35);
+    }
+}
+
+
+@keyframes starDismantleRight5 {
+
+    to {
+        opacity: 0;
+        transform:
+            translate(125px,105px)
+            rotate(-40deg)
+            scale(.4);
+    }
+}
+
+
+/* =========================================================
+   N DISMANTLE
+========================================================= */
 
 @keyframes dismantleN {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) scale(1);
+
+        transform:
+            translate(0,0)
+            scale(1);
     }
 
     100% {
+
         opacity: 0;
+
         transform:
             translate(0,-18px)
             scale(0.84);
     }
 }
 
+
+/* =========================================================
+   BOOK DISMANTLE
+========================================================= */
+
 @keyframes dismantleBook {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0) scale(1);
+
+        transform:
+            translate(0,0)
+            scale(1);
     }
 
     100% {
+
         opacity: 0;
+
         transform:
             translate(-10px,125px)
             scale(0.88);
     }
 }
 
+
+/* =========================================================
+   TEXT DISMANTLE
+========================================================= */
+
 @keyframes dismantleText {
 
     0% {
+
         opacity: 1;
-        transform: translate(0,0);
+
+        transform:
+            translate(0,0);
     }
 
     100% {
+
         opacity: 0;
-        transform: translate(0,155px);
+
+        transform:
+            translate(0,155px);
     }
 }
 
@@ -779,6 +1213,7 @@ body {
         1.15s
         forwards;
 }
+
 
 .logo-shimmer::before {
 
@@ -812,11 +1247,14 @@ body {
         forwards;
 }
 
+
 @keyframes shimmerAppear {
+
     to {
         opacity: 1;
     }
 }
+
 
 @keyframes shimmerSweep {
 
@@ -831,7 +1269,7 @@ body {
 
 
 /* =========================================================
-   SMALL CAPTION
+   CAPTION
 ========================================================= */
 
 .startup-caption {
@@ -839,7 +1277,12 @@ body {
     position: absolute;
 
     left: 50%;
-    bottom: max(24px, env(safe-area-inset-bottom));
+
+    bottom:
+        max(
+            24px,
+            env(safe-area-inset-bottom)
+        );
 
     transform:
         translateX(-50%)
@@ -866,10 +1309,13 @@ body {
         forwards;
 }
 
+
 @keyframes captionIn {
 
     to {
+
         opacity: 1;
+
         transform:
             translateX(-50%)
             translateY(0);
@@ -884,60 +1330,153 @@ body {
 @media (max-width: 600px) {
 
     .logo-stage {
-        width: min(94vw, 560px);
+
+        width:
+            min(
+                94vw,
+                560px
+            );
     }
 
+
     .arc-text {
+
         font-size: 26px;
+
         letter-spacing: 3px;
     }
 
+
     .bottom-text {
+
         font-size: 20px;
+
         letter-spacing: 2.5px;
     }
 
+
     .n-letter {
+
         font-size: 270px;
     }
 
-    @keyframes dismantleLeftTop {
 
-        100% {
+    @keyframes starDismantleLeft1 {
+
+        to {
             opacity: 0;
             transform:
-                translate(-100px,-52px)
-                rotate(-12deg);
+                translate(-95px,-75px)
+                rotate(-45deg)
+                scale(.4);
         }
     }
 
-    @keyframes dismantleLeftBottom {
 
-        100% {
+    @keyframes starDismantleLeft2 {
+
+        to {
             opacity: 0;
             transform:
-                translate(-85px,75px)
-                rotate(-9deg);
+                translate(-115px,-38px)
+                rotate(-35deg)
+                scale(.35);
         }
     }
 
-    @keyframes dismantleRightTop {
 
-        100% {
+    @keyframes starDismantleLeft3 {
+
+        to {
             opacity: 0;
             transform:
-                translate(100px,-52px)
-                rotate(12deg);
+                translate(-125px,0)
+                rotate(-20deg)
+                scale(.3);
         }
     }
 
-    @keyframes dismantleRightBottom {
 
-        100% {
+    @keyframes starDismantleLeft4 {
+
+        to {
             opacity: 0;
             transform:
-                translate(85px,75px)
-                rotate(9deg);
+                translate(-115px,38px)
+                rotate(25deg)
+                scale(.35);
+        }
+    }
+
+
+    @keyframes starDismantleLeft5 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(-95px,75px)
+                rotate(40deg)
+                scale(.4);
+        }
+    }
+
+
+    @keyframes starDismantleRight1 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(95px,-75px)
+                rotate(45deg)
+                scale(.4);
+        }
+    }
+
+
+    @keyframes starDismantleRight2 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(115px,-38px)
+                rotate(35deg)
+                scale(.35);
+        }
+    }
+
+
+    @keyframes starDismantleRight3 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(125px,0)
+                rotate(20deg)
+                scale(.3);
+        }
+    }
+
+
+    @keyframes starDismantleRight4 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(115px,38px)
+                rotate(-25deg)
+                scale(.35);
+        }
+    }
+
+
+    @keyframes starDismantleRight5 {
+
+        to {
+            opacity: 0;
+            transform:
+                translate(95px,75px)
+                rotate(-40deg)
+                scale(.4);
         }
     }
 }
@@ -950,24 +1489,35 @@ body {
 @media (max-width: 380px) {
 
     .logo-stage {
+
         width: 96vw;
     }
 
+
     .arc-text {
+
         font-size: 23px;
+
         letter-spacing: 2.3px;
     }
 
+
     .bottom-text {
+
         font-size: 18px;
     }
 
+
     .n-letter {
+
         font-size: 250px;
     }
 
+
     .startup-caption {
+
         font-size: 8px;
+
         letter-spacing: 3px;
     }
 }
@@ -980,12 +1530,17 @@ body {
 @media (max-height: 520px) {
 
     .logo-stage {
+
         height: 94vh;
+
         width: 94vh;
+
         max-width: 760px;
     }
 
+
     .startup-caption {
+
         display: none;
     }
 }
@@ -1002,6 +1557,7 @@ body {
     *::after {
 
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
 
         transition-duration: 0.01ms !important;
@@ -1009,27 +1565,47 @@ body {
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-<div class="startup" id="startup">
+
+<!-- =========================================================
+     STARTUP
+========================================================= -->
+
+<div
+    class="startup"
+    id="startup"
+>
+
+
+    <!-- =====================================================
+         AMBIENT LIGHT
+    ====================================================== -->
 
     <div class="ambient-light"></div>
 
+
+    <!-- =====================================================
+         LOGO STAGE
+    ====================================================== -->
+
     <div class="logo-stage">
 
-        <!-- =====================================================
-             GLOWING BUBBLE
-        ====================================================== -->
+
+        <!-- =================================================
+             GOLD BUBBLE
+        ================================================== -->
 
         <div class="logo-bubble"></div>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              SVG LOGO
-        ====================================================== -->
+        ================================================== -->
 
         <svg
             id="narayanaLogo"
@@ -1039,11 +1615,15 @@ body {
             aria-label="Narayana logo"
         >
 
-            <!-- =================================================
+
+            <!-- =============================================
                  DEFINITIONS
-            ================================================== -->
+            ============================================== -->
 
             <defs>
+
+
+                <!-- GOLD -->
 
                 <linearGradient
                     id="goldGradient"
@@ -1052,6 +1632,7 @@ body {
                     x2="100%"
                     y2="100%"
                 >
+
                     <stop
                         offset="0%"
                         stop-color="#fff0ae"
@@ -1076,8 +1657,11 @@ body {
                         offset="100%"
                         stop-color="#f1d37a"
                     />
+
                 </linearGradient>
 
+
+                <!-- ORANGE GOLD -->
 
                 <linearGradient
                     id="orangeGold"
@@ -1086,6 +1670,7 @@ body {
                     x2="100%"
                     y2="100%"
                 >
+
                     <stop
                         offset="0%"
                         stop-color="#ffdf8b"
@@ -1105,8 +1690,11 @@ body {
                         offset="100%"
                         stop-color="#f2ce6c"
                     />
+
                 </linearGradient>
 
+
+                <!-- GOLD STROKE -->
 
                 <linearGradient
                     id="goldStrokeGradient"
@@ -1115,6 +1703,7 @@ body {
                     x2="100%"
                     y2="100%"
                 >
+
                     <stop
                         offset="0%"
                         stop-color="#fff1ae"
@@ -1129,12 +1718,11 @@ body {
                         offset="100%"
                         stop-color="#97641b"
                     />
+
                 </linearGradient>
 
 
-                <!-- =================================================
-                     TOP ARC
-                ================================================== -->
+                <!-- TOP ARC -->
 
                 <path
                     id="topArc"
@@ -1145,6 +1733,7 @@ body {
                     fill="none"
                 />
 
+
             </defs>
 
 
@@ -1154,18 +1743,19 @@ body {
 
             <g
                 class="logo-part part-1"
-                style="--sx:-110px; --sy:-80px; --sr:-15deg"
+                style="
+                    --sx:-110px;
+                    --sy:-80px;
+                    --sr:-15deg;
+                "
             >
 
                 <circle
                     cx="400"
                     cy="400"
                     r="257"
-
                     fill="none"
-
                     stroke="url(#goldStrokeGradient)"
-
                     stroke-width="14"
                 />
 
@@ -1178,18 +1768,19 @@ body {
 
             <g
                 class="logo-part part-2"
-                style="--sx:120px; --sy:-75px; --sr:12deg"
+                style="
+                    --sx:120px;
+                    --sy:-75px;
+                    --sr:12deg;
+                "
             >
 
                 <circle
                     cx="400"
                     cy="400"
                     r="227"
-
                     fill="none"
-
                     stroke="url(#goldStrokeGradient)"
-
                     stroke-width="13"
                 />
 
@@ -1202,18 +1793,19 @@ body {
 
             <g
                 class="logo-part part-3"
-                style="--sx:-10px; --sy:-110px; --sr:7deg"
+                style="
+                    --sx:-10px;
+                    --sy:-110px;
+                    --sr:7deg;
+                "
             >
 
                 <circle
                     cx="400"
                     cy="400"
                     r="193"
-
                     fill="none"
-
                     stroke="url(#goldStrokeGradient)"
-
                     stroke-width="12"
                 />
 
@@ -1221,23 +1813,24 @@ body {
 
 
             <!-- =================================================
-                 INNER BLUE/GOLD CIRCLE
+                 INNER RING
             ================================================== -->
 
             <g
                 class="logo-part part-4"
-                style="--sx:-120px; --sy:60px; --sr:-12deg"
+                style="
+                    --sx:-120px;
+                    --sy:60px;
+                    --sr:-12deg;
+                "
             >
 
                 <circle
                     cx="400"
                     cy="400"
                     r="157"
-
                     fill="none"
-
                     stroke="url(#goldGradient)"
-
                     stroke-width="9"
                 />
 
@@ -1250,7 +1843,11 @@ body {
 
             <g
                 class="logo-part part-5"
-                style="--sx:15px; --sy:-120px; --sr:0deg"
+                style="
+                    --sx:15px;
+                    --sy:-120px;
+                    --sr:0deg;
+                "
             >
 
                 <text class="arc-text">
@@ -1268,21 +1865,29 @@ body {
 
 
             <!-- =================================================
-                 STARS LEFT + RIGHT
+                 FIVE STARS EACH SIDE
+                 TOTAL = 10 STARS
             ================================================== -->
 
             <g
                 class="logo-part part-6"
-                style="--sx:-130px; --sy:10px; --sr:-10deg"
+                style="
+                    --sx:-130px;
+                    --sy:10px;
+                    --sr:-10deg;
+                "
             >
 
-                <!-- LEFT -->
+
+                <!-- =========================================
+                     LEFT STAR 1
+                ========================================== -->
 
                 <g class="star">
 
                     <path
                         d="
-                            M118 343
+                            M118 325
                             l5 12
                             13 1
                             -10 9
@@ -1298,6 +1903,8 @@ body {
 
                 </g>
 
+
+                <!-- LEFT STAR 2 -->
 
                 <g
                     class="star"
@@ -1306,57 +1913,7 @@ body {
 
                     <path
                         d="
-                            M100 390
-                            l5 11
-                            12 1
-                            -9 8
-                            3 12
-                            -11 -7
-                            -11 7
-                            3 -12
-                            -9 -8
-                            12 -1
-                            z
-                        "
-                    />
-
-                </g>
-
-
-                <g
-                    class="star"
-                    style="animation-delay:.12s"
-                >
-
-                    <path
-                        d="
-                            M106 437
-                            l5 11
-                            12 1
-                            -9 8
-                            3 12
-                            -11 -7
-                            -11 7
-                            3 -12
-                            -9 -8
-                            12 -1
-                            z
-                        "
-                    />
-
-                </g>
-
-
-                <!-- RIGHT -->
-
-                <g
-                    class="star"
-                    style="animation-delay:.18s"
-                >
-
-                    <path
-                        d="
-                            M682 343
+                            M104 358
                             l5 12
                             13 1
                             -10 9
@@ -1373,6 +1930,60 @@ body {
                 </g>
 
 
+                <!-- LEFT STAR 3 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.12s"
+                >
+
+                    <path
+                        d="
+                            M97 400
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- LEFT STAR 4 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.18s"
+                >
+
+                    <path
+                        d="
+                            M104 442
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- LEFT STAR 5 -->
+
                 <g
                     class="star"
                     style="animation-delay:.24s"
@@ -1380,22 +1991,26 @@ body {
 
                     <path
                         d="
-                            M700 390
-                            l5 11
-                            12 1
-                            -9 8
-                            3 12
+                            M118 475
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
                             -11 -7
                             -11 7
-                            3 -12
-                            -9 -8
-                            12 -1
+                            3 -13
+                            -10 -9
+                            13 -1
                             z
                         "
                     />
 
                 </g>
 
+
+                <!-- =========================================
+                     RIGHT STAR 1
+                ========================================== -->
 
                 <g
                     class="star"
@@ -1404,21 +2019,126 @@ body {
 
                     <path
                         d="
-                            M694 437
-                            l5 11
-                            12 1
-                            -9 8
-                            3 12
+                            M682 325
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
                             -11 -7
                             -11 7
-                            3 -12
-                            -9 -8
-                            12 -1
+                            3 -13
+                            -10 -9
+                            13 -1
                             z
                         "
                     />
 
                 </g>
+
+
+                <!-- RIGHT STAR 2 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.36s"
+                >
+
+                    <path
+                        d="
+                            M696 358
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- RIGHT STAR 3 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.42s"
+                >
+
+                    <path
+                        d="
+                            M703 400
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- RIGHT STAR 4 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.48s"
+                >
+
+                    <path
+                        d="
+                            M696 442
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- RIGHT STAR 5 -->
+
+                <g
+                    class="star"
+                    style="animation-delay:.54s"
+                >
+
+                    <path
+                        d="
+                            M682 475
+                            l5 12
+                            13 1
+                            -10 9
+                            3 13
+                            -11 -7
+                            -11 7
+                            3 -13
+                            -10 -9
+                            13 -1
+                            z
+                        "
+                    />
+
+                </g>
+
 
             </g>
 
@@ -1429,7 +2149,11 @@ body {
 
             <g
                 class="logo-part part-7"
-                style="--sx:0px; --sy:150px; --sr:0deg"
+                style="
+                    --sx:0px;
+                    --sy:150px;
+                    --sr:0deg;
+                "
             >
 
                 <text
@@ -1450,8 +2174,13 @@ body {
 
             <g
                 class="logo-part part-8"
-                style="--sx:0px; --sy:120px; --sr:0deg"
+                style="
+                    --sx:0px;
+                    --sy:120px;
+                    --sr:0deg;
+                "
             >
+
 
                 <!-- LEFT PAGE -->
 
@@ -1464,11 +2193,8 @@ body {
                         C220 561 157 566 105 582
                         Z
                     "
-
                     fill="url(#goldGradient)"
-
                     stroke="#a46f20"
-
                     stroke-width="3"
                 />
 
@@ -1484,11 +2210,8 @@ body {
                         C580 561 643 566 695 582
                         Z
                     "
-
                     fill="url(#goldGradient)"
-
                     stroke="#a46f20"
-
                     stroke-width="3"
                 />
 
@@ -1503,11 +2226,8 @@ body {
                         C280 596 188 594 105 607
                         Z
                     "
-
                     fill="url(#goldGradient)"
-
                     stroke="#a46f20"
-
                     stroke-width="3"
                 />
 
@@ -1522,11 +2242,8 @@ body {
                         C520 596 612 594 695 607
                         Z
                     "
-
                     fill="url(#goldGradient)"
-
                     stroke="#a46f20"
-
                     stroke-width="3"
                 />
 
@@ -1541,9 +2258,9 @@ body {
                         Q400 651 391 642
                         Z
                     "
-
                     fill="#e7bd62"
                 />
+
 
             </g>
 
@@ -1554,7 +2271,11 @@ body {
 
             <g
                 class="logo-part part-9"
-                style="--sx:0px; --sy:155px; --sr:0deg"
+                style="
+                    --sx:0px;
+                    --sy:155px;
+                    --sr:0deg;
+                "
             >
 
                 <text
@@ -1586,52 +2307,77 @@ body {
                 width="800"
                 height="800"
             >
+
                 <div
                     xmlns="http://www.w3.org/1999/xhtml"
                     class="logo-shimmer"
                 ></div>
+
             </foreignObject>
+
 
         </svg>
 
+
     </div>
 
+
+    <!-- =====================================================
+         CAPTION
+    ====================================================== -->
 
     <div class="startup-caption">
+
         A NEW JOURNEY BEGINS
+
     </div>
 
+
 </div>
+
 
 
 <script>
 
 /* =========================================================
-   STARTUP CONTROLLER
+   STARTUP ANIMATION CONTROLLER
 ========================================================= */
 
 (() => {
 
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
     const logo =
-        document.getElementById("narayanaLogo");
+        document.getElementById(
+            "narayanaLogo"
+        );
+
 
     const startup =
-        document.getElementById("startup");
+        document.getElementById(
+            "startup"
+        );
 
-    /*
-        Timeline
 
-        0.00s  → bubble starts
-        0.34s  → logo starts appearing
-        1.40s  → logo fully assembled
-        2.90s  → dismantling begins
-        4.15s  → transition complete
-        4.20s  → invitation.html
-    */
+    /* =====================================================
+       TIMELINE
+       
+       0.00s  → bubble appears
+       0.34s  → logo begins emerging
+       1.40s  → logo assembled
+       2.90s  → dismantling begins
+       4.30s  → invitation.html
+    ===================================================== */
 
-    const DISMANTLE_TIME = 2900;
+    const DISMANTLE_TIME =
+        2900;
 
-    const NAVIGATION_TIME = 4300;
+
+    const NAVIGATION_TIME =
+        4300;
 
 
     /* =====================================================
@@ -1642,7 +2388,9 @@ body {
 
         if (!logo) return;
 
-        logo.classList.add("dismantle");
+        logo.classList.add(
+            "dismantle"
+        );
 
     }, DISMANTLE_TIME);
 
@@ -1653,46 +2401,44 @@ body {
 
     window.setTimeout(() => {
 
-        /*
-            This is the important part.
-
-            Your existing page should be:
-
-                invitation.html
-
-            Keep both files in the same folder.
-        */
-
-        window.location.href = "invitation.html";
+        window.location.href =
+            "invitation.html";
 
     }, NAVIGATION_TIME);
 
 
     /* =====================================================
-       OPTIONAL:
-       CLICK / TAP TO SKIP INTRO
+       CLICK / TAP TO SKIP
     ===================================================== */
 
     startup.addEventListener(
         "click",
         () => {
 
-            logo.classList.add("dismantle");
+            logo.classList.add(
+                "dismantle"
+            );
 
-            window.setTimeout(() => {
 
-                window.location.href =
-                    "invitation.html";
+            window.setTimeout(
+                () => {
 
-            }, 700);
+                    window.location.href =
+                        "invitation.html";
+
+                },
+                700
+            );
 
         },
-        { once: true }
+        {
+            once: true
+        }
     );
 
 
     /* =====================================================
-       REDUCED MOTION SUPPORT
+       REDUCED MOTION
     ===================================================== */
 
     const reducedMotion =
@@ -1700,20 +2446,28 @@ body {
             "(prefers-reduced-motion: reduce)"
         );
 
-    if (reducedMotion.matches) {
 
-        window.setTimeout(() => {
+    if (
+        reducedMotion.matches
+    ) {
 
-            window.location.href =
-                "invitation.html";
+        window.setTimeout(
+            () => {
 
-        }, 900);
+                window.location.href =
+                    "invitation.html";
+
+            },
+            900
+        );
 
     }
+
 
 })();
 
 </script>
+
 
 </body>
 </html>
